@@ -1,0 +1,25 @@
+{
+  "name": "dhafit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanem/react-nprogress": "^3.0.79",
+    "next": "11.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/nprogress": "^0.2.0",
+    "@types/react": "17.0.19",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.0",
+    "typescript": "4.4.2"
+  }
+}

@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+
+:root {
+  --font: "Inter", sans-serif;
+  --sec-font: "Source Sans Pro", sans-serif;
+  --h1: 2rem;
+  --h2: 1.5rem;
+  --h3: 1.125rem;
+  --nav-font-size: 14px;
+  --tags-font-size: 12px;
+  --main-color: #54b5ff;
+  --cont-color: #3a3d68;
+  --tags-color: #5b5e8d;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font);
+  height: 100%;
+  background-color: #151518;
+  color: #fafafa;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--tags-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+#__next {
+  height: 100%;
+}
+
+.container {
+  margin: 32px 20px 0;
+  max-width: 728px;
+}
+
+.item_container {
+  display: grid;
+  position: relative;
+  padding-top: 16px;
+}
+
+.top {
+  margin-bottom: 24px;
+}
+
+.pageTitle {
+  font-size: var(--h1);
+  line-height: 2.5rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: var(--h2);
+  line-height: 2rem;
+  letter-spacing: -0.25px;
+  padding-bottom: 16px;
+}
+
+.subtitle {
+  font-size: var(--h3);
+  font-weight: normal;
+  line-height: 1.625rem;
+  letter-spacing: -0.25px;
+  margin-bottom: 24px;
+}
+
+.separator {
+  margin: 32px 0;
+  border-top: 1px solid #3d3d3d;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #3d3d3d;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #616161;
+  border-radius: 10px;
+}
+
+.code {
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #a7a7a7;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 32px auto;
+  }
+}

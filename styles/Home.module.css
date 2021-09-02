@@ -1,0 +1,27 @@
+.top,
+.project,
+.blog {
+  margin-bottom: 32px;
+}
+
+.nama {
+  font-size: var(--h1);
+  line-height: 2.5rem;
+  letter-spacing: -0.5px;
+  color: var(--main-color);
+}
+
+.title {
+  font-size: var(--h2);
+  line-height: 2rem;
+  letter-spacing: -0.25px;
+  padding-bottom: 6px;
+}
+
+.subtitle {
+  font-size: var(--h3);
+  font-weight: normal;
+  line-height: 1.625rem;
+  letter-spacing: -0.25px;
+  margin-bottom: 24px;
+}

@@ -1,0 +1,35 @@
+{
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [140],
+    "editor.formatOnSave": true,
+    "files.encoding": "utf8",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "search.exclude": {
+      ".next/**": true,
+      ".yarn/**": true,
+      "node_modules/**": true,
+      "out/**": true,
+      "out_functions/**": true,
+      "out_publish/**": true
+    },
+    "emmet.includeLanguages": {
+       "javascript": "javascriptreact"
+    },
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "[markdown]": {
+      "editor.formatOnSave": true
+    }
+ }

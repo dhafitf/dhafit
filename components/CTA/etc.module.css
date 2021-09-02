@@ -1,0 +1,38 @@
+.view_more {
+  font-weight: 600;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.item a {
+  color: #fafafa;
+}
+
+.item a:hover {
+  color: var(--main-color);
+}
+
+.itemCont {
+  padding-top: 24px;
+}
+
+.itemCont:first-child {
+  padding-top: 0;
+}
+
+.timestamp {
+  font-family: var(--sec-font);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.title {
+  padding-top: 6px;
+  font-size: var(--h3);
+  letter-spacing: -0.25px;
+}
+
+.desc {
+  margin: 0;
+  padding-top: 6px;
+}

@@ -1,0 +1,56 @@
+.item {
+  padding-top: 24px;
+  position: relative;
+  border-radius: 5px 5px 0 0;
+}
+
+.item a {
+  color: #fafafa;
+}
+
+.item a:hover img {
+  opacity: 0.6;
+  transition: 0.3s ease;
+  transform: scale(1.1);
+}
+
+.item:first-child {
+  padding-top: 0;
+}
+
+.top {
+  position: relative;
+}
+
+.top img {
+  border-radius: 5px 5px 0 0;
+}
+
+.tags {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.tags ul {
+  display: flex;
+  gap: 6px;
+}
+
+.tags ul li {
+  background: var(--tags-color);
+  padding: 5px;
+  font-size: var(--tags-font-size);
+  line-height: 16px;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+.bottom {
+  background: var(--cont-color);
+  border-radius: 0 0 5px 5px;
+}
+
+.title {
+  padding: 12px;
+}

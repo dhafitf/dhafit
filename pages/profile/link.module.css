@@ -1,0 +1,82 @@
+.container {
+  max-width: 335px;
+  width: 100%;
+  margin: 32px auto;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.nama {
+  font-size: var(--h2);
+  line-height: 2rem;
+  letter-spacing: -0.25px;
+  padding-bottom: 6px;
+  font-weight: 700;
+}
+
+.project {
+  margin-top: 24px;
+  display: flex;
+  gap: 3px;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background: var(--tags-color);
+  width: 108px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.jumlah {
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  font-weight: 700;
+}
+
+.desc {
+  font-size: 12px;
+  line-height: 1rem;
+}
+
+.list {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.itemList a {
+  border: 2px solid var(--tags-color);
+  display: flex;
+  border-radius: 10px;
+  padding: 12px;
+  align-items: center;
+  justify-content: space-between;
+  color: #fafafa;
+}
+
+.itemList a:hover {
+  background: var(--tags-color);
+}
+
+.link {
+  font-size: 14px;
+  line-height: 1rem;
+  letter-spacing: 1px;
+}
+
+.icon {
+  display: flex;
+}

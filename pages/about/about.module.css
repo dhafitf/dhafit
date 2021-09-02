@@ -1,0 +1,31 @@
+.skillCont,
+.kontak {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: var(--h3);
+  font-weight: normal;
+  line-height: 1.625rem;
+  letter-spacing: -0.25px;
+  margin-bottom: 14px;
+}
+
+.item ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+  gap: 20px;
+}
+
+.item ul li {
+  background: #5b5e8d;
+  width: 98px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1px;
+}
