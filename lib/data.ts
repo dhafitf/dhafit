@@ -1,17 +1,20 @@
 export const blogPosts = [
   {
+    permalink: 'pertama',
     title: 'TURN IT UP',
-    date: new Date(),
-    content: 'Provided to YouTube by JYP Entertainment'
+    date: '29 Agustus 2021',
+    subtitle: 'Provided to YouTube by JYP Entertainment'
   },
   {
+    permalink: 'kedua',
     title: 'Say Something',
-    date: new Date(),
-    content: 'SAY SOMETHING · TWICE'
+    date: '30 Agustus 2021',
+    subtitle: 'SAY SOMETHING · TWICE'
   },
   {
+    permalink: 'ketiga',
     title: 'Yoasobi - ラブレター',
-    date: new Date(),
-    content: 'Yoasobi - Hajimemashite daisukina ongaku '
+    date: '31 Agustus 2021',
+    subtitle: 'Yoasobi - Hajimemashite daisukina ongaku '
   },
 ]
