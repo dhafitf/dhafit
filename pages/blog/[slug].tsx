@@ -1,33 +1,62 @@
 import * as React from 'react'
 import Layout from "../../components/Layout"
-import { blogPosts } from "../../lib/data";
-import { GetStaticProps, GetStaticPaths  } from 'next'
+import { getAllPosts } from "../../lib/data";
+import B from './blog.module.css'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import PostThumb from '../../modules/PostThumb';
 
-export default function BlogPostPage({ title, subtitle, date }) {
+interface Props {
+  mdxSource: MDXRemoteSerializeResult
+  title: string
+  timestamp: string
+  subtitle: string
+  thumb: string
+  permalink: string
+  data: string
+  content: string
+}
+
+export default function BlogPostPage({ title, subtitle, timestamp, thumb, mdxSource  }: Props) {
   return (
     <Layout title="Blog | DhafitF">
-      <div className="container">
-        <h1>{title}</h1>
-        <p>{date}</p>
-        <p>{subtitle}</p>
-      </div>
+      <article className="blog-post">
+        <div className="thumb">
+          <PostThumb src={thumb} alt={title} />
+        </div>
+        <section className={B.timestamp}>
+          <span>{timestamp}</span>
+        </section>
+        <h1 className={B.title}>{title}</h1>
+        <h3 className={B.subtitle}>{subtitle}</h3>
+        <div className={B.content}>
+        <MDXRemote {...mdxSource} />
+        </div>
+    </article>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  console.log('hi', ctx);
   const { params} = ctx;
+  const allPost = getAllPosts()
+  const {data, content } = allPost.find((blog) => blog.permalink === params.slug)
+  // const mdxSource = await serialize(content);
+  const mdxSource = await serialize(content)
   return {
-    props: blogPosts.find((blog) => blog.permalink === params.slug),
+    props: {
+      ...data,
+      mdxSource,
+    }
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: blogPosts.map((blog) => ({
+    paths: getAllPosts().map((post) => ({
       params: {
-        slug: blog.permalink
+        slug: post.permalink
       },
     })),
     fallback: false,

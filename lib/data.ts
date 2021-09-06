@@ -1,20 +1,29 @@
+import fs from 'fs'
+import path from 'path'
+import * as matter from 'gray-matter';
+
+const contentDirectory = path.join(process.cwd(), '_blog')
+
+export function getAllPosts() {
+  const allPost = fs.readdirSync(contentDirectory);
+
+    return allPost.map(filename => {
+      const permalink = filename.replace('.md', '')
+      const fileContent = fs.readFileSync(
+        path.join(contentDirectory, filename),
+        'utf8'
+      )
+
+      const { data, content } = matter(fileContent)
+
+      return {
+        data,
+        content,
+        permalink,
+      }
+    })
+}
+
 export const blogPosts = [
-  {
-    permalink: 'pertama',
-    title: 'TURN IT UP',
-    date: '29 Agustus 2021',
-    subtitle: 'Provided to YouTube by JYP Entertainment'
-  },
-  {
-    permalink: 'kedua',
-    title: 'Say Something',
-    date: '30 Agustus 2021',
-    subtitle: 'SAY SOMETHING · TWICE'
-  },
-  {
-    permalink: 'ketiga',
-    title: 'Yoasobi - ラブレター',
-    date: '31 Agustus 2021',
-    subtitle: 'Yoasobi - Hajimemashite daisukina ongaku '
-  },
+  {}
 ]

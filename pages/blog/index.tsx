@@ -1,20 +1,20 @@
-import BlogItem from "../../components/CTA/blog"
 import Layout from "../../components/Layout"
 import M from './blog.module.css'
 import Link from 'next/link'
-import { blogPosts } from "../../lib/data";
+import { getAllPosts } from "../../lib/data";
+import { GetStaticProps } from 'next'
 
-export default function Blog() {
+export default function Blog({ posts }) {
   return (
     <Layout title="Blog | DhafitF">
       <div className="container">
           <h2 className="pageTitle">Blog</h2>
           <div className="itemCont">
-            {blogPosts.map(blog => {
+            {posts.map(blog => {
               return (
                 <div className={M.itemCont} key={blog.permalink}>
                   <div className={M.timestamp}>
-                    {blog.date}
+                    {blog.timestamp}
                   </div>
                   <div className={M.item}>
                     <Link href={`/blog/${blog.permalink}`}><a>
@@ -29,4 +29,17 @@ export default function Blog() {
       </div>
     </Layout>
   );
+}
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const allPost = getAllPosts()
+  return {
+    props: {
+      posts: allPost.map(({ data, content, permalink }) => ({
+        ...data,
+        content,
+        permalink,
+      }))
+    }
+  }
 }

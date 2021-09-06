@@ -2,6 +2,10 @@
   "name": "dhafit",
   "version": "0.1.0",
   "private": true,
+  "description": "Source code for dhafit.xyz",
+  "repository": "https://github.com/dhafitf/dhafit.xyz",
+  "author": "Dhafit Farenza <dhafidfarenza@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +14,9 @@
   },
   "dependencies": {
     "@tanem/react-nprogress": "^3.0.79",
+    "gray-matter": "^4.0.3",
     "next": "11.1.0",
+    "next-mdx-remote": "^3.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0"
