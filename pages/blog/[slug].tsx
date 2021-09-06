@@ -41,8 +41,7 @@ export default function BlogPostPage({ title, subtitle, timestamp, thumb, mdxSou
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { params} = ctx;
   const allPost = getAllPosts()
-  const {data, content } = allPost.find((blog) => blog.permalink === params.slug)
-  // const mdxSource = await serialize(content);
+  const { data, content }:any  = allPost.find((blog) => blog.permalink === params?.slug)
   const mdxSource = await serialize(content)
   return {
     props: {

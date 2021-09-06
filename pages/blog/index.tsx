@@ -1,16 +1,23 @@
+import * as React from 'react'
 import Layout from "../../components/Layout"
 import M from './blog.module.css'
 import Link from 'next/link'
 import { getAllPosts } from "../../lib/data";
 import { GetStaticProps } from 'next'
 
-export default function Blog({ posts }) {
+interface Props {
+  posts: string
+  map: string
+  blog: string
+}
+
+export default function Blog({ posts }: Props) {
   return (
     <Layout title="Blog | DhafitF">
       <div className="container">
           <h2 className="pageTitle">Blog</h2>
           <div className="itemCont">
-            {posts.map(blog => {
+            {posts.map((blog) => {
               return (
                 <div className={M.itemCont} key={blog.permalink}>
                   <div className={M.timestamp}>
@@ -24,7 +31,7 @@ export default function Blog({ posts }) {
                   </div>
                 </div>
               )
-            })}
+              })}
           </div>
       </div>
     </Layout>
