@@ -11,7 +11,7 @@ export default function Blog({ posts }:any) {
       <div className="container">
           <h2 className="pageTitle">Blog</h2>
           <div className="itemCont">
-            {posts.map(blog => {
+            {posts.map((blog: { permalink: React.Key | null | undefined; timestamp: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; subtitle: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
               return (
                 <div className={M.itemCont} key={blog.permalink}>
                   <div className={M.timestamp}>
@@ -25,7 +25,7 @@ export default function Blog({ posts }:any) {
                   </div>
                 </div>
               )
-            })}
+              })}
           </div>
       </div>
     </Layout>
