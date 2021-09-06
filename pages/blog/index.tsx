@@ -5,19 +5,13 @@ import Link from 'next/link'
 import { getAllPosts } from "../../lib/data";
 import { GetStaticProps } from 'next'
 
-interface Props {
-  posts: string
-  map: string
-  blog: string
-}
-
-export default function Blog({ posts }: Props) {
+export default function Blog({ posts }:any) {
   return (
     <Layout title="Blog | DhafitF">
       <div className="container">
           <h2 className="pageTitle">Blog</h2>
           <div className="itemCont">
-            {posts.map((blog) => {
+            {posts.map(blog => {
               return (
                 <div className={M.itemCont} key={blog.permalink}>
                   <div className={M.timestamp}>
@@ -31,7 +25,7 @@ export default function Blog({ posts }: Props) {
                   </div>
                 </div>
               )
-              })}
+            })}
           </div>
       </div>
     </Layout>
