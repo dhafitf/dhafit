@@ -144,12 +144,3 @@ img {
     margin: 32px auto;
   }
 }
-
-table {
-  font-size: 16px;
-  line-height: 24px;
-  table-layout: auto;
-  text-align: left;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}

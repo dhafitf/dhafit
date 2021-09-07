@@ -18,11 +18,11 @@ export default function contact() {
               <Image src={ig} alt="ig" width="44px" height="44px" layout="intrinsic" objectFit="cover" />
               </div>
               <div className={C.text}>
-                <p><a href="https://www.instagram.com/dhafitf">Instagram</a></p>
+                <p><a href="https://www.instagram.com/dhafitf" target="_blank" rel="noopener noreferrer">Instagram</a></p>
                 <p>@dhafitf</p>
               </div>
               <div className={C.btn}>
-                <a href="https://www.instagram.com/dhafitf">Follow</a>
+                <a href="https://www.instagram.com/dhafitf" target="_blank" rel="noopener noreferrer">Follow</a>
               </div>
             </div>
             <div className={C.sosmed}>
@@ -30,11 +30,11 @@ export default function contact() {
                 <img src="https://pbs.twimg.com/profile_images/1359925585850507266/36rVLV1e_400x400.jpg" alt="" />
               </div>
               <div className={C.text}>
-                <p><a href="https://twitter.com/DhafitF">Twitter</a></p>
+                <p><a href="https://twitter.com/DhafitF" target="_blank" rel="noopener noreferrer">Twitter</a></p>
                 <p>@DhafitF</p>
               </div>
               <div className={C.btn}>
-                <a href="https://twitter.com/DhafitF">Follow</a>
+                <a href="https://twitter.com/DhafitF" target="_blank" rel="noopener noreferrer">Follow</a>
               </div>
             </div>
             <div className={C.sosmed}>
@@ -42,11 +42,11 @@ export default function contact() {
               <Image src={fb} alt="ig" width="44px" height="44px" layout="intrinsic" objectFit="cover" />
               </div>
               <div className={C.text}>
-                <p><a href="https://www.instagram.com/dhafitf">Instagram</a></p>
-                <p>@dhafitf</p>
+                <p><a href="https://www.facebook.com/dhafid.farenza/" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+                <p>Dhafit Farenza</p>
               </div>
               <div className={C.btn}>
-                <a href="https://www.instagram.com/dhafitf">Follow</a>
+                <a href="https://www.facebook.com/dhafid.farenza/" target="_blank" rel="noopener noreferrer">Follow</a>
               </div>
             </div>
             <div className={C.more}><Link href="/profile"><a>Lihat semua link</a></Link></div>

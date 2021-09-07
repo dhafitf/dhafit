@@ -7,8 +7,7 @@ FaTwitter,
 FaFacebookF,
 FaBloggerB,
 FaYoutube,
-FaGithub,
-FaDiscord
+FaGithub
 } from "react-icons/fa";
 
 export default function profile() {
@@ -46,7 +45,7 @@ export default function profile() {
           <div className={L.itemList}>
             <a href="https://trakteer.id/dhafid">
               <div className={L.link}>Trakteer</div>
-              <div className={L.icon}><FaTwitter /></div>
+              <div className={L.icon}></div>
             </a>
           </div>
           <div className={L.itemList}>

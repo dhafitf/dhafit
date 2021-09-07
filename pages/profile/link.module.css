@@ -80,3 +80,8 @@
 .icon {
   display: flex;
 }
+
+.icon img {
+  width: 24px;
+  height: 24px;
+}
