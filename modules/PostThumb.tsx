@@ -15,7 +15,7 @@ const PostThumb: React.FC<PostThumbProps> = ({ alt, src }) => {
       alt={alt}
       width={750}
       height={421}
-      layout='responsive'
+      layout='intrinsic'
     />
   )
 }

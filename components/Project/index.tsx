@@ -1,25 +1,38 @@
 import P from './project.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ReactNode } from "react";
 
-export default function FProject() {
+interface ProjectProps {
+  title: string
+  subtitle: string
+  tag1: string
+  tag2: string
+  tag3: string
+  permalink: string
+  src: string
+}
+
+export default function FProject(props: ProjectProps) {
+  const { title, subtitle, tag1, tag2, tag3, permalink, src} = props
   return (
     <div className={P.item}>
-      <Link href="/about"><a>
+      <Link href={`/project/${permalink}`}><a>
       <div className={P.top}>
-        <Image src="/thumb.jpg" width={750} height={421} layout='responsive' alt="Yorushika" />
+        <Image src={src} width={750} height={421} layout='responsive' alt={title} />
         <div className={P.tags}>
           <ul>
-            <li>Terjemahan</li>
-            <li>Jepang</li>
-            <li>Indonesia</li>
+            <li>{tag1}</li>
+            <li>{tag2}</li>
+            <li>{tag3}</li>
           </ul>
         </div>
       </div>
       <div className={P.bottom}>
-        <div className={P.title}>
-        Yorushika - Plagiarism (OFFICIAL VIDEO) Subtitle Indonesia
-        </div>
+        <h1 className={P.title}>
+        {title}
+        </h1>
+        <p className={P.desc}>{subtitle}</p>
       </div>
       </a></Link>
     </div>

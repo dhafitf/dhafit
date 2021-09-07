@@ -12,7 +12,7 @@ FaGithub
 
 export default function profile() {
   return (
-    <Layout title="Linktree | DhafitF">
+    <Layout title="Profile | DhafitF">
       <div className={L.container}>
         <div className={L.top}>
           <div className="pp">
@@ -37,43 +37,43 @@ export default function profile() {
         </div>
         <div className={L.list}>
           <div className={L.itemList}>
-            <a href="https://twitter.com/DhafitF">
+            <a href="https://twitter.com/DhafitF" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Twitter</div>
               <div className={L.icon}><FaTwitter /></div>
             </a>
           </div>
           <div className={L.itemList}>
-            <a href="https://trakteer.id/dhafid">
+            <a href="https://trakteer.id/dhafid" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Trakteer</div>
-              <div className={L.icon}></div>
+              <div className={L.icon}><img src="/assets/icon/lines-trakteer-icon.png" alt="" /></div>
             </a>
           </div>
           <div className={L.itemList}>
-            <a href="https://www.instagram.com/dhafitf">
+            <a href="https://www.instagram.com/dhafitf" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Instagram</div>
               <div className={L.icon}><FaInstagram /></div>
             </a>
           </div>
           <div className={L.itemList}>
-            <a href="https://www.nogisub.com/">
+            <a href="https://www.nogisub.com/" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Fansub</div>
               <div className={L.icon}><FaBloggerB /></div>
             </a>
           </div>
           <div className={L.itemList}>
-            <a href="https://www.facebook.com/dhafid.farenza/">
+            <a href="https://www.facebook.com/dhafid.farenza/" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Facebook</div>
               <div className={L.icon}><FaFacebookF /></div>
             </a>
           </div>
           <div className={L.itemList}>
-            <a href="https://github.com/DhafitFz">
+            <a href="https://github.com/dhafitf" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Github</div>
               <div className={L.icon}><FaGithub /></div>
             </a>
           </div>
           <div className={L.itemList}>
-            <a href="https://www.youtube.com/c/dhafitfarenza">
+            <a href="https://www.youtube.com/c/dhafitfarenza" target="_blank" rel="noopener noreferrer">
               <div className={L.link}>Youtube</div>
               <div className={L.icon}><FaYoutube /></div>
             </a>

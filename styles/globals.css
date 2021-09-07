@@ -83,7 +83,7 @@ img {
 .item_container {
   display: grid;
   position: relative;
-  padding-top: 16px;
+  padding-top: 24px;
 }
 
 .top {

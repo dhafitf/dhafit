@@ -78,7 +78,7 @@ article .subtitle {
 }
 
 .content {
-  margin: 32px 0;
+  margin: 16px 0 32px 0;
 }
 
 .content ul,
@@ -103,4 +103,9 @@ article .subtitle {
   padding: 12px;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.content hr {
+  margin-bottom: 16px;
+  border-color: #3d3d3d;
 }

@@ -17,17 +17,17 @@ export default function Footer() {
         <div className={F.social_media}>
           <ul>
             <li>
-              <a href="https://www.facebook.com/dhafid.farenza/">
+              <a href="https://www.facebook.com/dhafid.farenza/" target="_blank" rel="noopener noreferrer">
               <FaFacebookF />
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/DhafitF">
+              <a href="https://twitter.com/DhafitF" target="_blank" rel="noopener noreferrer">
               <FaTwitter />
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/dhafitf">
+              <a href="https://www.instagram.com/dhafitf" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
               </a>
             </li>

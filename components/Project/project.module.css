@@ -52,5 +52,12 @@
 }
 
 .title {
-  padding: 12px;
+  padding: 12px 12px 0 12px;
+  font-size: var(--h3);
+  letter-spacing: -0.25px;
+}
+
+.desc {
+  margin: 0;
+  padding: 6px 12px 12px 12px;
 }

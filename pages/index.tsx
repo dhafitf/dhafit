@@ -25,17 +25,31 @@ const Home: NextPage = () => {
             <h2 className={B.title}>Proyek unggulan</h2>
             <span className={B.subtitle}>Proyek unggulan dalam menerjemahkan & Frontend web developer</span>
               <div className="item_container">
-                <FProject />
-                <FProject />
+                <FProject
+                src="/assets/project/yorushika-plagiarism.jpg"
+                tag1="Tejermahan"
+                tag2="Jepang"
+                tag3="Indonesia"
+                title="Yorushika - Plagiarism (OFFICIAL VIDEO) Subtitle Indonesia"
+                subtitle="Subtitle berbahasa Indonesia untuk MV Yorushika - Plagiarism"
+                permalink="kedua"
+                />
+                <FProject
+                src="/assets/project/nogisub.png"
+                tag1="Tejermahan"
+                tag2="Jepang"
+                tag3="Indonesia"
+                title="Yorushika - Plagiarism (OFFICIAL VIDEO)"
+                subtitle="Yorushika - Plagiarism"
+                permalink="pertama"
+                />
                 <More name="project" />
               </div>
           </div>
           <div className={B.blog}>
             <h2 className={B.title}>Blog</h2>
-            <span className={B.subtitle}>Blog untuk membagikan sesuatu sesuai keinginan</span>
+            <span className={B.subtitle}>Hal random yang ingin saya tulis dan bagikan</span>
             <div className="item_container">
-              <BlogItem />
-              <BlogItem />
               <BlogItem />
               <More name="blog" />
             </div>
