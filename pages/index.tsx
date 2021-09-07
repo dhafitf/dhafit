@@ -39,8 +39,8 @@ const Home: NextPage = () => {
                 tag1="Tejermahan"
                 tag2="Jepang"
                 tag3="Indonesia"
-                title="Yorushika - Plagiarism (OFFICIAL VIDEO)"
-                subtitle="Yorushika - Plagiarism"
+                title="Fansub Nogizaka46 - Nogisub"
+                subtitle="Sebuah fansub untuk idol grup Jepang yaitu Nogizaka46"
                 permalink="pertama"
                 />
                 <More name="project" />
