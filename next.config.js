@@ -5,3 +5,5 @@ module.exports = {
     domains: ["drive.google.com"],
   },
 };
+
+require("dotenv").config();

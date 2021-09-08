@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@tanem/react-nprogress": "^3.0.79",
+    "dotenv": "^10.0.0",
     "gray-matter": "^4.0.3",
     "next": "11.1.0",
     "next-mdx-remote": "^3.0.4",
