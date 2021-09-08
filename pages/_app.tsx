@@ -40,16 +40,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     }
   }, [router.events])
 
-  // <!-- Global site tag (gtag.js) - Google Analytics -->
-  // <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQY7ENP0ZP"></script>
-  // <script>
-  //   window.dataLayer = window.dataLayer || [];
-  //   function gtag(){dataLayer.push(arguments);}
-  //   gtag('js', new Date());
-
-  //   gtag('config', 'G-XQY7ENP0ZP');
-  // </script>
-
   return (
     <>
       <script
