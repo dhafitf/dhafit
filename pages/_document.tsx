@@ -1,4 +1,6 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

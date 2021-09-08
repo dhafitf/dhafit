@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import Loading from '../components/Layout/Loading'
+import { GA_TRACKING_ID } from '../lib/ga'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -28,7 +29,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         isRouteChanging: false,
       }))
     }
-
     router.events.on('routeChangeStart', handleRouteChangeStart)
     router.events.on('routeChangeComplete', handleRouteChangeEnd)
     router.events.on('routeChangeError', handleRouteChangeEnd)
@@ -44,7 +44,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     <>
       <script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
       <script
         dangerouslySetInnerHTML={{
@@ -52,7 +52,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', ${process.env.NEXT_PUBLIC_GA_TRACKING_ID}, {
+        gtag('config', '${GA_TRACKING_ID}', {
           page_path: window.location.pathname,
         });
       `,
