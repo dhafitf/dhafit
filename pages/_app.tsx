@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { GA_TRACKING_ID } from '../lib/ga'
 
 import Loading from '../components/Layout/Loading'
 
