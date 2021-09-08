@@ -32,7 +32,7 @@ const Home: NextPage = () => {
                 tag3="Indonesia"
                 title="Yorushika - Plagiarism (OFFICIAL VIDEO) Subtitle Indonesia"
                 subtitle="Subtitle berbahasa Indonesia untuk MV Yorushika - Plagiarism"
-                permalink="kedua"
+                permalink="yorushika-plagiarism"
                 />
                 <FProject
                 src="/assets/project/nogisub.png"
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                 tag3="Indonesia"
                 title="Fansub Nogizaka46 - Nogisub"
                 subtitle="Sebuah fansub untuk idol grup Jepang yaitu Nogizaka46"
-                permalink="pertama"
+                permalink="nogisub"
                 />
                 <More name="project" />
               </div>
