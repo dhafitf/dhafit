@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import BlogItem from '../components/CTA/blog'
-import More from '../components/CTA/more'
-import Layout from "../components/Layout/index"
-import FProject from '../components/Project'
-import B from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import BlogItem from "../components/CTA/blog";
+import More from "../components/CTA/more";
+import Layout from "../components/Layout/index";
+import FProject from "../components/Project";
+import B from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
@@ -19,13 +19,19 @@ const Home: NextPage = () => {
           <div className={B.top}>
             <h1 className={B.nama}>Dhafit Farenza</h1>
             <h3 className={B.subtitle}>Penerjemah & Frontend web developer</h3>
-            <p className={B.desc}>Halo, saya <b>Dhafit</b> atau biasa dikenal sebagai <b>devzfz</b>. Saya seorang <b>penerjemah</b> Bahasa Jepang dan seorang pemula di <b>Frontend web developer</b>.</p>
+            <p className={B.desc}>
+              Halo, saya <b>Dhafit</b> atau biasa dikenal sebagai <b>devzfz</b>.
+              Saya seorang <b>penerjemah</b> Bahasa Jepang dan seorang pemula di{" "}
+              <b>Frontend web developer</b>.
+            </p>
           </div>
           <div className={B.project}>
             <h2 className={B.title}>Proyek unggulan</h2>
-            <span className={B.subtitle}>Proyek unggulan dalam menerjemahkan & Frontend web developer</span>
-              <div className="item_container">
-                <FProject
+            <span className={B.subtitle}>
+              Proyek unggulan dalam menerjemahkan & Frontend web developer
+            </span>
+            <div className="item_container">
+              <FProject
                 src="/assets/project/yorushika-plagiarism.jpg"
                 tag1="Tejermahan"
                 tag2="Jepang"
@@ -33,8 +39,8 @@ const Home: NextPage = () => {
                 title="Yorushika - Plagiarism (OFFICIAL VIDEO) Subtitle Indonesia"
                 subtitle="Subtitle berbahasa Indonesia untuk MV Yorushika - Plagiarism"
                 permalink="yorushika-plagiarism"
-                />
-                <FProject
+              />
+              <FProject
                 src="/assets/project/nogisub.png"
                 tag1="Tejermahan"
                 tag2="Jepang"
@@ -42,22 +48,24 @@ const Home: NextPage = () => {
                 title="Fansub Nogizaka46 - Nogisub"
                 subtitle="Sebuah fansub untuk idol grup Jepang yaitu Nogizaka46"
                 permalink="nogisub"
-                />
-                <More name="project" />
-              </div>
+              />
+              <More href="/project" name="project" />
+            </div>
           </div>
           <div className={B.blog}>
             <h2 className={B.title}>Blog</h2>
-            <span className={B.subtitle}>Hal random yang ingin saya tulis dan bagikan</span>
+            <span className={B.subtitle}>
+              Hal random yang ingin saya tulis dan bagikan
+            </span>
             <div className="item_container">
               <BlogItem />
-              <More name="blog" />
+              <More href="/blog" name="blog" />
             </div>
           </div>
         </div>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
