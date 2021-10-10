@@ -26,7 +26,7 @@ const Home: NextPage = () => {
             </p>
           </div>
           <div className={B.project}>
-            <h2 className={B.title}>Proyek unggulan</h2>
+            <h2 className={B.title}>Project unggulan</h2>
             <span className={B.subtitle}>
               Proyek unggulan dalam menerjemahkan & Frontend web developer.
             </span>
