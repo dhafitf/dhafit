@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import BlogItem from "../components/CTA/blog";
-import More from "../components/CTA/more";
+import BlogItem from "../components/Etc/blog";
+import More from "../components/Etc/more";
 import Layout from "../components/Layout/index";
 import FProject from "../components/Project";
 import B from "../styles/Home.module.css";
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           <div className={B.project}>
             <h2 className={B.title}>Proyek unggulan</h2>
             <span className={B.subtitle}>
-              Proyek unggulan dalam menerjemahkan & Frontend web developer
+              Proyek unggulan dalam menerjemahkan & Frontend web developer.
             </span>
             <div className="item_container">
               <FProject
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
           <div className={B.blog}>
             <h2 className={B.title}>Blog</h2>
             <span className={B.subtitle}>
-              Hal random yang ingin saya tulis dan bagikan
+              Hal random yang ingin saya tulis dan bagikan.
             </span>
             <div className="item_container">
               <BlogItem />

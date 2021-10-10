@@ -4,6 +4,12 @@
   text-align: center;
 }
 
+.item {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
 .item a {
   color: #fafafa;
 }
