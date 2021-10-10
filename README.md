@@ -1,3 +1,5 @@
-## Just testing for deploy
+## dhafit.xyz
 
-First deploy for this project, just want to try to deploy it on vercel:
+Source code untuk [dhafit.xyz](https://dhafit.xyz/)
+
+Silahkan jika ingin menggunakannya sebagai portfolio atau blog pribadi dengan [MIT License](LICENSE)
