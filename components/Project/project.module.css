@@ -1,21 +1,14 @@
 .item {
-  padding-top: 24px;
   position: relative;
   border-radius: 5px 5px 0 0;
 }
 
+.item:hover .title {
+  color: var(--main-color);
+}
+
 .item a {
   color: #fafafa;
-}
-
-.item a:hover img {
-  opacity: 0.6;
-  transition: 0.3s ease;
-  transform: scale(1.1);
-}
-
-.item:first-child {
-  padding-top: 0;
 }
 
 .top {
@@ -38,7 +31,7 @@
 }
 
 .tags ul li {
-  background: var(--tags-color);
+  background: var(--cont-color);
   padding: 5px;
   font-size: var(--tags-font-size);
   line-height: 16px;
@@ -49,6 +42,7 @@
 .bottom {
   background: var(--cont-color);
   border-radius: 0 0 5px 5px;
+  text-align: center;
 }
 
 .title {
@@ -60,4 +54,10 @@
 .desc {
   margin: 0;
   padding: 6px 12px 12px 12px;
+}
+
+@media (min-width: 768px) {
+  .bottom {
+    height: 134px;
+  }
 }

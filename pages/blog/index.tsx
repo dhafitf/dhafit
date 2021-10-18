@@ -1,46 +1,55 @@
-import * as React from 'react'
-import Layout from "../../components/Layout"
-import M from './blog.module.css'
-import Link from 'next/link'
+import * as React from "react";
+import Layout from "../../components/Layout";
+import BlogItem from "../../components/Etc/blog";
 import { getAllPosts } from "../../lib/data";
-import { GetStaticProps } from 'next'
+import { GetStaticProps } from "next";
 
-export default function Blog({ posts }:any) {
+export default function Blog({ posts }: any) {
   return (
-    <Layout title="Blog | DhafitF">
+    <Layout
+      title="Blog | DhafitF"
+      metaDesc="Daftar blog yang diposting oleh Dhafit Farenza"
+    >
       <div className="container">
-          <h2 className="pageTitle">Blog</h2>
-          <div className="itemCont">
-            {posts.map((blog: { permalink: React.Key | null | undefined; timestamp: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; subtitle: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
+        <h2 className="pageTitle">Blog</h2>
+
+        <div className="blog_container" style={{ marginBottom: "2rem" }}>
+          {posts.map(
+            (
+              blog: {
+                title: string;
+                subtitle: string;
+                permalink: string;
+                timestamp: string;
+              },
+              index: React.Key
+            ) => {
               return (
-                <div className={M.itemCont} key={blog.permalink}>
-                  <div className={M.timestamp}>
-                    {blog.timestamp}
-                  </div>
-                  <div className={M.item}>
-                    <Link href={`/blog/${blog.permalink}`}><a>
-                    <h1 className={M.title}>{blog.title}</h1>
-                    <p className={M.desc}>{blog.subtitle}</p>
-                    </a></Link>
-                  </div>
-                </div>
-              )
-              })}
-          </div>
+                <BlogItem
+                  key={index}
+                  title={blog.title}
+                  subtitle={blog.subtitle}
+                  permalink={blog.permalink}
+                  timestamp={blog.timestamp}
+                />
+              );
+            }
+          )}
+        </div>
       </div>
     </Layout>
   );
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const allPost = getAllPosts()
+  const allPost = getAllPosts();
   return {
     props: {
       posts: allPost.map(({ data, content, permalink }) => ({
         ...data,
         content,
         permalink,
-      }))
-    }
-  }
-}
+      })),
+    },
+  };
+};

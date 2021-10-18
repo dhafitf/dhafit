@@ -1,18 +1,19 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import "../styles/globals.css";
+import "../styles/prism.css";
+import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-import Loading from '../components/Layout/Loading'
-import { GA_TRACKING_ID } from '../lib/ga'
+import Loading from "../components/Layout/Loading";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const [state, setState] = useState({
     isRouteChanging: false,
     loadingKey: 0,
-  })
+  });
 
   useEffect(() => {
     const handleRouteChangeStart = () => {
@@ -20,48 +21,47 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         ...prevState,
         isRouteChanging: true,
         loadingKey: prevState.loadingKey ^ 1,
-      }))
-    }
+      }));
+    };
 
     const handleRouteChangeEnd = () => {
       setState((prevState) => ({
         ...prevState,
         isRouteChanging: false,
-      }))
-    }
-    router.events.on('routeChangeStart', handleRouteChangeStart)
-    router.events.on('routeChangeComplete', handleRouteChangeEnd)
-    router.events.on('routeChangeError', handleRouteChangeEnd)
+      }));
+    };
+    router.events.on("routeChangeStart", handleRouteChangeStart);
+    router.events.on("routeChangeComplete", handleRouteChangeEnd);
+    router.events.on("routeChangeError", handleRouteChangeEnd);
 
     return () => {
-      router.events.off('routeChangeStart', handleRouteChangeStart)
-      router.events.off('routeChangeComplete', handleRouteChangeEnd)
-      router.events.off('routeChangeError', handleRouteChangeEnd)
-    }
-  }, [router.events])
+      router.events.off("routeChangeStart", handleRouteChangeStart);
+      router.events.off("routeChangeComplete", handleRouteChangeEnd);
+      router.events.off("routeChangeError", handleRouteChangeEnd);
+    };
+  }, [router.events]);
 
   return (
     <>
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      />
-      <script
-        dangerouslySetInnerHTML={{
-        __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${GA_TRACKING_ID}', {
-          page_path: window.location.pathname,
-        });
-      `,
-        }}
-      />
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <Component {...pageProps} />
+      <>
+        <motion.div
+          id="content"
+          key={router.route}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={{
+            initial: { opacity: 0, y: -10 },
+            enter: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: 10 },
+          }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
+      </>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

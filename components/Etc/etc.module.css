@@ -1,29 +1,25 @@
 .view_more {
   font-weight: 600;
-  padding-top: 24px;
   text-align: center;
 }
 
 .item {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
+  padding: 1rem;
+  background: var(--cont-color);
+  border-radius: 10px;
 }
 
 .item a {
   color: #fafafa;
+  text-align: center;
 }
 
-.item a:hover {
-  color: var(--main-color);
+.item:hover {
+  background: #434549;
 }
 
-.itemCont {
-  padding-top: 24px;
-}
-
-.itemCont:first-child {
-  padding-top: 0;
+.item:hover a {
+  text-decoration: none;
 }
 
 .timestamp {

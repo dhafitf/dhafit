@@ -7,6 +7,8 @@ tags:
   - "Jepang"
   - "Indonesia"
 thumb: /assets/project/nogisub.png
+featured: true
+order: 1
 ---
 
 ---

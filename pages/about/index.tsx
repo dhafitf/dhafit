@@ -1,37 +1,58 @@
 import Layout from "../../components/Layout";
 import A from "./about.module.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { FaTwitter, FaFacebookF, FaInstagram, FaGithub } from "react-icons/fa";
+import { bahasa, fe } from "../../lib/skill";
 
 export default function about() {
   return (
-    <Layout title="Tentang | DhafitF">
+    <Layout
+      title="Tentang | DhafitF"
+      metaDesc="Tentang Dhafit Farenza aka Devzfz. Mulai dari pengenalan dan daftar social media"
+    >
       <div className="container">
         <div className="top">
           <h1 className="pageTitle">Tentang</h1>
-          <h3 className="subtitle">Dhafit Farenza alias Devzfz</h3>
         </div>
         <div className="desc">
           <p>
-            Saya seorang penerjemah, yang menerjemahkan bahasa Jepang atau
-            Inggris ke bahasa Indonesia. Awal mula saya menjadi penerjemah
-            adalah dari keinginan saya belajar bahasa Jepang. Dari keinginan
-            tersebut, saya mencoba membuat sebuah fansub bernama{" "}
-            <a href="https://www.nogisub.com/">Nogisub</a> dimana saya dapat
-            belajar sambil membagikan hasil terjemahan saya.
+            Halo, sama saya Dhafit Farenza aka Devzfz. Saya seorang penerjemah,
+            yang menerjemahkan bahasa Jepang atau Inggris ke bahasa Indonesia.
+            Awal mula saya menjadi penerjemah adalah dari keinginan saya belajar
+            bahasa Jepang. Dari keinginan tersebut, saya mencoba membuat sebuah
+            fansub bernama <a href="https://www.nogisub.com/">Nogisub</a> dimana
+            saya dapat belajar sambil membagikan hasil terjemahan saya.
           </p>
           <br />
           <p>Kali ini, saya sedang mencoba menjadi front end web developer. </p>
+          <br />
+          <p>
+            Anda dapat mengunjungi halaman{" "}
+            <Link href="/profile">
+              <a>linktree</a>
+            </Link>{" "}
+            saya.
+          </p>
         </div>
         <div className="separator"></div>
         <div className="skill">
-          <h2 className="title">Skill</h2>
           <div className={A.skillCont}>
             <div className={A.title}>Bahasa</div>
             <div className={A.item}>
               <ul>
-                <li>Indonesia</li>
-                <li>Jepang</li>
-                <li>Inggris</li>
+                {bahasa.map((item, index) => {
+                  return (
+                    <motion.li
+                      drag
+                      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                      dragElastic={1}
+                      key={index}
+                    >
+                      {item.skill}
+                    </motion.li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -39,24 +60,83 @@ export default function about() {
             <div className={A.title}>Frontend web developer</div>
             <div className={A.item}>
               <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Javascript</li>
-                <li>React JS</li>
-                <li>Next.js</li>
-                <li>Typescript</li>
+                {fe.map((item, index) => {
+                  return (
+                    <motion.li
+                      drag
+                      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                      dragElastic={1}
+                      key={index}
+                    >
+                      {item.skill}
+                    </motion.li>
+                  );
+                })}
               </ul>
             </div>
           </div>
         </div>
         <div className="separator"></div>
         <div className={A.kontak}>
-          <h2 className="title">Kontak</h2>
           <p>
-            <Link href="/contact">
-              <a>Hubungi saya</a>
-            </Link>
+            Anda dapat menghubungi saya melalui email di{" "}
+            <a href="mailto:dhafidfz@gmail.com">dhafidfz@gmail.com</a>, atau
+            social media di bawah ini:
           </p>
+          <ul>
+            <li>
+              <motion.a
+                style={{ background: "#4267B2" }}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.9 }}
+                href="https://www.facebook.com/dhafid.farenza/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <FaFacebookF />
+                Facebook
+              </motion.a>
+            </li>
+            <li>
+              <motion.a
+                style={{ background: "#E1306C" }}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.9 }}
+                href="https://www.instagram.com/dhafitf"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <FaInstagram />
+                Instagram
+              </motion.a>
+            </li>
+            <li>
+              <motion.a
+                style={{ background: "#1DA1F2" }}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.9 }}
+                href="https://twitter.com/DhafitF"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <FaTwitter />
+                Twitter
+              </motion.a>
+            </li>
+            <li>
+              <motion.a
+                style={{ background: "#333333" }}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.9 }}
+                href="https://github.com/dhafitf"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <FaGithub />
+                Github
+              </motion.a>
+            </li>
+          </ul>
         </div>
       </div>
     </Layout>

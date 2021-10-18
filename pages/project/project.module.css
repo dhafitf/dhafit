@@ -2,22 +2,8 @@
   margin-bottom: 32px;
 }
 
-.itemCont {
-  padding-top: 24px;
-}
-
-.itemCont:first-child {
-  padding-top: 0;
-}
-
 .itemCont a {
   color: #fafafa;
-}
-
-.itemCont a:hover img {
-  opacity: 0.6;
-  transition: 0.3s ease;
-  transform: scale(1.1);
 }
 
 .cont {
@@ -30,9 +16,9 @@
 }
 
 .title {
-  padding: 12px 12px 0 12px;
-  font-size: var(--h3);
-  letter-spacing: -0.25px;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.5px;
 }
 
 .desc {
@@ -42,14 +28,6 @@
 
 .thumb {
   position: relative;
-}
-
-.tags {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  z-index: 2;
-  margin-bottom: 12px;
 }
 
 .tags span {
@@ -62,24 +40,33 @@
   margin-left: 6px;
 }
 
-article .timestamp {
-  padding-top: 32px;
+.tags span:first-child {
+  margin-left: 0;
 }
 
-article .title {
-  font-size: var(--h1);
-  padding: 1rem 0 12px 0;
-  line-height: 40px;
+.title,
+.subtitle,
+.tags {
+  padding: 12px 0 0;
+}
+
+.tags {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #404040;
+}
+
+.timestamp {
+  padding-top: 1.5rem;
 }
 
 article .subtitle {
   font-size: var(--h3);
   font-weight: normal;
-  line-height: 32px;
+  line-height: 26px;
 }
 
 .content {
-  margin: 16px 0 32px 0;
+  margin: 1.5rem 0 32px 0;
 }
 
 .content ul,
@@ -97,12 +84,12 @@ article .subtitle {
 
 .content pre code {
   display: block;
-  background: #25252f;
+  background: #2d3239;
   white-space: pre;
   max-width: 100%;
   min-width: 100px;
-  padding: 12px;
-  border-radius: 5px;
+  padding: 1rem;
+  border-radius: 10px;
   overflow: hidden;
 }
 

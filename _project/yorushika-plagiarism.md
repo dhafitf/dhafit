@@ -7,6 +7,8 @@ tags:
   - "Jepang"
   - "Indonesia"
 thumb: /assets/project/yorushika-plagiarism.jpg
+featured: true
+order: 2
 ---
 
 ---

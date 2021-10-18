@@ -3,6 +3,12 @@ title: Playlist musik bulan Oktober 2021
 subtitle: Playlist musik terbaru saya di bulan Oktober
 timestamp: 10 Oktober 2021
 thumb: /assets/blog/10-21.jpg
+tags:
+  - "Terjemahan"
+  - "Jepang"
+  - "Indonesia"
+featured: true
+order: 2
 ---
 
 Dalam blog ini saya membuat playlist musik yang sering saya dengarkan selama bulan September - Oktober 2021.

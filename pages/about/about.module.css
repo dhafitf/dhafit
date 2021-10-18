@@ -29,3 +29,36 @@
   line-height: 16px;
   letter-spacing: 1px;
 }
+
+.kontak p {
+  padding-bottom: 1rem;
+}
+
+.kontak ul {
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.kontak ul li a {
+  padding: 6px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.kontak ul li a {
+  color: #fafafa;
+}
+
+.kontak ul li a:hover {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .kontak ul {
+    flex-direction: row;
+  }
+}

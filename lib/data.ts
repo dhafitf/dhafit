@@ -1,29 +1,48 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-const contentDirectory = path.join(process.cwd(), '_blog')
+const blogDirectory = path.join(process.cwd(), "_blog");
+const projectDirectory = path.join(process.cwd(), "_project");
 
 export function getAllPosts() {
-  const allPost = fs.readdirSync(contentDirectory);
+  const allPost = fs.readdirSync(blogDirectory);
 
-    return allPost.map(filename => {
-      const permalink = filename.replace('.md', '')
-      const fileContent = fs.readFileSync(
-        path.join(contentDirectory, filename),
-        'utf8'
-      )
+  return allPost.map((filename) => {
+    const permalink = filename.replace(".md", "");
+    const fileContent = fs.readFileSync(
+      path.join(blogDirectory, filename),
+      "utf8"
+    );
 
-      const { data, content } = matter(fileContent)
+    const { data, content } = matter(fileContent);
 
-      return {
-        data,
-        content,
-        permalink,
-      }
-    })
+    return {
+      data,
+      content,
+      permalink,
+    };
+  });
 }
 
-export const blogPosts = [
-  {}
-]
+export function getAllProject() {
+  const allPost = fs.readdirSync(projectDirectory);
+
+  return allPost.map((filename) => {
+    const permalink = filename.replace(".md", "");
+    const fileContent = fs.readFileSync(
+      path.join(projectDirectory, filename),
+      "utf8"
+    );
+
+    const { data, content } = matter(fileContent);
+
+    return {
+      data,
+      content,
+      permalink,
+    };
+  });
+}
+
+export const blogPosts = [{}];

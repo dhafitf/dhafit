@@ -1,35 +1,29 @@
 import M from "./etc.module.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-export default function BlogItem() {
+interface BlogProps {
+  title: string;
+  subtitle: string;
+  permalink: string;
+  timestamp: string;
+}
+
+export default function BlogItem(props: BlogProps) {
+  const { title, subtitle, permalink, timestamp } = props;
   return (
-    <div className={M.itemCont}>
-      <div className={M.item}>
-        <div>
-          <div className={M.timestamp}>10 Oktober 2021</div>
-          <Link href="/blog/21-10-10-playlist-oktober-2021">
-            <a>
-              <h1 className={M.title}>Playlist musik bulan Oktober 2021</h1>
-              <p className={M.desc}>
-                Playlist musik terbaru saya di bulan Oktober.
-              </p>
-            </a>
-          </Link>
-        </div>
-        <div>
-          <div className={M.timestamp}>07 September 2021</div>
-          <Link href="/blog/21-09-07-new-blog">
-            <a>
-              <h1 className={M.title}>
-                Introducing my new blog with portfolio
-              </h1>
-              <p className={M.desc}>
-                Hai. Mau ngenalin blog sekaligus portfolio baru saya.
-              </p>
-            </a>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <motion.div
+      whileHover={{ y: -6 }}
+      whileTap={{ scale: 0.9 }}
+      className={M.item}
+    >
+      <Link href="/blog/[slug]" as={`/blog/${permalink}`}>
+        <a>
+          <div className={M.timestamp}>{timestamp}</div>
+          <h1 className={M.title}>{title}</h1>
+          <p className={M.desc}>{subtitle}</p>
+        </a>
+      </Link>
+    </motion.div>
   );
 }

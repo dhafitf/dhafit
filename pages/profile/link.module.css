@@ -2,6 +2,7 @@
   max-width: 335px;
   width: 100%;
   margin: 32px auto;
+  padding-top: var(--header-height);
 }
 
 .top {
@@ -69,6 +70,7 @@
 
 .itemList a:hover {
   background: var(--tags-color);
+  text-decoration: none;
 }
 
 .link {

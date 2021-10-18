@@ -1,9 +1,14 @@
 .header {
-  border-bottom: 1px solid #3d3d3d;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  background: #27292ceb;
+  backdrop-filter: blur(10px);
 }
 
 .header a {
   color: #fafafa;
+  font-weight: 600;
 }
 
 .display {
@@ -11,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 20px;
-  height: 40px;
+  height: var(--header-height);
 }
 
 .list {
@@ -35,12 +40,13 @@
 @media (min-width: 768px) {
   .display {
     display: flex;
-    max-width: 944px;
+    margin: auto 20px;
   }
 }
 
-@media (min-width: 968px) {
+@media (min-width: 1024px) {
   .display {
+    max-width: 984px;
     margin: auto;
   }
 }
