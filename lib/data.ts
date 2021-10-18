@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const blogDirectory = path.join(process.cwd(), "_blog");
-const projectDirectory = path.join(process.cwd(), "_project");
+const blogDirectory = path.join(process.cwd(), "posts/blog");
+const projectDirectory = path.join(process.cwd(), "posts/project");
 
 export function getAllPosts() {
   const allPost = fs.readdirSync(blogDirectory);

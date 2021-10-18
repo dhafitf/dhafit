@@ -1,6 +1,5 @@
 import * as React from "react";
 import Layout from "../../components/Layout";
-import P from "./project.module.css";
 import Link from "next/link";
 import { getAllProject } from "../../lib/data";
 import { GetStaticProps } from "next";
@@ -72,7 +71,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   return {
     props: {
-      posts: posts.sort((a: any, b: any) => (a.order > b.order ? 1 : -1)),
+      posts: posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1)),
     },
   };
 };

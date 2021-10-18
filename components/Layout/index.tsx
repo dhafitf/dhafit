@@ -3,7 +3,6 @@ import Footer from "../Footer";
 import Header from "../Header";
 import S from "./layout.module.css";
 import Head from "next/head";
-import { GA_TRACKING_ID } from "../../lib/ga";
 
 interface LayoutProps {
   children: ReactNode;
@@ -36,7 +35,7 @@ export default function Layout(props: LayoutProps) {
         />
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
         />
         <script
           dangerouslySetInnerHTML={{
@@ -44,7 +43,7 @@ export default function Layout(props: LayoutProps) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '${GA_TRACKING_ID}', {
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}', {
           page_path: window.location.pathname,
         });
       `,

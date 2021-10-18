@@ -43,13 +43,15 @@ export default function Blog({ posts }: any) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const allPost = getAllPosts();
+  const posts: any = allPost.map(({ data, content, permalink }) => ({
+    ...data,
+    content,
+    permalink,
+  }));
+
   return {
     props: {
-      posts: allPost.map(({ data, content, permalink }) => ({
-        ...data,
-        content,
-        permalink,
-      })),
+      posts: posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1)),
     },
   };
 };

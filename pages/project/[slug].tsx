@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../../components/Layout";
 import { getAllProject } from "../../lib/data";
-import P from "./project.module.css";
+import P from "../../styles/md.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";

@@ -163,7 +163,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     permalink,
   }));
   const sortProject = project.sort((a: any, b: any) =>
-    a.order > b.order ? 1 : -1
+    a.order > b.order ? -1 : 1
   );
 
   const allPosts = getAllPosts();
@@ -173,7 +173,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     permalink,
   }));
 
-  const sortBlog = blog.sort((a: any, b: any) => (a.order > b.order ? 1 : -1));
+  const sortBlog = blog.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
   return {
     props: {
       featProject: sortProject.filter((post: any) => post.featured),

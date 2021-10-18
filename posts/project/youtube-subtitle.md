@@ -1,16 +1,14 @@
 ---
 title: Kontribusi saya dalam video Youtube (versi lengkap)
 subtitle: Berikut adalah daftar kontribusi saya untuk beberapa video youtube
-timestamp:
+timestamp: Selasa, 7 September 2021
 tags:
   - "Terjemahan"
   - "Jepang"
   - "Indonesia"
   - "Inggris"
 thumb: /assets/project/list-1.jpg
-order: 4
----
-
+order: 2
 ---
 
 Di project ini saya berkontribusi untuk takarir/subtitle Bahasa Indonesia dalam beragam Video yang berada di Youtube.

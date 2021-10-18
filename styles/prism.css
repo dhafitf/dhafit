@@ -1,3 +1,10 @@
+code {
+  background: #2d3239;
+  color: hsl(220, 14%, 71%);
+  padding: 1px;
+  border-radius: 10px;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   background: hsl(220, 13%, 18%);

@@ -1,13 +1,10 @@
 ---
-title: Introducing my new blog with portfolio
+title: Memperkenalkan blog sekaligus porfolio saya
 subtitle: Hai. Mau ngenalin blog sekaligus portfolio baru saya.
-timestamp: 07 September 2021
+timestamp: Selasa, 07 September 2021
 thumb: /assets/blog/Screenshot_555.png
 tags:
-  - "Terjemahan"
-  - "Jepang"
-  - "Indonesia"
-featured: true
+  - "Blog"
 order: 1
 ---
 

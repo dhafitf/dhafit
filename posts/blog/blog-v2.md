@@ -1,10 +1,32 @@
-# dhafit.xyz
+---
+title: Memperkenalkan blog dhafit.xyz v2
+subtitle: Memperkenalkan blog v2 pada blog dhafit.xyz
+timestamp: Senin, 18 Oktober 2021
+thumb: /assets/blog/Screenshot_671.png
+tags:
+  - "Blog"
+featured: true
+order: 3
+---
+
+Pada hari Senin, 10 Oktober 2021 ini, saya memperbarui tampilan blog dengan tujuan lebih enak dipandang. Teknologi yang saya gunakan masih sama yaitu:
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+
+Saya sedikit mengganti tampilan atau UI pada blog ini.
+
+## dhafit.xyz
 
 Source code for [dhafit.xyz](http://dhafit.xyz/)
 
- <img src="https://img.shields.io/github/last-commit/dhafitf/dhafit.xyz?color=blue">
- <img src="https://img.shields.io/github/repo-size/dhafitf/dhafit.xyz">
- <img src="https://img.shields.io/github/v/release/dhafitf/dhafit.xyz">
+<figure>
+<div className="left">
+ <img src="https://img.shields.io/github/last-commit/dhafitf/dhafit.xyz?color=blue" />
+ <img src="https://img.shields.io/github/repo-size/dhafitf/dhafit.xyz" />
+ </div>
+</figure>
 
 ## Getting Started
 
