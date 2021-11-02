@@ -9,7 +9,7 @@ featured: true
 order: 3
 ---
 
-Pada hari Senin, 10 Oktober 2021 ini, saya memperbarui tampilan blog dengan tujuan lebih enak dipandang. Teknologi yang saya gunakan masih sama yaitu:
+Pada hari Senin, 10 Oktober 2021 ini, saya memperbarui tampilan blog dengan tujuan supaya lebih enak dipandang. Teknologi yang saya gunakan masih sama yaitu:
 
 - [Next.js](https://nextjs.org/)
 - [React](https://reactjs.org/)
@@ -24,7 +24,6 @@ Source code for [dhafit.xyz](http://dhafit.xyz/)
 <figure>
 <div className="left">
  <img src="https://img.shields.io/github/last-commit/dhafitf/dhafit.xyz?color=blue" />
- <img src="https://img.shields.io/github/repo-size/dhafitf/dhafit.xyz" />
  </div>
 </figure>
 

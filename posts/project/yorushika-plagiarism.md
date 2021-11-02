@@ -11,7 +11,7 @@ featured: true
 order: 3
 ---
 
-Di project ini saya berkontribusi untuk takarir/subtitle Bahasa Indonesia dalam Video Music yang diliris olih Yorushika berjudul 盗作 (Plagiarism).
+Di project ini saya berkontribusi untuk takarir/subtitle Bahasa Indonesia dalam Video Music yang dirilis olih Yorushika berjudul 盗作 (Plagiarism).
 
 [Lihat Video Music Yorushika - Plagiarism di Youtube](https://www.youtube.com/watch?v=CS4f3jawFxY)
 

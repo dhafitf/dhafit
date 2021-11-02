@@ -1,6 +1,6 @@
 ---
 title: YOASOBI - Tabun (Mungkin saja) Official Music Video
-subtitle: Subtitle berbahasa Indonesia untuk MV Yoasobi - Tabun
+subtitle: Subtitle berbahasa Indonesia untuk MV YOASOBI - Tabun
 timestamp: Selasa, 7 September 2021
 tags:
   - "Terjemahan"
@@ -11,9 +11,9 @@ featured: true
 order: 4
 ---
 
-Di project ini saya berkontribusi untuk takarir/subtitle Bahasa Indonesia dalam Video Music yang diliris olih Yoasobi berjudul たぶん (Tabun).
+Di project ini saya berkontribusi untuk takarir/subtitle Bahasa Indonesia dalam Video Music yang dirilis oleh YOASOBI berjudul たぶん (Tabun).
 
-[Lihat Video Music Yoasobi - Tabun di Youtube](https://www.youtube.com/watch?v=8iuLXODzL04)
+[Lihat Video Music YOASOBI - Tabun di Youtube](https://www.youtube.com/watch?v=8iuLXODzL04)
 
 <br/>
 

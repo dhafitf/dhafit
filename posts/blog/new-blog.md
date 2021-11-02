@@ -9,7 +9,7 @@ order: 1
 ---
 
 Hai. Mau ngenalin blog sekaligus portfolio baru saya.
-Blog ini saya buat untuk belajar
+Blog ini saya buat untuk belajar.
 Dengan blog ini, saya mungkin akan mulai membagikan beberapa blog ataupun project saya.
 
 ## Blog ini dibuat menggunakan
