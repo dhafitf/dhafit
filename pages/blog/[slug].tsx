@@ -57,7 +57,12 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data, content }: any = allPost.find(
     (blog) => blog.permalink === params?.slug
   );
-  const mdxSource = await serialize(content);
+  const mdxPrism = require("mdx-prism");
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [mdxPrism],
+    },
+  });
   return {
     props: {
       ...data,
