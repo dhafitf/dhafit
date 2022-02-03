@@ -1,9 +1,9 @@
-import Layout from "../../components/Layout";
-import A from "./about.module.css";
+import Layout from "@components/Layout";
+import A from "~/styles/about.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaTwitter, FaFacebookF, FaInstagram, FaGithub } from "react-icons/fa";
-import { bahasa, fe } from "../../lib/skill";
+import { bahasa, fe } from "~/lib/skill";
 
 export default function about() {
   return (
@@ -17,12 +17,11 @@ export default function about() {
         </div>
         <div className="desc">
           <p>
-            Halo, sama saya Dhafit Farenza aka Devzfz. Saya seorang penerjemah,
-            yang menerjemahkan bahasa Jepang atau Inggris ke bahasa Indonesia.
-            Awal mula saya menjadi penerjemah adalah dari keinginan saya belajar
-            bahasa Jepang. Dari keinginan tersebut, saya mencoba membuat sebuah
-            fansub bernama <a href="https://www.nogisub.com/">Nogisub</a> dimana
-            saya dapat belajar sambil membagikan hasil terjemahan saya.
+            Halo, sama saya Dhafit Farenza aka Devzfz. Saya seorang penerjemah, yang menerjemahkan bahasa Jepang atau
+            Inggris ke bahasa Indonesia. Awal mula saya menjadi penerjemah adalah dari keinginan saya belajar bahasa
+            Jepang. Dari keinginan tersebut, saya mencoba membuat sebuah fansub bernama{" "}
+            <a href="https://www.nogisub.com/">Nogisub</a> dimana saya dapat belajar sambil membagikan hasil terjemahan
+            saya.
           </p>
           <br />
           <p>Kali ini, saya sedang mencoba menjadi front end web developer. </p>
@@ -79,9 +78,8 @@ export default function about() {
         <div className="separator"></div>
         <div className={A.kontak}>
           <p>
-            Anda dapat menghubungi saya melalui email di{" "}
-            <a href="mailto:dhafidfz@gmail.com">dhafidfz@gmail.com</a>, atau
-            social media di bawah ini:
+            Anda dapat menghubungi saya melalui email di <a href="mailto:dhafidfz@gmail.com">dhafidfz@gmail.com</a>,
+            atau social media di bawah ini:
           </p>
           <ul>
             <li>

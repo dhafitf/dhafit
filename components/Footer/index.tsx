@@ -1,15 +1,9 @@
-import F from "./footer.module.css";
-
 export default function Footer() {
   return (
-    <footer className={F.footer}>
+    <footer className="footer">
       <p>
         Built by{" "}
-        <a
-          href="https://github.com/dhafitf"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href="https://github.com/dhafitf" target="_blank" rel="noreferrer noopener">
           Dhafit Farenza
         </a>
       </p>
@@ -19,11 +13,7 @@ export default function Footer() {
           Next.js
         </a>{" "}
         &{" "}
-        <a
-          href="https://reactjs.org/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href="https://reactjs.org/" target="_blank" rel="noreferrer noopener">
           React
         </a>
       </p>

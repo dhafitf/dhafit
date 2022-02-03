@@ -1,14 +1,7 @@
-import { ReactNode } from "react";
-import Footer from "../Footer";
-import Header from "../Header";
-import S from "./layout.module.css";
+import Footer from "@components/Footer";
+import Header from "@components/Header";
 import Head from "next/head";
-
-interface LayoutProps {
-  children: ReactNode;
-  title: string;
-  metaDesc: string;
-}
+import { LayoutProps } from "~/types/components";
 
 export default function Layout(props: LayoutProps) {
   const { children, title, metaDesc } = props;
@@ -18,25 +11,10 @@ export default function Layout(props: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={metaDesc} />
-        <meta
-          name="description"
-          content="Penerjemah dan Frontend web developer"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-        />
+        <meta name="description" content="Penerjemah dan Frontend web developer" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -62,9 +40,9 @@ export default function Layout(props: LayoutProps) {
         <link rel="me" href="https://www.youtube.com/c/dhafitfarenza"></link>
         <link rel="me" href="https://trakteer.id/dhafid"></link>
       </Head>
-      <div id={S.content}>
+      <div id="layout_content">
         <Header />
-        <main className={S.main}>{children}</main>
+        <main className="main">{children}</main>
         <Footer />
       </div>
     </>

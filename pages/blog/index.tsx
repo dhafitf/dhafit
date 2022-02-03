@@ -1,15 +1,12 @@
 import * as React from "react";
-import Layout from "../../components/Layout";
-import BlogItem from "../../components/Etc/blog";
-import { getAllPosts } from "../../lib/data";
+import Layout from "@components/Layout";
+import BlogItem from "@components/Other/blog";
+import { getAllPosts } from "~/lib/data";
 import { GetStaticProps } from "next";
 
 export default function Blog({ posts }: any) {
   return (
-    <Layout
-      title="Blog | DhafitF"
-      metaDesc="Daftar blog yang diposting oleh Dhafit Farenza"
-    >
+    <Layout title="Blog | DhafitF" metaDesc="Daftar blog yang diposting oleh Dhafit Farenza">
       <div className="container">
         <h2 className="pageTitle">Blog</h2>
 

@@ -1,17 +1,14 @@
 import * as React from "react";
-import Layout from "../../components/Layout";
+import Layout from "@components/Layout";
 import Link from "next/link";
-import { getAllProject } from "../../lib/data";
+import { getAllProject } from "~/lib/data";
 import { GetStaticProps } from "next";
-import PostThumb from "../../modules/PostThumb";
+import PostThumb from "@components/Other/postThumb";
 import { motion } from "framer-motion";
 
 export default function Project({ posts }: any) {
   return (
-    <Layout
-      title="Project | DhafitF"
-      metaDesc="Daftar project yang telah dan sedang dikerjakan oleh Dhafit Farenza"
-    >
+    <Layout title="Project | DhafitF" metaDesc="Daftar project yang telah dan sedang dikerjakan oleh Dhafit Farenza">
       <div className="container">
         <h2 className="pageTitle">Project</h2>
         <div className="item_container" style={{ marginBottom: "2rem" }}>
@@ -27,19 +24,14 @@ export default function Project({ posts }: any) {
               index: React.Key
             ) => {
               return (
-                <motion.div
-                  key={index}
-                  className="item"
-                  whileHover={{ y: -6 }}
-                  whileTap={{ scale: 0.9 }}
-                >
+                <motion.div key={index} className="item" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
                   <Link href={`/project/${post.permalink}`}>
                     <a>
                       <div className="p-top">
                         <PostThumb src={post.thumb} alt={post.title} />
                         <div className="tags">
                           <ul>
-                            {post.tags.map((tag: {}, index: React.Key) => (
+                            {post.tags.map((tag: {}) => (
                               <li key={index}>{tag}</li>
                             ))}
                           </ul>

@@ -1,11 +1,11 @@
 import * as React from "react";
-import Layout from "../../components/Layout";
-import { getAllPosts } from "../../lib/data";
-import B from "../../styles/md.module.css";
+import Layout from "@components/Layout";
+import { getAllPosts } from "~/lib/data";
+import B from "~styles/md.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import PostThumb from "../../modules/PostThumb";
+import PostThumb from "@components/Other/postThumb";
 
 interface Props {
   mdxSource: MDXRemoteSerializeResult;
@@ -19,14 +19,7 @@ interface Props {
   content: string;
 }
 
-export default function BlogPostPage({
-  tags,
-  title,
-  subtitle,
-  timestamp,
-  thumb,
-  mdxSource,
-}: Props) {
+export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: Props) {
   return (
     <Layout title={title} metaDesc={subtitle}>
       <article className="blog-post">
@@ -54,9 +47,7 @@ export default function BlogPostPage({
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { params } = ctx;
   const allPost = getAllPosts();
-  const { data, content }: any = allPost.find(
-    (blog) => blog.permalink === params?.slug
-  );
+  const { data, content }: any = allPost.find((blog) => blog.permalink === params?.slug);
   const mdxPrism = require("mdx-prism");
   const mdxSource = await serialize(content, {
     mdxOptions: {

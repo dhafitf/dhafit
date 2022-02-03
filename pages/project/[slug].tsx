@@ -1,11 +1,11 @@
 import * as React from "react";
-import Layout from "../../components/Layout";
-import { getAllProject } from "../../lib/data";
-import P from "../../styles/md.module.css";
+import Layout from "@components/Layout";
+import { getAllProject } from "~/lib/data";
+import projectStyle from "~/styles/md.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import PostThumb from "../../modules/PostThumb";
+import PostThumb from "@components/Other/postThumb";
 
 interface Props {
   mdxSource: MDXRemoteSerializeResult;
@@ -19,31 +19,24 @@ interface Props {
   content: string;
 }
 
-export default function BlogPostPage({
-  tags,
-  title,
-  subtitle,
-  timestamp,
-  thumb,
-  mdxSource,
-}: Props) {
+export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: Props) {
   return (
     <Layout title={title} metaDesc={subtitle}>
       <article className="blog-post">
         <div className="thumb">
           <PostThumb src={thumb} alt={title} />
         </div>
-        <section className={P.timestamp}>
+        <section className={projectStyle.timestamp}>
           <span>Diposting pada {timestamp}</span>
         </section>
-        <h1 className={P.title}>{title}</h1>
-        <h3 className={P.subtitle}>{subtitle}</h3>
-        <div className={P.tags}>
+        <h1 className={projectStyle.title}>{title}</h1>
+        <h3 className={projectStyle.subtitle}>{subtitle}</h3>
+        <div className={projectStyle.tags}>
           {tags.map((tag: {}, index: React.Key | null | undefined) => (
             <span key={index}>{tag}</span>
           ))}
         </div>
-        <div className={P.content}>
+        <div className={projectStyle.content}>
           <MDXRemote {...mdxSource} />
         </div>
       </article>
@@ -54,9 +47,7 @@ export default function BlogPostPage({
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { params } = ctx;
   const allPost = getAllProject();
-  const { data, content }: any = allPost.find(
-    (item) => item.permalink === params?.slug
-  );
+  const { data, content }: any = allPost.find((item) => item.permalink === params?.slug);
   const prism = require("mdx-prism");
   const mdxSource = await serialize(content, {
     mdxOptions: {
