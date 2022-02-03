@@ -10,3 +10,8 @@ export interface LoadMoreProps {
   name: string;
   href: string;
 }
+
+export interface PostThumbProps {
+  src: string;
+  alt?: string;
+}

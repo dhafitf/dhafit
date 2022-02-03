@@ -1,42 +1,31 @@
 import * as React from "react";
 import Layout from "@components/Layout";
 import { getAllPosts } from "~/lib/data";
-import B from "~styles/md.module.css";
+import blogStyle from "~styles/md.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
 import PostThumb from "@components/Other/postThumb";
+import { PostMetaData } from "~/types/posts";
 
-interface Props {
-  mdxSource: MDXRemoteSerializeResult;
-  tags: any;
-  title: string;
-  timestamp: string;
-  subtitle: string;
-  thumb: string;
-  permalink: string;
-  data: string;
-  content: string;
-}
-
-export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: Props) {
+export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: PostMetaData) {
   return (
     <Layout title={title} metaDesc={subtitle}>
       <article className="blog-post">
         <div className="thumb">
           <PostThumb src={thumb} alt={title} />
         </div>
-        <section className={B.timestamp}>
+        <section className={blogStyle.timestamp}>
           <span>Diposting pada {timestamp}</span>
         </section>
-        <h1 className={B.title}>{title}</h1>
-        <h3 className={B.subtitle}>{subtitle}</h3>
-        <div className={B.tags}>
+        <h1 className={blogStyle.title}>{title}</h1>
+        <h3 className={blogStyle.subtitle}>{subtitle}</h3>
+        <div className={blogStyle.tags}>
           {tags.map((tag: {}, index: React.Key | null | undefined) => (
             <span key={index}>{tag}</span>
           ))}
         </div>
-        <div className={B.content}>
+        <div className={blogStyle.content}>
           <MDXRemote {...mdxSource} />
         </div>
       </article>

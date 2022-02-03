@@ -6,20 +6,9 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import PostThumb from "@components/Other/postThumb";
+import { PostMetaData } from "~/types/posts";
 
-interface Props {
-  mdxSource: MDXRemoteSerializeResult;
-  tags: any;
-  title: string;
-  timestamp: string;
-  subtitle: string;
-  thumb: string;
-  permalink: string;
-  data: string;
-  content: string;
-}
-
-export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: Props) {
+export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: PostMetaData) {
   return (
     <Layout title={title} metaDesc={subtitle}>
       <article className="blog-post">

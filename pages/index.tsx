@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { ProjectMetaData, BlogMetaData } from "~/types/posts";
 
 const Home: NextPage = ({ featProject, featBlog }: any) => {
   return (
@@ -70,68 +71,47 @@ const Home: NextPage = ({ featProject, featBlog }: any) => {
           <div className={homeStyle.project}>
             <h2 className={homeStyle.title}>Project unggulan</h2>
             <div className="item_container">
-              {featProject.map(
-                (
-                  post: {
-                    title: string;
-                    subtitle: string;
-                    permalink: string;
-                    tags: any;
-                    thumb: string;
-                  },
-                  index: React.Key
-                ) => {
-                  return (
-                    <motion.div key={index} className="item" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
-                      <Link href={`/project/${post.permalink}`}>
-                        <a>
-                          <div className="p-top">
-                            <Image src={post.thumb} width={750} height={421} layout="responsive" alt={post.title} />
-                            <div className="tags">
-                              <ul>
-                                {post.tags.map((tag: {}, index: React.Key) => (
-                                  <li key={index}>{tag}</li>
-                                ))}
-                              </ul>
-                            </div>
+              {featProject.map((post: ProjectMetaData, index: React.Key) => {
+                return (
+                  <motion.div key={index} className="item" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
+                    <Link href={`/project/${post.permalink}`}>
+                      <a>
+                        <div className="p-top">
+                          <Image src={post.thumb} width={750} height={421} layout="responsive" alt={post.title} />
+                          <div className="tags">
+                            <ul>
+                              {post.tags.map((tag: {}, index: React.Key) => (
+                                <li key={index}>{tag}</li>
+                              ))}
+                            </ul>
                           </div>
-                          <div className="bottom">
-                            <h1 className="p-title">{post.title}</h1>
-                            <p className="p-desc">{post.subtitle}</p>
-                          </div>
-                        </a>
-                      </Link>
-                    </motion.div>
-                  );
-                }
-              )}
+                        </div>
+                        <div className="bottom">
+                          <h1 className="p-title">{post.title}</h1>
+                          <p className="p-desc">{post.subtitle}</p>
+                        </div>
+                      </a>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
             <More href="/project" name="project" />
           </div>
           <div className={homeStyle.blog}>
             <h2 className={homeStyle.title}>Blog</h2>
             <div className="blog_container">
-              {featBlog.map(
-                (
-                  blog: {
-                    title: string;
-                    subtitle: string;
-                    permalink: string;
-                    timestamp: string;
-                  },
-                  index: React.Key
-                ) => {
-                  return (
-                    <BlogItem
-                      key={index}
-                      title={blog.title}
-                      subtitle={blog.subtitle}
-                      permalink={blog.permalink}
-                      timestamp={blog.timestamp}
-                    />
-                  );
-                }
-              )}
+              {featBlog.map((blog: BlogMetaData, index: React.Key) => {
+                return (
+                  <BlogItem
+                    key={index}
+                    title={blog.title}
+                    subtitle={blog.subtitle}
+                    permalink={blog.permalink}
+                    timestamp={blog.timestamp}
+                  />
+                );
+              })}
             </div>
             <More href="/blog" name="blog" />
           </div>
