@@ -25,6 +25,7 @@
     "react-icons": "^4.2.0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.14",
     "@types/nprogress": "^0.2.0",
     "@types/react": "17.0.19",
     "eslint": "7.32.0",
