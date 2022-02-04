@@ -2,6 +2,7 @@ import Layout from "@components/Layout";
 import Image from "next/image";
 import profileStyle from "~/styles/link.module.css";
 import { FaInstagram, FaTwitter, FaFacebookF, FaBloggerB, FaYoutube, FaGithub } from "react-icons/fa";
+import { LinktreeItem } from "@components/Other";
 
 export default function profile() {
   return (
@@ -29,62 +30,17 @@ export default function profile() {
           </div>
         </div>
         <div className={profileStyle.list}>
-          <div className={profileStyle.itemList}>
-            <a href="https://twitter.com/DhafitF" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Twitter</div>
-              <div className={profileStyle.icon}>
-                <FaTwitter />
-              </div>
-            </a>
-          </div>
-          <div className={profileStyle.itemList}>
-            <a href="https://trakteer.id/dhafid" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Trakteer</div>
-              <div className={profileStyle.icon}>
-                <img src="/assets/icon/lines-trakteer-icon.png" alt="" />
-              </div>
-            </a>
-          </div>
-          <div className={profileStyle.itemList}>
-            <a href="https://www.instagram.com/dhafitf" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Instagram</div>
-              <div className={profileStyle.icon}>
-                <FaInstagram />
-              </div>
-            </a>
-          </div>
-          <div className={profileStyle.itemList}>
-            <a href="https://www.nogisub.com/" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Fansub</div>
-              <div className={profileStyle.icon}>
-                <FaBloggerB />
-              </div>
-            </a>
-          </div>
-          <div className={profileStyle.itemList}>
-            <a href="https://www.facebook.com/dhafid.farenza/" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Facebook</div>
-              <div className={profileStyle.icon}>
-                <FaFacebookF />
-              </div>
-            </a>
-          </div>
-          <div className={profileStyle.itemList}>
-            <a href="https://github.com/dhafitf" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Github</div>
-              <div className={profileStyle.icon}>
-                <FaGithub />
-              </div>
-            </a>
-          </div>
-          <div className={profileStyle.itemList}>
-            <a href="https://www.youtube.com/c/dhafitfarenza" target="_blank" rel="noopener noreferrer">
-              <div className={profileStyle.link}>Youtube</div>
-              <div className={profileStyle.icon}>
-                <FaYoutube />
-              </div>
-            </a>
-          </div>
+          <LinktreeItem href="https://twitter.com/DhafitF" text="Twitter" icon={<FaTwitter />} />
+          <LinktreeItem
+            href="https://trakteer.id/dhafid"
+            text="Trakteer"
+            icon={<Image src="/assets/icon/lines-trakteer-icon.png" alt="Trakteer logo" width="100%" height="100%" />}
+          />
+          <LinktreeItem href="https://www.instagram.com/dhafitf" text="Instagram" icon={<FaInstagram />} />
+          <LinktreeItem href="https://www.nogisub.com/" text="Fansub" icon={<FaBloggerB />} />
+          <LinktreeItem href="https://www.facebook.com/dhafid.farenza" text="Facebook" icon={<FaFacebookF />} />
+          <LinktreeItem href="https://github.com/dhafitf" text="Github" icon={<FaGithub />} />
+          <LinktreeItem href="https://www.youtube.com/c/dhafitfarenza" text="Youtube" icon={<FaYoutube />} />
         </div>
       </div>
     </Layout>

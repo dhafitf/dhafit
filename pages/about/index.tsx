@@ -1,9 +1,9 @@
 import Layout from "@components/Layout";
-import A from "~/styles/about.module.css";
+import aboutStyle from "~/styles/about.module.css";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FaTwitter, FaFacebookF, FaInstagram, FaGithub } from "react-icons/fa";
 import { bahasa, fe } from "~/lib/skill";
+import { MotionList, MotionHyperlink } from "~/components/Motions";
 
 export default function about() {
   return (
@@ -36,103 +36,65 @@ export default function about() {
         </div>
         <div className="separator"></div>
         <div className="skill">
-          <div className={A.skillCont}>
-            <div className={A.title}>Bahasa</div>
-            <div className={A.item}>
+          <div className={aboutStyle.skillCont}>
+            <div className={aboutStyle.title}>Bahasa</div>
+            <div className={aboutStyle.item}>
               <ul>
                 {bahasa.map((item, index) => {
-                  return (
-                    <motion.li
-                      drag
-                      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                      dragElastic={1}
-                      key={index}
-                    >
-                      {item.skill}
-                    </motion.li>
-                  );
+                  return <MotionList key={index} skill={item.skill} />;
                 })}
               </ul>
             </div>
           </div>
-          <div className={A.skillCont}>
-            <div className={A.title}>Frontend web developer</div>
-            <div className={A.item}>
+          <div className={aboutStyle.skillCont}>
+            <div className={aboutStyle.title}>Frontend web developer</div>
+            <div className={aboutStyle.item}>
               <ul>
                 {fe.map((item, index) => {
-                  return (
-                    <motion.li
-                      drag
-                      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                      dragElastic={1}
-                      key={index}
-                    >
-                      {item.skill}
-                    </motion.li>
-                  );
+                  return <MotionList key={index} skill={item.skill} />;
                 })}
               </ul>
             </div>
           </div>
         </div>
         <div className="separator"></div>
-        <div className={A.kontak}>
+        <div className={aboutStyle.kontak}>
           <p>
             Anda dapat menghubungi saya melalui email di <a href="mailto:dhafidfz@gmail.com">dhafidfz@gmail.com</a>,
             atau social media di bawah ini:
           </p>
           <ul>
             <li>
-              <motion.a
-                style={{ background: "#4267B2" }}
-                whileHover={{ y: -6 }}
-                whileTap={{ scale: 0.9 }}
+              <MotionHyperlink
+                background="#4267B2"
                 href="https://www.facebook.com/dhafid.farenza/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <FaFacebookF />
-                Facebook
-              </motion.a>
+                icon={<FaFacebookF />}
+                text="Facebook"
+              />
             </li>
             <li>
-              <motion.a
-                style={{ background: "#E1306C" }}
-                whileHover={{ y: -6 }}
-                whileTap={{ scale: 0.9 }}
+              <MotionHyperlink
+                background="#E1306C"
                 href="https://www.instagram.com/dhafitf"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <FaInstagram />
-                Instagram
-              </motion.a>
+                icon={<FaInstagram />}
+                text="Instagram"
+              />
             </li>
             <li>
-              <motion.a
-                style={{ background: "#1DA1F2" }}
-                whileHover={{ y: -6 }}
-                whileTap={{ scale: 0.9 }}
+              <MotionHyperlink
+                background="#1DA1F2"
                 href="https://twitter.com/DhafitF"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <FaTwitter />
-                Twitter
-              </motion.a>
+                icon={<FaTwitter />}
+                text="Twitter"
+              />
             </li>
             <li>
-              <motion.a
-                style={{ background: "#333333" }}
-                whileHover={{ y: -6 }}
-                whileTap={{ scale: 0.9 }}
+              <MotionHyperlink
+                background="#333333"
                 href="https://github.com/dhafitf"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <FaGithub />
-                Github
-              </motion.a>
+                icon={<FaGithub />}
+                text="Github"
+              />
             </li>
           </ul>
         </div>

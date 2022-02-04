@@ -4,7 +4,7 @@ import { getAllProject } from "~/lib/data";
 import projectStyle from "~/styles/md.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
 import PostThumb from "@components/Other/postThumb";
 import { PostMetaData } from "~/types/posts";
 

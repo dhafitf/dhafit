@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "@components/Layout";
 import { getAllPosts } from "~/lib/data";
-import blogStyle from "~styles/md.module.css";
+import blogStyle from "~/styles/md.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";

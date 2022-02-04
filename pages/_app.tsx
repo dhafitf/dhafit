@@ -52,9 +52,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
           animate="enter"
           exit="exit"
           variants={{
-            initial: { opacity: 0, y: -10 },
-            enter: { opacity: 1, y: 0 },
-            exit: { opacity: 0, y: 10 },
+            initial: { opacity: 0 },
+            enter: { opacity: 1 },
+            exit: { opacity: 0 },
           }}
         >
           <Component {...pageProps} />

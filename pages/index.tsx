@@ -80,7 +80,7 @@ const Home: NextPage = ({ featProject, featBlog }: any) => {
                           <Image src={post.thumb} width={750} height={421} layout="responsive" alt={post.title} />
                           <div className="tags">
                             <ul>
-                              {post.tags.map((tag: {}, index: React.Key) => (
+                              {post.tags.map((tag: {}) => (
                                 <li key={index}>{tag}</li>
                               ))}
                             </ul>
@@ -130,7 +130,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     content,
     permalink,
   }));
-  const sortProject = project.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+
+  project.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
 
   const allPosts = getAllPosts();
   const blog = allPosts.map(({ data, content, permalink }) => ({
@@ -139,11 +140,12 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     permalink,
   }));
 
-  const sortBlog = blog.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+  blog.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+
   return {
     props: {
-      featProject: sortProject.filter((post: any) => post.featured),
-      featBlog: sortBlog.filter((post: any) => post.featured),
+      featProject: project.filter((post: any) => post.featured),
+      featBlog: blog.filter((post: any) => post.featured),
     },
   };
 };

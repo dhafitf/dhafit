@@ -66,6 +66,7 @@
 
 .btn:hover {
   background: var(--sec-color);
+  text-decoration: none;
 }
 
 .p_top,
