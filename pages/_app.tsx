@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import { Loading } from "../components/Layout";
+import Loading from "@components/Layout/loading";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
