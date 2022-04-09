@@ -1,10 +1,9 @@
 import Link from "next/link";
-import moreStyle from "~/styles/etc.module.css";
 import { LoadMoreProps } from "~/types/components";
 
-const More = ({ name, href }: LoadMoreProps) => {
+const MoreButton = ({ name, href }: LoadMoreProps) => {
   return (
-    <div className={moreStyle.view_more}>
+    <div className="text-center font-medium">
       <Link href={href}>
         <a>Lihat semua {name}</a>
       </Link>
@@ -12,4 +11,4 @@ const More = ({ name, href }: LoadMoreProps) => {
   );
 };
 
-export default More;
+export default MoreButton;

@@ -1,13 +1,12 @@
 import * as React from "react";
 import { LinktreeProps } from "~/types/components";
-import profileStyle from "~/styles/link.module.css";
 
 const LinktreeItem: React.FC<LinktreeProps> = ({ href, text, icon }) => {
   return (
-    <div className={profileStyle.itemList}>
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        <div className={profileStyle.link}>{text}</div>
-        <div className={profileStyle.icon}>{icon}</div>
+    <div>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-xl border-2 border-secondary p-3 text-white">
+        <div className="text-sm tracking-widest">{text}</div>
+        <div className="flex">{icon}</div>
       </a>
     </div>
   );
