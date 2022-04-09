@@ -1,17 +1,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BlogMetaData } from "~/types/posts";
+import { ProjectMetaData } from "~/types/posts";
 import Image from "next/image";
 
-interface ProjectsProps {
-  permalink: string;
-  thumb: string;
-  tags: string[];
-  title: string;
-  subtitle: string;
-}
-
-export default function BlogItem({ permalink, thumb, tags, title, subtitle }: ProjectsProps) {
+export default function BlogItem({ permalink, thumb, tags, title, subtitle }: ProjectMetaData) {
   return (
     <motion.div key={permalink} className="group relative overflow-hidden rounded-md bg-cont" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
       <Link href={`/project/${permalink}`}>

@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-
-interface DraggableHeadingProps {
-  initialX: number;
-  className: string;
-  text: string;
-}
+import { DraggableHeadingProps } from "~/types/components";
 
 export const DraggableH1 = ({ initialX, className, text }: DraggableHeadingProps) => {
   return (

@@ -1,11 +1,4 @@
-import { ReactNode } from "react";
-
-interface SectionProps {
-  children: ReactNode;
-  className?: string;
-  id?: string;
-  title: string;
-}
+import { SectionProps } from "~/types/components";
 
 export default function Section({ children, className, id, title }: SectionProps) {
   return (

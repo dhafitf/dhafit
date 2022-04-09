@@ -3,11 +3,7 @@ import Link from "next/link";
 import { MotionList, MotionHyperlink } from "~/components/Motions";
 import skillsList from "~lib/_data/skillsList.json";
 import { socmedList } from "~lib/_data/socmedList";
-
-interface skillsProps {
-  name: string;
-  value: string[];
-}
+import { SkillsProps } from "~/types/components";
 
 export default function about() {
   return (
@@ -33,7 +29,7 @@ export default function about() {
           </div>
           <div className="my-8 w-full border-[1px] border-[#3d3d3d]"></div>
           <div className="skill">
-            {skillsList.map((skill: skillsProps) => {
+            {skillsList.map((skill: SkillsProps) => {
               return (
                 <div className="mb-4" key={skill.name}>
                   <div className="mb-3 text-lg">{skill.name}</div>

@@ -3,8 +3,7 @@ import Header from "@components/Header";
 import Head from "next/head";
 import { LayoutProps } from "~/types/components";
 
-export default function Layout(props: LayoutProps) {
-  const { children, title, metaDesc } = props;
+export default function Layout({ children, title, metaDesc }: LayoutProps) {
   return (
     <>
       <Head>
