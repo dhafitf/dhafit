@@ -1,7 +1,6 @@
 import * as React from "react";
-import Layout from "@components/Layout";
-import { getAllProject } from "~/lib/data";
-import projectStyle from "~/styles/md.module.css";
+import { Layout } from "@components/Layout";
+import { getProjectBySlug, getAllProjects } from "~/lib/getPosts";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -11,23 +10,23 @@ import { PostMetaData } from "~/types/posts";
 export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: PostMetaData) {
   return (
     <Layout title={title} metaDesc={subtitle}>
-      <article className="blog-post">
-        <div className="thumb">
+      <article className="mx-5 pt-24 md:mx-auto md:max-w-[728px] md:pt-20">
+        <div className="relative overflow-hidden pt-[56.25%]">
           <PostThumb src={thumb} alt={title} />
         </div>
-        <section className={projectStyle.timestamp}>
-          <span>Diposting pada {timestamp}</span>
-        </section>
-        <h1 className={projectStyle.title}>{title}</h1>
-        <h3 className={projectStyle.subtitle}>{subtitle}</h3>
-        <div className={projectStyle.tags}>
-          {tags.map((tag: {}, index: React.Key | null | undefined) => (
-            <span key={index}>{tag}</span>
+        <section className="pt-4 font-mono text-sm tracking-widest">{timestamp}</section>
+        <h1 className="py-3 text-3xl font-bold">{title}</h1>
+        <div className="flex gap-2">
+          {tags.map((tag: {}, index: number) => (
+            <span className="rounded-md bg-cont p-2 text-xs" key={index}>
+              {tag}
+            </span>
           ))}
         </div>
-        <div className={projectStyle.content}>
+        <div className="mb-8 mt-4 w-full border-[1px] border-[#3d3d3d]"></div>
+        <section id="article" className="prose prose-invert">
           <MDXRemote {...mdxSource} />
-        </div>
+        </section>
       </article>
     </Layout>
   );
@@ -35,12 +34,11 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { params } = ctx;
-  const allPost = getAllProject();
-  const { data, content }: any = allPost.find((item) => item.permalink === params?.slug);
-  const prism = require("mdx-prism");
+  const { data, content } = getProjectBySlug(params?.slug);
+  const mdxPrism = require("mdx-prism");
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      rehypePlugins: [prism],
+      rehypePlugins: [mdxPrism],
     },
   });
   return {
@@ -53,7 +51,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: getAllProject().map((post) => ({
+    paths: getAllProjects().map((post) => ({
       params: {
         slug: post.permalink,
       },

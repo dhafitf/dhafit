@@ -12,11 +12,7 @@ class MyDocument extends Document {
     return (
       <Html lang="id">
         <Head>
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9674606173604380"
-            crossOrigin="anonymous"
-          ></script>
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9674606173604380" crossOrigin="anonymous"></script>
         </Head>
         <body>
           <Main />

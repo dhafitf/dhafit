@@ -1,120 +1,48 @@
 import type { GetStaticProps, NextPage } from "next";
-import BlogItem from "@components/Other/blog";
-import More from "@components/Other/more";
-import Layout from "@components/Layout/index";
-import { getAllProject, getAllPosts } from "~/lib/data";
-import homeStyle from "~/styles/Home.module.css";
+import MoreButton from "~/components/Other/moreButton";
+import { Layout, Section } from "@components/Layout";
+import { getAllProjects, getAllBlogs } from "~/lib/getPosts";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { ProjectMetaData, BlogMetaData } from "~/types/posts";
+import { DraggableH1, DraggableH2 } from "~/components/Motions/draggableHeading";
+import { ProjectItem, BlogItem } from "~/components/Posts";
 
 const Home: NextPage = ({ featProject, featBlog }: any) => {
   return (
     <>
       <Layout title="DhafitF" metaDesc="Dhafit Farenza blog dan portfolio">
-        <div className="container">
-          <div className={homeStyle.top}>
-            <p className={homeStyle.p_top}>Halo, nama saya</p>
-            <motion.h1
-              drag
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-              dragElastic={1}
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              transition={{ delay: 0.2 }}
-              variants={{
-                initial: { opacity: 0, x: -100 },
-                enter: { opacity: 1, x: 0 },
-                exit: { opacity: 0, x: 10 },
-              }}
-              className={homeStyle.nama}
-            >
-              Dhafit Farenza.
-            </motion.h1>
-            <motion.h2
-              drag
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-              dragElastic={1}
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              transition={{ delay: 0.2 }}
-              variants={{
-                initial: { opacity: 0, x: 100 },
-                enter: { opacity: 1, x: 0 },
-                exit: { opacity: 0, x: 10 },
-              }}
-              className={homeStyle.sub}
-            >
-              Penerjemah & Frontend web developers.
-            </motion.h2>
-            <p className={homeStyle.desc}>
-              Saya seorang penerjemah, yang biasanya menerjemahkan bahasa Jepang dan Inggris ke bahasa Indonesia. Serta
-              seorang frontend web developers.
+        <div className="mx-5 lg:mx-auto lg:max-w-[984px]">
+          <div className="flex h-screen flex-col justify-center">
+            <p className="pb-1 md:text-lg">Halo, nama saya</p>
+            <DraggableH1 initialX={-100} className="pb-1 text-4xl font-bold text-main md:text-7xl" text="Dhafit Farenza" />
+            <DraggableH2 initialX={100} className="pb-2 text-2xl font-semibold text-secondary md:text-4xl" text="Penerjemah & Frontend web developers." />
+            <p className="mb-4 max-w-[492px]">
+              Saya seorang penerjemah, yang biasanya menerjemahkan bahasa Jepang dan Inggris ke bahasa Indonesia. Serta seorang frontend web developers.
             </p>
             <Link href="/about" passHref>
-              <motion.a
-                drag
-                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                dragElastic={1}
-                whileHover={{ y: -6 }}
-                whileTap={{ scale: 0.9 }}
-                className={homeStyle.btn}
-              >
+              <motion.a whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }} className="max-w-[130px] rounded-md border-2 border-secondary p-2 text-center text-sm text-white">
                 Profil lengkap
               </motion.a>
             </Link>
           </div>
-          <div className={homeStyle.project}>
-            <h2 className={homeStyle.title}>Project unggulan</h2>
-            <div className="item_container">
-              {featProject.map((post: ProjectMetaData, index: React.Key) => {
-                return (
-                  <motion.div key={index} className="item" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
-                    <Link href={`/project/${post.permalink}`}>
-                      <a>
-                        <div className="p-top">
-                          <Image src={post.thumb} width={750} height={421} layout="responsive" alt={post.title} />
-                          <div className="tags">
-                            <ul>
-                              {post.tags.map((tag: {}) => (
-                                <li key={index}>{tag}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="bottom">
-                          <h1 className="p-title">{post.title}</h1>
-                          <p className="p-desc">{post.subtitle}</p>
-                        </div>
-                      </a>
-                    </Link>
-                  </motion.div>
-                );
+          <Section title="Projects Unggulan" id="featured-projects" className="mb-7">
+            <div className="relative grid gap-6 pb-6 md:grid-cols-2">
+              {featProject.map((post: ProjectMetaData) => {
+                return <ProjectItem key={post.permalink} {...post} />;
               })}
             </div>
-            <More href="/project" name="project" />
-          </div>
-          <div className={homeStyle.blog}>
-            <h2 className={homeStyle.title}>Blog</h2>
-            <div className="blog_container">
-              {featBlog.map((blog: BlogMetaData, index: React.Key) => {
-                return (
-                  <BlogItem
-                    key={index}
-                    title={blog.title}
-                    subtitle={blog.subtitle}
-                    permalink={blog.permalink}
-                    timestamp={blog.timestamp}
-                  />
-                );
+            <MoreButton href="/project" name="project" />
+          </Section>
+          <Section title="Blog" id="blog" className="mb-7">
+            <div className="relative grid gap-6 pb-6">
+              {featBlog.map((post: BlogMetaData) => {
+                return <BlogItem key={post.permalink} {...post} />;
               })}
             </div>
-            <More href="/blog" name="blog" />
-          </div>
+            <MoreButton href="/blog" name="blog" />
+          </Section>
         </div>
       </Layout>
     </>
@@ -123,29 +51,27 @@ const Home: NextPage = ({ featProject, featBlog }: any) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const allProject = getAllProject();
-  const project = allProject.map(({ data, content, permalink }) => ({
-    ...data,
-    content,
-    permalink,
-  }));
+export const getStaticProps: GetStaticProps = async () => {
+  function getFeaturedPosts(allPosts: any) {
+    const posts = allPosts.map(({ data, content, permalink }: any) => ({
+      ...data,
+      content,
+      permalink,
+    }));
 
-  project.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+    posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+    const filtered = posts.filter((post: any) => post.featured);
 
-  const allPosts = getAllPosts();
-  const blog = allPosts.map(({ data, content, permalink }) => ({
-    ...data,
-    content,
-    permalink,
-  }));
+    return filtered;
+  }
 
-  blog.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+  const allProject = getFeaturedPosts(getAllProjects());
+  const allBlog = getFeaturedPosts(getAllBlogs());
 
   return {
     props: {
-      featProject: project.filter((post: any) => post.featured),
-      featBlog: blog.filter((post: any) => post.featured),
+      featProject: allProject,
+      featBlog: allBlog,
     },
   };
 };
