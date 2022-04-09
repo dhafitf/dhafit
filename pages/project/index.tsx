@@ -1,50 +1,26 @@
 import * as React from "react";
-import Layout from "@components/Layout";
-import Link from "next/link";
-import { getAllProject } from "~/lib/data";
+import { Layout, Section } from "@components/Layout";
+import { getAllProjects } from "~/lib/getPosts";
 import { GetStaticProps } from "next";
-import PostThumb from "@components/Other/postThumb";
-import { motion } from "framer-motion";
 import { ProjectMetaData } from "~/types/posts";
+import { ProjectItem } from "~/components/Posts";
 
 export default function Project({ posts }: any) {
   return (
     <Layout title="Project | DhafitF" metaDesc="Daftar project yang telah dan sedang dikerjakan oleh Dhafit Farenza">
-      <div className="container">
-        <h2 className="pageTitle">Project</h2>
-        <div className="item_container" style={{ marginBottom: "2rem" }}>
-          {posts.map((post: ProjectMetaData, index: React.Key) => {
-            return (
-              <motion.div key={index} className="item" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
-                <Link href={`/project/${post.permalink}`}>
-                  <a>
-                    <div className="p-top">
-                      <PostThumb src={post.thumb} alt={post.title} />
-                      <div className="tags">
-                        <ul>
-                          {post.tags.map((tag: {}) => (
-                            <li key={index}>{tag}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="bottom">
-                      <h1 className="p-title">{post.title}</h1>
-                      <p className="p-desc">{post.subtitle}</p>
-                    </div>
-                  </a>
-                </Link>
-              </motion.div>
-            );
+      <Section title="Projects" id="project" className="mx-5 pt-24 md:pt-20 lg:mx-auto lg:max-w-[984px]">
+        <div className="relative grid gap-6 pb-6 md:grid-cols-2">
+          {posts.map((post: ProjectMetaData) => {
+            return <ProjectItem key={post.permalink} {...post} />;
           })}
         </div>
-      </div>
+      </Section>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const allPost = getAllProject();
+export const getStaticProps: GetStaticProps = async () => {
+  const allPost = getAllProjects();
   const posts: any = allPost.map(({ data, content, permalink }) => ({
     ...data,
     content,

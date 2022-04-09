@@ -3,8 +3,7 @@ import Header from "@components/Header";
 import Head from "next/head";
 import { LayoutProps } from "~/types/components";
 
-export default function Layout(props: LayoutProps) {
-  const { children, title, metaDesc } = props;
+export default function Layout({ children, title, metaDesc }: LayoutProps) {
   return (
     <>
       <Head>
@@ -19,7 +18,7 @@ export default function Layout(props: LayoutProps) {
           dangerouslySetInnerHTML={{
             __html: `
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag(){dataLayer.push(arguments);}s
         gtag('js', new Date());
         gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}', {
           page_path: window.location.pathname,
@@ -40,11 +39,9 @@ export default function Layout(props: LayoutProps) {
         <link rel="me" href="https://www.youtube.com/c/dhafitfarenza"></link>
         <link rel="me" href="https://trakteer.id/dhafid"></link>
       </Head>
-      <div id="layout_content">
-        <Header />
-        <main className="main">{children}</main>
-        <Footer />
-      </div>
+      <Header />
+      <main className="main">{children}</main>
+      <Footer />
     </>
   );
 }
