@@ -19,7 +19,7 @@ export interface PostThumbProps {
 export interface MotionHyperlinkProps {
   background: string;
   href: string;
-  icon: string;
+  icon: JSX.Element;
   text: string;
   className?: string;
 }
@@ -32,7 +32,7 @@ export interface MotionListProps {
 export interface LinktreeProps {
   href: string;
   text: string;
-  icon: string;
+  icon: JSX.Element;
 }
 
 export interface DraggableHeadingProps {
