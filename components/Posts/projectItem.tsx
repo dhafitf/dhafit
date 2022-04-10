@@ -7,7 +7,7 @@ export default function BlogItem({ permalink, thumb, tags, title, subtitle }: Pr
   return (
     <motion.div key={permalink} className="group relative overflow-hidden rounded-md bg-cont" whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }}>
       <Link href={`/project/${permalink}`}>
-        <a className="overflow-hidden hover:text-white">
+        <a className="overflow-hidden text-white">
           <div className="relative pt-[56.25%]">
             <Image src={thumb} layout="fill" objectFit="cover" objectPosition="center" alt={title} />
             <div className="absolute left-3 bottom-3">

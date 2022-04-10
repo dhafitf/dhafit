@@ -30,8 +30,14 @@ const getAccessToken = async () => {
 
 export const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
+  const url = qs.stringifyUrl({
+    url: TOP_TRACKS_ENDPOINT,
+    query: {
+      time_range: "short_term",
+    },
+  });
 
-  return fetch(TOP_TRACKS_ENDPOINT, {
+  return fetch(url, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
