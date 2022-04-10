@@ -8,7 +8,7 @@ export default function BlogItem({ title, subtitle, permalink, timestamp }: Blog
       <Link href="/blog/[slug]" as={`/blog/${permalink}`}>
         <a className="text-center text-white">
           <div className="font-mono text-sm uppercase tracking-widest">{timestamp}</div>
-          <h1 className="py-1 font-semibold">{title}</h1>
+          <h3 className="py-1 font-semibold">{title}</h3>
           <p className="text-sm">{subtitle}</p>
         </a>
       </Link>

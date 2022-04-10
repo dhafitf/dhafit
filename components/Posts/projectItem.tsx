@@ -21,7 +21,7 @@ export default function BlogItem({ permalink, thumb, tags, title, subtitle }: Pr
             </div>
           </div>
           <div className="p-3 text-center">
-            <h1 className="pb-1 font-semibold group-hover:text-main">{title}</h1>
+            <h3 className="pb-1 font-semibold group-hover:text-main">{title}</h3>
             <p className="text-sm">{subtitle}</p>
           </div>
         </a>
