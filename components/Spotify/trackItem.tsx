@@ -16,7 +16,7 @@ export default function TrackItem({ index, track, isSkeleton }: TrackItemProps) 
       return (
         <>
           <Link href={songUrl}>
-            <a className="ml-3 flex w-full min-w-0 flex-1">
+            <a className="ml-3 flex w-full min-w-0 flex-1 text-white hover:text-main">
               <div className="h-12 w-12">
                 <Image src={albumImageUrl} alt={album} width={48} height={48} />
               </div>
