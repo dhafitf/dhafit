@@ -114,11 +114,16 @@ img {
   border-radius: 10px;
 }
 
+figure {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .footer {
   border-top: 1px solid #3d3d3d;
   padding: 24px 0;
-}
-
-.footer p {
-  text-align: center;
 }
