@@ -23,7 +23,11 @@ const Home: NextPage = ({ featProject, featBlog }: any) => {
               Saya seorang penerjemah, yang biasanya menerjemahkan bahasa Jepang dan Inggris ke bahasa Indonesia. Serta seorang frontend web developers.
             </p>
             <Link href="/about" passHref>
-              <motion.a whileHover={{ y: -6 }} whileTap={{ scale: 0.9 }} className="max-w-[130px] rounded-md border-2 border-secondary p-2 text-center text-sm text-white">
+              <motion.a
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.9 }}
+                className="max-w-[130px] rounded-md border-2 border-secondary p-2 text-center text-sm text-white hover:bg-secondary"
+              >
                 Profil lengkap
               </motion.a>
             </Link>

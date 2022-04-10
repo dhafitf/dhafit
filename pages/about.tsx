@@ -9,7 +9,7 @@ export default function about() {
   return (
     <Layout title="Tentang | DhafitF" metaDesc="Tentang Dhafit Farenza aka Devzfz. Mulai dari pengenalan dan daftar social media">
       <div className="mx-5 lg:mx-auto lg:max-w-[984px]">
-        <Section title="Tentang" id="about" className="pt-24 md:pt-20">
+        <Section title="Tentang" id="about" className="pt-24 pb-10 md:pt-20">
           <div className="desc">
             <p>
               Halo, sama saya Dhafit Farenza aka Devzfz. Saya seorang penerjemah, yang menerjemahkan bahasa Jepang atau Inggris ke bahasa Indonesia. Awal mula saya menjadi

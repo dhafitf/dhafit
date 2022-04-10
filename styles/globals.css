@@ -35,12 +35,11 @@ body {
 }
 
 a {
-  text-decoration: none;
+  color: var(--main-color);
 }
 
 a:hover {
   cursor: pointer;
-  color: var(--main-color);
 }
 
 * {
@@ -121,6 +120,18 @@ figure {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.left {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.left img {
+  max-width: 150px;
+  margin: 0;
 }
 
 .footer {

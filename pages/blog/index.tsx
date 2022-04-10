@@ -8,7 +8,7 @@ import { BlogMetaData } from "~/types/posts";
 export default function Blog({ posts }: any) {
   return (
     <Layout title="Blog | DhafitF" metaDesc="Daftar blog yang diposting oleh Dhafit Farenza">
-      <Section title="Blog" id="blog" className="mx-5 pt-24 md:pt-20 lg:mx-auto lg:max-w-[984px]">
+      <Section title="Blog" id="blog" className="mx-5 pb-10 pt-24 md:pt-20 lg:mx-auto lg:max-w-[984px]">
         <div className="flex flex-col gap-4">
           {posts.map((blog: BlogMetaData, index: React.Key) => {
             return <BlogItem key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;

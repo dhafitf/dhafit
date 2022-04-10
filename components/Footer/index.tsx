@@ -12,14 +12,19 @@ export default function Footer() {
         {socmedList.map((socmed: Props) => {
           return (
             <li key={socmed.href}>
-              <a href={socmed.href} className="text-lg text-white">
+              <a href={socmed.href} className="text-lg text-white hover:text-main">
                 {socmed.icon}
               </a>
             </li>
           );
         })}
       </ul>
-      <div className="text-sm text-slate-500">© 2021 - Dhafit Farenza</div>
+      <div className="text-sm text-slate-500">
+        © 2021{" - "}
+        <a className="text-slate-500 hover:text-main" href="https://github.com/dhafitf/">
+          Dhafit Farenza
+        </a>
+      </div>
     </footer>
   );
 }

@@ -5,7 +5,7 @@ const MoreButton = ({ name, href }: LoadMoreProps) => {
   return (
     <div className="text-center font-medium">
       <Link href={href}>
-        <a>Lihat semua {name}</a>
+        <a className="text-white hover:text-main">Lihat semua {name}</a>
       </Link>
     </div>
   );
