@@ -8,6 +8,7 @@ import React from "react";
 import { ProjectMetaData, BlogMetaData } from "~/types/posts";
 import { DraggableH1, DraggableH2 } from "~/components/Motions/draggableHeading";
 import { ProjectItem, BlogItem } from "~/components/Posts";
+import { SpotifyTopTracks } from "~/components/Spotify";
 
 const Home: NextPage = ({ featProject, featBlog }: any) => {
   return (
@@ -42,6 +43,11 @@ const Home: NextPage = ({ featProject, featBlog }: any) => {
               })}
             </div>
             <MoreButton href="/blog" name="blog" />
+          </Section>
+          <Section title="Top Tracks" id="top-track" className="relative mb-7">
+            <div className="relative flex flex-col gap-4">
+              <SpotifyTopTracks />
+            </div>
           </Section>
         </div>
       </Layout>
