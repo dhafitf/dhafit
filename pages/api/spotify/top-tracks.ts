@@ -9,7 +9,7 @@ const handler: NextApiHandler = async (req, res) => {
       const response = await getTopTracks();
       const { items } = await response.json();
 
-      const tracks = items.slice(0, 10).map((track: SpotifyTrack) => ({
+      const tracks = await items.slice(0, 10).map((track: SpotifyTrack) => ({
         album: track.album.name,
         albumImageUrl: track.album.images[0].url,
         artist: track.artists.map((_artist) => _artist.name).join(", "),
@@ -20,6 +20,7 @@ const handler: NextApiHandler = async (req, res) => {
 
       return res.status(200).json({ tracks });
     } catch (err: unknown) {
+      console.log(err);
       return res.status(400).json({ message: "An error occured" });
     }
   }
