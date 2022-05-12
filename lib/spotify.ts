@@ -37,7 +37,7 @@ export const getTopTracks = async () => {
     },
   });
 
-  return fetch(url, {
+  return await fetch(url, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
