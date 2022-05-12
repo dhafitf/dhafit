@@ -139,3 +139,12 @@ figure {
   border-top: 1px solid #3d3d3d;
   padding: 24px 0;
 }
+
+.errorSpotify span {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.errorSpotify span:hover {
+  text-decoration: underline;
+}
