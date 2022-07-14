@@ -1,6 +1,6 @@
-# dhafit.xyz
+# dhafit portfolio page
 
-Source code for [dhafit.xyz](http://dhafit.xyz/)
+Source code for [dhafit.vercel.app](https://dhafit.vercel.app/)
 
  <img src="https://img.shields.io/github/last-commit/dhafitf/dhafit.xyz?color=blue">
  <img src="https://img.shields.io/github/repo-size/dhafitf/dhafit.xyz">
@@ -13,13 +13,13 @@ To get started running the project locally, please follow the steps below.
 First, clone this repository.
 
 ```bash
-git clone https://github.com/dhafitf/dhafit.xyz.git
+git clone https://github.com/dhafitf/dhafit.git
 ```
 
 Then, go into the project root directory.
 
 ```bash
-cd dhafit.xyz
+cd dhafit
 ```
 
 Finally, run the development server.
