@@ -12,5 +12,5 @@ export const linktreeList = [
   { href: "https://www.nogisub.com/", text: "Fansub", icon: <FaBloggerB /> },
   { href: "https://www.facebook.com/dhafid.farenza", text: "Facebook", icon: <FaFacebookF /> },
   { href: "https://github.com/dhafitf", text: "Github", icon: <FaGithub /> },
-  { href: "https://www.youtube.com/c/dhafitfarenza", text: "Facebook", icon: <FaYoutube /> },
+  { href: "https://www.youtube.com/c/dhafitfarenza", text: "Youtube", icon: <FaYoutube /> },
 ];
