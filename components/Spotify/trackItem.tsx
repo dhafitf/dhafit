@@ -16,13 +16,13 @@ export default function TrackItem({ index, track, isSkeleton }: TrackItemProps) 
       return (
         <>
           <Link href={songUrl}>
-            <a className="ml-3 flex w-full min-w-0 flex-1 text-white hover:text-main">
+            <a className="ml-3 flex w-full min-w-0 flex-1 text-white hover:text-cyan">
               <div className="h-12 w-12">
                 <Image src={albumImageUrl} alt={album} width={48} height={48} />
               </div>
               <div className="ml-3 flex min-w-0 flex-1 flex-col justify-center">
-                <div className="truncate font-semibold">{title}</div>
-                <div className="text-gray-400">{artist}</div>
+                <div className="truncate font-medium">{title}</div>
+                <div className="truncate text-sm text-gray">{artist}</div>
               </div>
             </a>
           </Link>
@@ -43,7 +43,7 @@ export default function TrackItem({ index, track, isSkeleton }: TrackItemProps) 
   };
   return (
     <div className="flex items-center">
-      <div className="flex tabular-nums text-gray-400">{index.toString().padStart(2, "0")}</div>
+      <div className="flex tabular-nums text-gray">{index.toString().padStart(2, "0")}</div>
       {renderTrackItem()}
     </div>
   );
