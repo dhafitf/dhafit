@@ -1,25 +1,65 @@
 import * as React from "react";
 import { Layout, Section } from "@components/Layout";
-import { BlogItem } from "@components/Posts";
-import { getAllBlogs } from "~/lib/getPosts";
+import { BlogItemCard } from "@components/Posts";
+import { getAllBlogs, getFeaturedBlogs } from "~/lib/getPosts";
 import { GetStaticProps } from "next";
-import { BlogMetaData } from "~/types/posts";
+import { BlogMetaData, PostProps } from "~/types/posts";
+import FeaturedBlogs from "@section/featuredBlogs";
+import { useState, useEffect } from "react";
 
-export default function Blog({ posts }: any) {
+interface Props {
+  posts: PostProps[];
+  featBlogs: PostProps[];
+}
+
+export default function Blog({ posts, featBlogs }: Props) {
+  const [searchString, setSearchString] = useState("");
+  const [searchResults, setSearchResults] = useState<PostProps[]>([]);
+
+  useEffect(() => {
+    if (searchString === "") return setSearchResults(posts);
+    const filteredPostsBySearch = posts.filter((blog) => {
+      return blog.title.toLowerCase().includes(searchString.toLowerCase());
+    });
+
+    setSearchResults(filteredPostsBySearch);
+  }, [posts, searchString]);
+
+  const handleSearchCommand = (e: any) => {
+    setSearchString(e.target.value);
+  };
+
   return (
     <Layout title="Blog | DhafitF" metaDesc="Daftar blog yang diposting oleh Dhafit Farenza">
-      <Section title="Blog" id="blog" className="mx-5 pb-10 pt-24 md:pt-20 lg:mx-auto lg:max-w-[984px]">
-        <div className="flex flex-col gap-4">
-          {posts.map((blog: BlogMetaData, index: React.Key) => {
-            return <BlogItem key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;
-          })}
-        </div>
+      <h1 className="pb-4 text-4xl font-bold">Blogs</h1>
+      <p>Saya menggunakan blog ini untuk membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja. Gunakan fitur pencarian di bawah untuk mencari.</p>
+      <div className="pt-4 pb-10">
+        <input
+          type="text"
+          className="w-full appearance-none rounded bg-dark-gray py-3 px-4 leading-tight text-white placeholder:text-[#fafafa61]  md:text-sm"
+          placeholder="Cari postingan"
+          onChange={handleSearchCommand}
+        />
+      </div>
+      {searchString.length === 0 && <FeaturedBlogs blogs={featBlogs} />}
+      <Section title="Semua Postingan" id="all-posts" className="w-full pb-10">
+        {searchResults.length > 0 ? (
+          <div className="flex flex-col gap-6">
+            {searchResults.map((blog: BlogMetaData, index: number) => {
+              return <BlogItemCard key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;
+            })}
+          </div>
+        ) : (
+          <span className="text-gray">Tidak ada postingan ditemukan.</span>
+        )}
       </Section>
     </Layout>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const featBlogs = getFeaturedBlogs();
+
   const allPost = getAllBlogs();
   const posts: any = allPost.map(({ data, content, permalink }) => ({
     ...data,
@@ -30,6 +70,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1)),
+      featBlogs,
     },
   };
 };
