@@ -18,6 +18,7 @@
     "paths": {
       "~/*": ["*"],
       "@components/*": ["components/*"],
+      "@section/*": ["components/Section/*"],
       "~lib/*": ["lib/*"]
     }
   },
