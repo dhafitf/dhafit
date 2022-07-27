@@ -9,6 +9,7 @@ export interface LayoutProps {
 export interface LoadMoreProps {
   name: string;
   href: string;
+  className?: string;
 }
 
 export interface PostThumbProps {

@@ -25,3 +25,14 @@ export interface PostsMetaData {
     permalink: string;
   }[];
 }
+
+export interface PostProps {
+  title: string;
+  subtitle: string;
+  timestamp: string;
+  thumb: string;
+  tags: string[];
+  order: number;
+  content: string;
+  permalink: string;
+}
