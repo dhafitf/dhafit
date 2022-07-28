@@ -1,7 +1,7 @@
 ---
 title: Memperkenalkan blog dhafit.xyz v2
 subtitle: Memperkenalkan blog v2 pada blog dhafit.xyz
-timestamp: Senin, 18 Oktober 2021
+timestamp: 2021/10/18
 thumb: /assets/blog/Screenshot_671.png
 tags:
   - "Blog"

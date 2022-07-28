@@ -1,7 +1,7 @@
 ---
 title: Memperkenalkan blog sekaligus porfolio saya
 subtitle: Hai. Mau ngenalin blog sekaligus portfolio baru saya.
-timestamp: Selasa, 07 September 2021
+timestamp: 2021/09/07
 thumb: /assets/blog/Screenshot_555.png
 tags:
   - "Blog"
