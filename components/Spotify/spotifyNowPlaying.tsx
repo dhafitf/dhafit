@@ -1,8 +1,10 @@
 import { SiSpotify } from "react-icons/si";
-import useSpotifyNowPlaying from "~/lib/useSpotifyNowPlaying";
+import fetcher from "~/lib/fetcher";
+import useSWR from "swr";
+import { NowPlayingResponse } from "~/types/spotify";
 
 export default function SpotifyNowPlaying() {
-  const { data, isError } = useSpotifyNowPlaying();
+  const { data } = useSWR<NowPlayingResponse>("/api/spotify/currently-playing", fetcher);
 
   if (data?.isPlaying) {
     const { artists, title, songUrl } = data;

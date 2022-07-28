@@ -70,3 +70,15 @@ export interface TrackResponseItem {
 export interface TopTracksResponse {
   tracks: TrackResponseItem[];
 }
+
+export interface NowPlayingResponse {
+  title: string;
+  artists: {
+    name: string;
+    url: string;
+  }[];
+  album: string;
+  albumImageUrl: string;
+  songUrl: string;
+  isPlaying: boolean;
+}

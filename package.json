@@ -1,6 +1,6 @@
 {
   "name": "dhafit",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "private": true,
   "description": "Source code for dhafit.xyz",
   "repository": "https://github.com/dhafitf/dhafit.xyz",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@tanem/react-nprogress": "^3.0.79",
     "dotenv": "^10.0.0",
+    "googleapis": "^105.0.0",
     "gray-matter": "^4.0.3",
     "mdx-prism": "^0.3.4",
     "next": "^12.1.0",

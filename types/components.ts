@@ -53,3 +53,15 @@ export interface SkillsProps {
   name: string;
   value: string[];
 }
+
+export interface MetricCardProps {
+  href: string;
+  title: string;
+  value: number;
+}
+
+export interface YoutubeResponse {
+  subscriberCount: number;
+  viewCount: number;
+  videoCount: number;
+}
