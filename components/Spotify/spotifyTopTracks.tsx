@@ -1,21 +1,22 @@
 import TrackItem from "./trackItem";
-import useSpotifyTopTrack from "~/lib/useSpotifyTopTracks";
-import { TrackResponseItem } from "~/types/spotify";
+import { TopTracksResponse } from "~/types/spotify";
 import { useRouter } from "next/router";
+import useSWR from "swr";
+import fetcher from "~/lib/fetcher";
 
 export default function SpotifyTopTracks() {
-  const { data, isError } = useSpotifyTopTrack();
+  const { data, error } = useSWR<TopTracksResponse>("/api/spotify/top-tracks", fetcher);
 
   const router = useRouter();
 
   const renderTracks = () => {
     if (data) {
-      return data.tracks.map((track: TrackResponseItem, index: number) => {
+      return data.tracks.map((track, index: number) => {
         return <TrackItem key={index} index={index + 1} track={track} />;
       });
     }
 
-    if (isError) {
+    if (error) {
       return (
         <div className="errorSpotify">
           Error when fetching spotify. Please{" "}
