@@ -10,7 +10,7 @@ import { PostMetaData } from "~/types/posts";
 export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, mdxSource }: PostMetaData) {
   return (
     <Layout title={title} metaDesc={subtitle} ogImage={thumb}>
-      <article className="mx-5 pb-10 pt-24 md:mx-auto md:max-w-[728px] md:pt-20">
+      <article className="mx-5 pb-10 md:mx-auto md:max-w-[728px]">
         <div className="relative overflow-hidden pt-[56.25%]">
           <PostThumb src={thumb} alt={title} />
         </div>

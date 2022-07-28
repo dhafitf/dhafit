@@ -28,7 +28,7 @@ body {
   margin: 0;
   font-family: var(--font);
   height: 100%;
-  background-color: #27292c;
+  background-color: #1c1e1f;
   color: #fafafa;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -40,31 +40,6 @@ a {
 
 a:hover {
   cursor: pointer;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-ul,
-li {
-  text-decoration: none;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  margin: 0;
 }
 
 #__next {
@@ -87,11 +62,7 @@ p {
 
 .main {
   flex: 1;
-}
-
-img {
-  width: 100%;
-  height: 100%;
+  min-height: 77vh;
 }
 
 .linktreeIcon img {
@@ -147,4 +118,18 @@ figure {
 
 .errorSpotify span:hover {
   text-decoration: underline;
+}
+
+.truncate-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.truncate-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }

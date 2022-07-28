@@ -1,5 +1,7 @@
 [
-  { "path": "/about", "label": "About" },
+  { "path": "/", "label": "Beranda" },
+  { "path": "/about", "label": "Tentang" },
   { "path": "/blog", "label": "Blog" },
-  { "path": "/project", "label": "Projects" }
+  { "path": "/project", "label": "Projek" },
+  { "path": "/dashboard", "label": "Dashboard" }
 ]

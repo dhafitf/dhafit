@@ -15,7 +15,6 @@
   "dependencies": {
     "@tanem/react-nprogress": "^3.0.79",
     "dotenv": "^10.0.0",
-    "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.3",
     "mdx-prism": "^0.3.4",
     "next": "^12.1.0",

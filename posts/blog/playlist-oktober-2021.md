@@ -1,7 +1,7 @@
 ---
 title: Playlist musik bulan Oktober 2021
 subtitle: Playlist musik terbaru saya di bulan Oktober
-timestamp: Minggu, 10 Oktober 2021
+timestamp: 2021/10/10
 thumb: /assets/blog/10-21.jpg
 tags:
   - "Music"

@@ -4,12 +4,13 @@ import Link from "next/link";
 export default function project() {
   return (
     <Layout title="Halaman tidak ditemukan" metaDesc="Halaman tidak ditemukan">
-      <div className="absolute flex h-screen w-full flex-col items-center justify-center">
-        <h1 className="text-3xl">Halaman tidak ditemukan.</h1>
-        <Link href="/profile">
-          <a className="text-main hover:underline">Kembali ke beranda</a>
-        </Link>
+      <div>
+        <h1 className="pb-4 text-4xl font-bold">404 - Halaman tidak ditemukan.</h1>
+        <p className="pb-10">Sepertinya kamu salah mengeja alamat. Mohon periksa kembali alamat halaman.</p>
       </div>
+      <Link href="/">
+        <a className="rounded bg-dark-gray p-4 text-white hover:bg-light-gray">Kembali ke beranda</a>
+      </Link>
     </Layout>
   );
 }

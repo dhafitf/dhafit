@@ -45,3 +45,24 @@ export function getAllProjects() {
 export function getProjectBySlug(slug: any) {
   return getPostDataBySlug(slug, projectDirectory);
 }
+
+function getFeaturedPosts(allPosts: any) {
+  const posts = allPosts.map(({ data, content, permalink }: any) => ({
+    ...data,
+    content,
+    permalink,
+  }));
+
+  posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
+  const filtered = posts.filter((post: any) => post.featured);
+
+  return filtered;
+}
+
+export function getFeaturedBlogs() {
+  return getFeaturedPosts(getAllBlogs());
+}
+
+export function getFeaturedProjects() {
+  return getFeaturedPosts(getAllProjects());
+}

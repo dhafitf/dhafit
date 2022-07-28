@@ -5,18 +5,15 @@ import { useRouter } from "next/router";
 export default function Header() {
   const router = useRouter();
   return (
-    <header className="fixed z-20 w-full bg-[#27292ceb] backdrop-blur">
-      <div className="mx-5 flex flex-col items-center justify-between py-3 md:flex-row  lg:mx-auto lg:max-w-[984px]">
-        <Link href="/">
-          <a className="pb-1 font-bold text-white">Dhafit Farenza</a>
-        </Link>
+    <header className="z-20 w-full pt-4 pb-10 md:pb-20">
+      <div className="mx-5 flex flex-col items-center justify-between gap-1 py-3 md:mx-auto md:max-w-3xl md:flex-row">
         <nav>
           <ul className="flex items-center justify-center gap-4">
             {navLinks.map((link) => {
               return (
-                <li key={link.path} className="text-sm">
+                <li key={link.path}>
                   <Link href={link.path}>
-                    <a className={router.pathname === `${link.path}` ? "text-main" : "text-white hover:text-main"}>{link.label}</a>
+                    <a className={router.pathname === `${link.path}` ? "font-semibold text-white" : "text-gray hover:text-white"}>{link.label}</a>
                   </Link>
                 </li>
               );

@@ -1,12 +1,10 @@
 import { SectionProps } from "~/types/components";
+import clsx from "~lib/clsx";
 
 export default function Section({ children, className, id, title }: SectionProps) {
   return (
-    <section className={className} id={id}>
-      <h2 className="text-xl font-semibold md:text-2xl">{title}</h2>
-      <div className="mt-2 mb-6 h-[2px] rounded bg-gray-700">
-        <div className="h-full w-28 bg-main"></div>
-      </div>
+    <section className={clsx("pb-12", className)} id={id}>
+      <h2 className="pb-6 text-2xl font-bold">{title}</h2>
       {children}
     </section>
   );
