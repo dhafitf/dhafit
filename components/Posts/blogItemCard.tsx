@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { BlogMetaData } from "~/types/posts";
+import { BlogCardProps } from "~/types/posts";
 import getTimestamp from "~/lib/getTimestamp";
 
-export default function BlogItemCard({ title, subtitle, permalink, timestamp }: BlogMetaData) {
+export default function BlogItemCard({ title, subtitle, permalink, timestamp }: BlogCardProps) {
   const getDate = getTimestamp(timestamp);
 
   return (

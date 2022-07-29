@@ -5,9 +5,9 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import markdownToHtml from "~/lib/markdownToHtml";
 import getTimestamp from "~/lib/getTimestamp";
 import PostThumb from "@components/Other/postThumb";
-import { PostMetaData } from "~/types/posts";
+import { PostProps } from "~/types/posts";
 
-export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, content }: PostMetaData) {
+export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, content }: PostProps) {
   const getDate = getTimestamp(timestamp);
   return (
     <Layout title={title} metaDesc={subtitle} ogImage={thumb}>
@@ -16,7 +16,6 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
           <PostThumb src={thumb} alt={title} />
         </div>
         <div className="pt-4 font-mono text-sm tracking-widest">
-          {" "}
           {getDate.day}, {getDate.date}
         </div>
         <h1 className="py-3 text-3xl font-bold">{title}</h1>
@@ -35,7 +34,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { params } = ctx;
+  const { params } = ctx as any;
   const { data, content } = getProjectBySlug(params?.slug);
   const htmlContent = await markdownToHtml(content);
 

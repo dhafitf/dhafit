@@ -1,11 +1,11 @@
 import { Section } from "../Layout";
 import MoreButton from "../Other/moreButton";
 import Link from "next/link";
-import { BlogMetaData } from "~/types/posts";
+import { PostProps } from "~/types/posts";
 import React from "react";
 import getTimestamp from "~/lib/getTimestamp";
 
-function FeaturedBlogItem({ title, subtitle, permalink, timestamp }: BlogMetaData) {
+function FeaturedBlogItem({ title, subtitle, permalink, timestamp }: PostProps) {
   const getDate = getTimestamp(timestamp);
 
   return (
@@ -22,15 +22,15 @@ function FeaturedBlogItem({ title, subtitle, permalink, timestamp }: BlogMetaDat
 }
 
 type Props = {
-  blogs: BlogMetaData[];
+  blogs: PostProps[];
   withLoadmore?: boolean;
 };
 
 export default function FeaturedBlogs({ blogs, withLoadmore }: Props) {
   return (
     <Section id="featured-blogs" title="Blog Unggulan">
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4">
-        {blogs.map((post: BlogMetaData) => {
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-4">
+        {blogs.map((post) => {
           return <FeaturedBlogItem key={post.permalink} {...post} />;
         })}
       </div>

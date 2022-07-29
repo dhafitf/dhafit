@@ -1,38 +1,35 @@
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { DefaultPostsProps } from "./default";
-
-export interface ProjectMetaData extends DefaultPostsProps {
-  tags: string[];
-  thumb: string;
-}
-
-export interface BlogMetaData extends DefaultPostsProps {
-  timestamp: string;
-}
-
-export interface PostMetaData extends DefaultPostsProps {
-  mdxSource: MDXRemoteSerializeResult;
-  tags: string[];
-  thumb: string;
-  data: string;
-  content: string;
-  timestamp: string;
-}
-
-export interface PostsMetaData {
-  posts: {
-    content: string;
-    permalink: string;
-  }[];
-}
-
-export interface PostProps {
+export interface DefaultPostProps {
   title: string;
   subtitle: string;
   timestamp: string;
   thumb: string;
   tags: string[];
+  featured: boolean;
   order: number;
+}
+
+export interface PostLoaderProps {
+  data: DefaultPostProps;
   content: string;
   permalink: string;
+}
+
+export interface PostProps extends DefaultPostProps {
+  content: string;
+  permalink: string;
+}
+
+export interface DefaultPostCard {
+  title: string;
+  subtitle: string;
+  permalink: string;
+}
+
+export interface BlogCardProps extends DefaultPostCard {
+  timestamp: string;
+}
+
+export interface ProjectCardProps extends DefaultPostCard {
+  thumb: string;
+  tags: string[];
 }

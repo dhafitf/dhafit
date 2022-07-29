@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ProjectMetaData } from "~/types/posts";
+import { ProjectCardProps } from "~/types/posts";
 import Image from "next/image";
 import Icon from "~/lib/getIcons";
 
-export default function ProjectItemCard({ permalink, thumb, tags, title, subtitle }: ProjectMetaData) {
+export default function ProjectItemCard({ permalink, thumb, tags, title, subtitle }: ProjectCardProps) {
   return (
-    <div key={permalink} className="group relative overflow-hidden rounded-md bg-dark-gray transition-colors hover:bg-light-gray">
+    <div className="group relative overflow-hidden rounded-md bg-dark-gray transition-colors hover:bg-light-gray">
       <Link href={`/project/${permalink}`}>
         <a className="overflow-hidden text-white">
           <div className="relative pt-[56.25%]">

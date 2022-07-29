@@ -3,11 +3,11 @@ import { Layout } from "@components/Layout";
 import { getAllBlogs, getBlogBySlug } from "~/lib/getPosts";
 import { GetStaticProps, GetStaticPaths } from "next";
 import PostThumb from "@components/Other/postThumb";
-import { PostMetaData } from "~/types/posts";
+import { PostProps } from "~/types/posts";
 import markdownToHtml from "~/lib/markdownToHtml";
 import getTimestamp from "~/lib/getTimestamp";
 
-export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, content }: PostMetaData) {
+export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, content }: PostProps) {
   const getDate = getTimestamp(timestamp);
   return (
     <Layout title={title} metaDesc={subtitle} ogImage={thumb}>
@@ -34,7 +34,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { params } = ctx;
+  const { params } = ctx as any;
   const { data, content } = getBlogBySlug(params?.slug);
   const htmlContent = await markdownToHtml(content);
 

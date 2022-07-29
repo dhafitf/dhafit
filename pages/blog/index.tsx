@@ -3,7 +3,7 @@ import { Layout, Section } from "@components/Layout";
 import { BlogItemCard } from "@components/Posts";
 import { getAllBlogs, getFeaturedBlogs } from "~/lib/getPosts";
 import { GetStaticProps } from "next";
-import { BlogMetaData, PostProps } from "~/types/posts";
+import { PostProps } from "~/types/posts";
 import FeaturedBlogs from "@section/featuredBlogs";
 import { useState, useEffect } from "react";
 
@@ -45,7 +45,7 @@ export default function Blog({ posts, featBlogs }: Props) {
       <Section title="Semua Postingan" id="all-posts" className="w-full pb-10">
         {searchResults.length > 0 ? (
           <div className="flex flex-col gap-6">
-            {searchResults.map((blog: BlogMetaData, index: number) => {
+            {searchResults.map((blog: PostProps, index: number) => {
               return <BlogItemCard key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;
             })}
           </div>
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const featBlogs = getFeaturedBlogs();
 
   const allPost = getAllBlogs();
-  const posts: any = allPost.map(({ data, content, permalink }) => ({
+  const posts = allPost.map(({ data, content, permalink }) => ({
     ...data,
     content,
     permalink,
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts: posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1)),
+      posts: posts.sort((a, b) => (a.order > b.order ? -1 : 1)),
       featBlogs,
     },
   };
