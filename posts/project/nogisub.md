@@ -1,7 +1,7 @@
 ---
 title: Fansub Nogizaka46 - Nogisub
 subtitle: Sebuah fansub untuk idol grup Jepang yaitu Nogizaka46
-timestamp: Selasa, 7 September 2021
+timestamp: 2021/09/07
 tags:
   - "Terjemahan"
   - "Jepang"
