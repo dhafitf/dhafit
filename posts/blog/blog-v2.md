@@ -6,7 +6,7 @@ thumb: /assets/blog/Screenshot_671.png
 tags:
   - "Blog"
 featured: true
-order: 3
+order: 2
 ---
 
 Pada hari Senin, 10 Oktober 2021 ini, saya memperbarui tampilan blog dengan tujuan supaya lebih enak dipandang. Teknologi yang saya gunakan masih sama yaitu:
