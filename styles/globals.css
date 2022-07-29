@@ -133,3 +133,11 @@ figure {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+pre.shiki div.line {
+  min-height: 1rem;
+}
+
+pre.shiki .language-id {
+  display: none;
+}
