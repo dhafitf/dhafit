@@ -12,9 +12,11 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
   return (
     <Layout title={title} metaDesc={subtitle} ogImage={thumb}>
       <article className="pb-10">
-        <div className="relative overflow-hidden pt-[56.25%]">
-          <PostThumb src={thumb} alt={title} />
-        </div>
+        {thumb && (
+          <div className="relative overflow-hidden pt-[56.25%]">
+            <PostThumb src={thumb} alt={title} />
+          </div>
+        )}
         <div className="pt-4 font-mono text-sm tracking-widest">
           {getDate.day}, {getDate.date}
         </div>
