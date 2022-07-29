@@ -72,6 +72,7 @@ a:hover {
 
 ::-webkit-scrollbar {
   width: 3px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
