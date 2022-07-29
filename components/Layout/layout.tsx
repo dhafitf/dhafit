@@ -29,7 +29,7 @@ export default function Layout({ children, title, metaDesc, ogImage }: Props) {
         <link rel="canonical" href={canonicalURL} />
       </Head>
       <Header />
-      <main className="main mx-5 md:mx-auto md:max-w-3xl">{children}</main>
+      <main className="main mx-5 md:mx-auto md:max-w-[728px]">{children}</main>
       <Footer />
     </>
   );

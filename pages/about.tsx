@@ -56,6 +56,7 @@ export default function about() {
               return (
                 <li key={socmed.text}>
                   <a
+                    href={socmed.href}
                     style={{ background: `${socmed.background}` }}
                     target="_blank"
                     rel="noreferrer noopener"

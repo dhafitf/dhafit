@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+import { PostLoaderProps, PostProps } from "~/types/posts";
+
 const blogDirectory = path.join(process.cwd(), "posts/blog");
 const projectDirectory = path.join(process.cwd(), "posts/project");
 
@@ -31,30 +33,30 @@ function getPostDataBySlug(slug: string, postPath: string) {
 }
 
 export function getAllBlogs() {
-  return getAllPostData(blogDirectory);
+  return getAllPostData(blogDirectory) as PostLoaderProps[];
 }
 
-export function getBlogBySlug(slug: any) {
+export function getBlogBySlug(slug: string) {
   return getPostDataBySlug(slug, blogDirectory);
 }
 
 export function getAllProjects() {
-  return getAllPostData(projectDirectory);
+  return getAllPostData(projectDirectory) as PostLoaderProps[];
 }
 
-export function getProjectBySlug(slug: any) {
+export function getProjectBySlug(slug: string) {
   return getPostDataBySlug(slug, projectDirectory);
 }
 
-function getFeaturedPosts(allPosts: any) {
-  const posts = allPosts.map(({ data, content, permalink }: any) => ({
+function getFeaturedPosts(allPosts: PostLoaderProps[]) {
+  const posts: PostProps[] = allPosts.map(({ data, content, permalink }) => ({
     ...data,
     content,
     permalink,
   }));
 
-  posts.sort((a: any, b: any) => (a.order > b.order ? -1 : 1));
-  const filtered = posts.filter((post: any) => post.featured);
+  posts.sort((a, b) => (a.order > b.order ? -1 : 1));
+  const filtered = posts.filter((post) => post.featured);
 
   return filtered;
 }

@@ -3,7 +3,7 @@ import MoreButton from "~/components/Other/moreButton";
 import { Layout, Section } from "@components/Layout";
 import { getFeaturedProjects, getFeaturedBlogs } from "~/lib/getPosts";
 import React from "react";
-import { ProjectMetaData } from "~/types/posts";
+import { PostProps } from "~/types/posts";
 import { ProjectItemCard } from "~/components/Posts";
 import HeroSection from "@section/heroSection";
 import TechSection from "@section/techSection";
@@ -17,7 +17,7 @@ const Home: NextPage = ({ featProject, featBlog }: any) => {
         <TechSection />
         <Section title="Projek Unggulan" id="featured-projects" className="mb-7">
           <div className="relative grid gap-6 pb-6 md:grid-cols-2">
-            {featProject.map((post: ProjectMetaData) => {
+            {featProject.map((post: PostProps) => {
               return <ProjectItemCard key={post.permalink} {...post} />;
             })}
           </div>

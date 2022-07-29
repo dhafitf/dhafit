@@ -17,29 +17,10 @@ export interface PostThumbProps {
   alt?: string;
 }
 
-export interface MotionHyperlinkProps {
-  background: string;
-  href: string;
-  icon: JSX.Element;
-  text: string;
-  className?: string;
-}
-
-export interface MotionListProps {
-  skill: string;
-  className?: string;
-}
-
 export interface LinktreeProps {
   href: string;
   text: string;
   icon: JSX.Element;
-}
-
-export interface DraggableHeadingProps {
-  initialX: number;
-  className: string;
-  text: string;
 }
 
 export interface SectionProps {
