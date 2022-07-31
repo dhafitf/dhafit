@@ -13,7 +13,7 @@ export default function profile() {
           title: "Profile",
         }}
       />
-      <Layout title="Profile | DhafitF" metaDesc="Linktree dari Dhafit Farenza">
+      <Layout>
         <div className="m-auto my-8 max-w-[335px]">
           <div className="flex flex-col content-center items-center justify-center">
             <div id="profile-picture">

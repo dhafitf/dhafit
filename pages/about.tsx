@@ -15,7 +15,7 @@ const About: NextPage = () => {
           title: "Tentang",
         }}
       />
-      <Layout title="Tentang | DhafitF" metaDesc="Tentang Dhafit Farenza aka Devzfz. Mulai dari pengenalan dan daftar social media">
+      <Layout>
         <div className="pb-10">
           <h1 className="pb-4 text-4xl font-bold">Tentang</h1>
           <div className="desc">

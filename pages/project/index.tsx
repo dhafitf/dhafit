@@ -17,7 +17,7 @@ export default function Project({ posts }: { posts: PostProps[] }) {
           description: "Projects by Dhafit Farenza",
         }}
       />
-      <Layout title="Project | DhafitF" metaDesc="Daftar project yang telah dan sedang dikerjakan oleh Dhafit Farenza">
+      <Layout>
         <h1 className="pb-4 text-4xl font-bold">Projek</h1>
         <p className="pb-4">
           Berikut ini adalah daftar dari beberapa projek yang pernah ataupun yang terus saya kerjakan. Diantara projek ini, ada projek menerjemahkan dan juga pemrograman.

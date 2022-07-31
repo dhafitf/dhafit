@@ -40,7 +40,7 @@ export default function Blog({ posts, featBlogs }: Props) {
           description: "Membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja.",
         }}
       />
-      <Layout title="Blog | DhafitF" metaDesc="Daftar blog yang diposting oleh Dhafit Farenza">
+      <Layout>
         <h1 className="pb-4 text-4xl font-bold">Blogs</h1>
         <p>Saya menggunakan blog ini untuk membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja. Gunakan fitur pencarian di bawah untuk mencari.</p>
         <div className="pt-4 pb-10">
