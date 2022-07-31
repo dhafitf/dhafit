@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import { PostProps } from "~/types/posts";
 import FeaturedBlogs from "@section/featuredBlogs";
 import { useState, useEffect } from "react";
+import { NextSeo } from "next-seo";
 
 interface Props {
   posts: PostProps[];
@@ -30,30 +31,40 @@ export default function Blog({ posts, featBlogs }: Props) {
   };
 
   return (
-    <Layout title="Blog | DhafitF" metaDesc="Daftar blog yang diposting oleh Dhafit Farenza">
-      <h1 className="pb-4 text-4xl font-bold">Blogs</h1>
-      <p>Saya menggunakan blog ini untuk membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja. Gunakan fitur pencarian di bawah untuk mencari.</p>
-      <div className="pt-4 pb-10">
-        <input
-          type="text"
-          className="w-full appearance-none rounded bg-dark-gray py-3 px-4 leading-tight text-white placeholder:text-[#fafafa61]  md:text-sm"
-          placeholder="Cari postingan"
-          onChange={handleSearchCommand}
-        />
-      </div>
-      {searchString.length === 0 && <FeaturedBlogs blogs={featBlogs} />}
-      <Section title="Semua Postingan" id="all-posts" className="w-full pb-10">
-        {searchResults.length > 0 ? (
-          <div className="flex flex-col gap-6">
-            {searchResults.map((blog: PostProps, index: number) => {
-              return <BlogItemCard key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;
-            })}
-          </div>
-        ) : (
-          <span className="text-gray">Tidak ada postingan ditemukan.</span>
-        )}
-      </Section>
-    </Layout>
+    <>
+      <NextSeo
+        title="Blog"
+        description="Membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja."
+        openGraph={{
+          title: "Blog",
+          description: "Membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja.",
+        }}
+      />
+      <Layout title="Blog | DhafitF" metaDesc="Daftar blog yang diposting oleh Dhafit Farenza">
+        <h1 className="pb-4 text-4xl font-bold">Blogs</h1>
+        <p>Saya menggunakan blog ini untuk membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja. Gunakan fitur pencarian di bawah untuk mencari.</p>
+        <div className="pt-4 pb-10">
+          <input
+            type="text"
+            className="w-full appearance-none rounded bg-dark-gray py-3 px-4 leading-tight text-white placeholder:text-[#fafafa61]  md:text-sm"
+            placeholder="Cari postingan"
+            onChange={handleSearchCommand}
+          />
+        </div>
+        {searchString.length === 0 && <FeaturedBlogs blogs={featBlogs} />}
+        <Section title="Semua Postingan" id="all-posts" className="w-full pb-10">
+          {searchResults.length > 0 ? (
+            <div className="flex flex-col gap-6">
+              {searchResults.map((blog: PostProps, index: number) => {
+                return <BlogItemCard key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;
+              })}
+            </div>
+          ) : (
+            <span className="text-gray">Tidak ada postingan ditemukan.</span>
+          )}
+        </Section>
+      </Layout>
+    </>
   );
 }
 
