@@ -1,9 +1,5 @@
 import { ReactNode } from "react";
 
-export interface LayoutProps {
-  children: ReactNode;
-}
-
 export interface LoadMoreProps {
   name: string;
   href: string;
