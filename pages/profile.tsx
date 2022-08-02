@@ -2,10 +2,11 @@ import { Layout } from "@components/Layout";
 import Image from "next/image";
 import { LinktreeItem } from "@components/Other";
 import { linktreeList } from "~/lib/_data/linktreeList";
+import type { NextPage } from "next";
 
-export default function profile() {
+const Profile: NextPage = () => {
   return (
-    <Layout title="Profile | DhafitF" metaDesc="Linktree dari Dhafit Farenza">
+    <Layout title="Profile - Dhafit Farenza">
       <div className="m-auto my-8 max-w-[335px]">
         <div className="flex flex-col content-center items-center justify-center">
           <div id="profile-picture">
@@ -36,4 +37,6 @@ export default function profile() {
       </div>
     </Layout>
   );
-}
+};
+
+export default Profile;

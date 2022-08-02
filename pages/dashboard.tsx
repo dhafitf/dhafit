@@ -5,7 +5,7 @@ import YoutubeCard from "~/components/Metrics/youtube";
 
 const Dashboard: NextPage = () => {
   return (
-    <Layout title="Dashboard | DhafitF" metaDesc="Dashboard pribadi milik Dhafit Farenza">
+    <Layout title="Dashboard - Dhafit Farenza" description="Personal dashboard milik Dhafit Farenza">
       <h1 className="pb-4 text-4xl font-bold">Dashboard</h1>
       <p className="pb-10">Ini adalah dashboard pribadi saya. Saya menggunakan ini untuk menampilkan metrik dari berbagai platform.</p>
       <YoutubeCard />

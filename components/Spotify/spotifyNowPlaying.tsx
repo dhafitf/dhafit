@@ -14,14 +14,14 @@ export default function SpotifyNowPlaying() {
           <SiSpotify className="h-6 w-6 text-[#1DB954]" />
         </div>
         <div className="inline-flex w-full items-center pl-8">
-          <span className="text-gray-400 truncate pr-1">Memutar</span>
+          <span className="text-gray-400 pr-1">Memutar</span>
           <a target="_blank" rel="noopener noreferrer nofollow" href={songUrl} className="cursor-pointer truncate font-semibold text-white hover:text-cyan">
             {title}
           </a>
-          <span className="text-gray-400 truncate pl-1">oleh</span>
+          <span className="text-gray-400 pl-1">oleh</span>
           {artists?.map((artist: { url: string; name: string }, index: number) => {
             return (
-              <span key={index} className="after:content-[','] last:after:content-[]">
+              <span key={index} className="truncate after:content-[','] last:after:content-[]">
                 <a target="_blank" rel="noopener noreferrer nofollow" href={artist.url} className="cursor-pointer truncate pl-1 font-semibold text-white hover:text-cyan">
                   {artist.name}
                 </a>

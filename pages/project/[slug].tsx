@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Layout } from "@components/Layout";
 import { getProjectBySlug, getAllProjects } from "~/lib/getPosts";
 import { GetStaticProps, GetStaticPaths } from "next";
@@ -9,8 +8,10 @@ import { PostProps } from "~/types/posts";
 
 export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, content }: PostProps) {
   const getDate = getTimestamp(timestamp);
+  const BaseUrl = "https://dhafit.vercel.app";
+  const ogImageUrl = thumb ? BaseUrl + thumb : `${BaseUrl}/android-chrome-192x192.png`;
   return (
-    <Layout title={title} metaDesc={subtitle} ogImage={thumb}>
+    <Layout title={title} image={ogImageUrl} description={subtitle} type="article" largeImageCard={Boolean(thumb)}>
       <article className="pb-10">
         <div className="relative overflow-hidden pt-[56.25%]">
           <PostThumb src={thumb} alt={title} />

@@ -1,12 +1,13 @@
+import type { NextPage } from "next";
 import { Layout, Section } from "@components/Layout";
 import Link from "next/link";
 import { socmedList } from "~lib/_data/socmedList";
 import { languageSkills } from "~/lib/_data/skillLists";
 import TechSection from "@section/techSection";
 
-export default function about() {
+const About: NextPage = () => {
   return (
-    <Layout title="Tentang | DhafitF" metaDesc="Tentang Dhafit Farenza aka Devzfz. Mulai dari pengenalan dan daftar social media">
+    <Layout title="Tentang - Dhafit Farenza">
       <div className="pb-10">
         <h1 className="pb-4 text-4xl font-bold">Tentang</h1>
         <div className="desc">
@@ -73,4 +74,6 @@ export default function about() {
       </div>
     </Layout>
   );
-}
+};
+
+export default About;

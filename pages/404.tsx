@@ -1,9 +1,10 @@
+import type { NextPage } from "next";
 import { Layout } from "@components/Layout";
 import Link from "next/link";
 
-export default function project() {
+const Custom404: NextPage = () => {
   return (
-    <Layout title="Halaman tidak ditemukan" metaDesc="Halaman tidak ditemukan">
+    <Layout title="Halaman tidak ditemukan">
       <div>
         <h1 className="pb-4 text-4xl font-bold">404 - Halaman tidak ditemukan.</h1>
         <p className="pb-10">Sepertinya kamu salah mengeja alamat. Mohon periksa kembali alamat halaman.</p>
@@ -13,4 +14,6 @@ export default function project() {
       </Link>
     </Layout>
   );
-}
+};
+
+export default Custom404;

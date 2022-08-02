@@ -12,7 +12,7 @@ import FeaturedBlogs from "@section/featuredBlogs";
 const Home: NextPage = ({ featProject, featBlog }: any) => {
   return (
     <>
-      <Layout title="DhafitF" metaDesc="Dhafit Farenza blog dan portfolio">
+      <Layout>
         <HeroSection />
         <TechSection />
         <Section title="Projek Unggulan" id="featured-projects" className="mb-7">
