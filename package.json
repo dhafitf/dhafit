@@ -21,7 +21,6 @@
     "markdown-it-anchor": "^8.6.4",
     "markdown-it-shiki-twoslash": "^2.1.0",
     "next": "^12.1.0",
-    "next-seo": "^5.5.0",
     "query-string": "^7.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",

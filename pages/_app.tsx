@@ -3,8 +3,6 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loading from "../components/Layout/loading";
-import { DefaultSeo } from "next-seo";
-import DefaultSeoProps from "~/lib/defaultSeoProps";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -42,7 +40,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <>
-      <DefaultSeo {...DefaultSeoProps} />
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
       <Component {...pageProps} />
     </>
