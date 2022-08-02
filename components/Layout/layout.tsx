@@ -10,6 +10,7 @@ export default function Layout(props: any) {
     title: "Dhafit Farenza",
     description: "Dhafit Farenza adalah penerjemah & full-stack developer yang berspesialisasi dalam membangun aplikasi web.",
     image: "https://dhafit.vercel.app/android-chrome-192x192.png",
+    largeImageCard: false,
     type: "website",
     ...customMeta,
   };
@@ -25,7 +26,7 @@ export default function Layout(props: any) {
         <meta property="og:type" content={meta.type} />
         <meta property="og:url" content={`https://dhafit.vercel.app${router.asPath}`} />
         <meta property="og:site_name" content="Dhafit Farenza" />
-        <meta name="twitter:card" content="summary_large_image" />
+        {meta.largeImageCard && <meta name="twitter:card" content="summary_large_image" />}
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />

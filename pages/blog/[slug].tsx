@@ -11,7 +11,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
   const BaseUrl = "https://dhafit.vercel.app";
   const ogImageUrl = thumb ? BaseUrl + thumb : `${BaseUrl}/android-chrome-192x192.png`;
   return (
-    <Layout title={title} image={ogImageUrl} description={subtitle} type="article">
+    <Layout title={title} image={ogImageUrl} description={subtitle} type="article" largeImageCard={Boolean(thumb)}>
       <article className="pb-10">
         {thumb && (
           <div className="relative overflow-hidden pt-[56.25%]">
