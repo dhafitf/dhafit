@@ -3,14 +3,15 @@ import { getAllProjects } from "~/lib/getPosts";
 import { GetStaticProps } from "next";
 import { PostProps } from "~/types/posts";
 import { ProjectItemCard } from "~/components/Posts";
+import useTranslation from "~/lib/useTranslation";
 
 export default function Project({ posts }: { posts: PostProps[] }) {
+  const { locale } = useTranslation();
+
   return (
     <Layout title="Project - Dhafit Farenza" description="Projects by Dhafit Farenza">
-      <h1 className="pb-4 text-4xl font-bold">Projek</h1>
-      <p className="pb-4">
-        Berikut ini adalah daftar dari beberapa projek yang pernah ataupun yang terus saya kerjakan. Diantara projek ini, ada projek menerjemahkan dan juga pemrograman.
-      </p>
+      <h1 className="pb-4 text-4xl font-bold">{locale["project.allProject"]}</h1>
+      <p className="pb-4">{locale["project.description"]}</p>
       <div className="relative grid gap-6 pb-10 md:grid-cols-2">
         {posts.map((post: PostProps) => {
           return <ProjectItemCard key={post.permalink} {...post} />;

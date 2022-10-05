@@ -5,6 +5,8 @@ import { GetStaticProps } from "next";
 import { PostProps } from "~/types/posts";
 import FeaturedBlogs from "@section/featuredBlogs";
 import { useState, useEffect } from "react";
+import filteredLocalePosts from "~/lib/filteredLocalePosts";
+import useTranslation from "~/lib/useTranslation";
 
 interface Props {
   posts: PostProps[];
@@ -13,43 +15,47 @@ interface Props {
 
 export default function Blog({ posts, featBlogs }: Props) {
   const [searchString, setSearchString] = useState("");
-  const [searchResults, setSearchResults] = useState<PostProps[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<PostProps[]>([]);
 
   useEffect(() => {
-    if (searchString === "") return setSearchResults(posts);
+    if (searchString === "") return setFilteredPosts(posts);
     const filteredPostsBySearch = posts.filter((blog) => {
       return blog.title.toLowerCase().includes(searchString.toLowerCase());
     });
 
-    setSearchResults(filteredPostsBySearch);
+    setFilteredPosts(filteredPostsBySearch);
   }, [posts, searchString]);
 
   const handleSearchCommand = (e: any) => {
     setSearchString(e.target.value);
   };
 
+  const { locale } = useTranslation();
+
+  const currentPosts = filteredLocalePosts(posts, locale);
+
   return (
     <Layout title="Blog - Dhafit Farenza" description="Membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja.">
       <h1 className="pb-4 text-4xl font-bold">Blogs</h1>
-      <p>Saya menggunakan blog ini untuk membagikan postingan atau sekedar berbagi tutorial dan tips tentang apa saja. Gunakan fitur pencarian di bawah untuk mencari.</p>
+      <p>{locale["blog.description"]}</p>
       <div className="pt-4 pb-10">
         <input
           type="text"
           className="w-full appearance-none rounded bg-dark-gray py-3 px-4 leading-tight text-white placeholder:text-[#fafafa61]  md:text-sm"
-          placeholder="Cari postingan"
+          placeholder={locale["blog.search.placeholder"]}
           onChange={handleSearchCommand}
         />
       </div>
       {searchString.length === 0 && <FeaturedBlogs blogs={featBlogs} />}
-      <Section title="Semua Postingan" id="all-posts" className="w-full pb-10">
-        {searchResults.length > 0 ? (
+      <Section title={locale["blog.allPosts"]} id="all-posts" className="w-full pb-10">
+        {filteredPosts.length > 0 ? (
           <div className="flex flex-col gap-6">
-            {searchResults.map((blog: PostProps, index: number) => {
+            {currentPosts.map((blog: PostProps, index: number) => {
               return <BlogItemCard key={index} title={blog.title} subtitle={blog.subtitle} permalink={blog.permalink} timestamp={blog.timestamp} />;
             })}
           </div>
         ) : (
-          <span className="text-gray">Tidak ada postingan ditemukan.</span>
+          <span className="text-gray">{locale["blog.notFound"]}</span>
         )}
       </Section>
     </Layout>
