@@ -6,6 +6,7 @@ export interface DefaultPostProps {
   tags: string[];
   featured: boolean;
   order: number;
+  isNotTranslated?: boolean;
 }
 
 export interface PostLoaderProps {
