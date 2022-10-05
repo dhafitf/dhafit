@@ -16,9 +16,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
         <div className="relative overflow-hidden pt-[56.25%]">
           <PostThumb src={thumb} alt={title} />
         </div>
-        <div className="pt-4 font-mono text-sm tracking-widest">
-          {getDate.day}, {getDate.date}
-        </div>
+        <div className="pt-4 font-mono text-sm tracking-widest">{getDate}</div>
         <h1 className="py-3 text-3xl font-bold">{title}</h1>
         <div className="flex gap-2">
           {tags.map((tag: {}, index: number) => (
