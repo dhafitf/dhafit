@@ -5,11 +5,15 @@ import markdownToHtml from "~/lib/markdownToHtml";
 import getTimestamp from "~/lib/getTimestamp";
 import PostThumb from "@components/Other/postThumb";
 import { PostProps } from "~/types/posts";
+import useTranslation from "~/lib/useTranslation";
+import { NotTranslatedProject } from "@components/Other/notTranslatedWarning";
 
 export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, content }: PostProps) {
   const getDate = getTimestamp(timestamp);
   const BaseUrl = "https://dhafit.vercel.app";
   const ogImageUrl = thumb ? BaseUrl + thumb : `${BaseUrl}/android-chrome-192x192.png`;
+
+  const { locale } = useTranslation();
   return (
     <Layout title={title} image={ogImageUrl} description={subtitle} type="article" largeImageCard={Boolean(thumb)}>
       <article className="pb-10">
@@ -26,6 +30,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
           ))}
         </div>
         <div className="mb-8 mt-4 w-full border-[1px] border-[#3d3d3d]"></div>
+        {locale.lang !== "en" && <NotTranslatedProject />}
         <section id="article" className="prose prose-invert" dangerouslySetInnerHTML={{ __html: content }} />
       </article>
     </Layout>

@@ -31,4 +31,26 @@ const NotTranslatedWarning = () => {
   );
 };
 
+export const NotTranslatedProject = () => {
+  return (
+    <div className="mb-8 flex gap-4 rounded-md bg-[#2c2c2b] p-4">
+      <SiGoogletranslate className="text-lg" />
+      <div>
+        <span className="text-orange-300">Konten belum diterjemahkan</span>
+        <br />
+        <div className="text-sm">
+          Halaman projek tidak menyediakan terjemahan bahasa Indonesia.
+          <br />
+          Gunakan
+          <a target="_blank" rel="noopener noreferrer" href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=id">
+            {" "}
+            Google Translate Extension{" "}
+          </a>
+          untuk menerjemahkan halaman ini.
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default NotTranslatedWarning;
