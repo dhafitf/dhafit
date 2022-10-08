@@ -8,7 +8,7 @@ export default function Layout(props: any) {
   const router = useRouter();
   const meta = {
     title: "Dhafit Farenza",
-    description: "Dhafit Farenza adalah penerjemah & full-stack developer yang berspesialisasi dalam membangun aplikasi web.",
+    description: "Translator & full-stack developer specializing in building web applications",
     image: "https://dhafit.vercel.app/android-chrome-192x192.png",
     largeImageCard: false,
     type: "website",
@@ -33,7 +33,7 @@ export default function Layout(props: any) {
         <meta name="twitter:site" content="@dhafitf" />
         <meta name="twitter:creator" content="@dhafitf" />
         <meta name="robots" content="follow, index" />
-        <meta name="keywords" content="translator, full-stack, developer, web, application, javascript, typescript, blog, portfolio, nextjs" />
+        <meta name="keywords" content="translator, full-stack, developer, web, application, javascript, typescript, blog, portfolio, nextjs, dhafitf, devzfz, dhafit" />
         <link rel="canonical" href={`https://dhafit.vercel.app${router.asPath}`} />
       </Head>
       <Header />
