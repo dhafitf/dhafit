@@ -1,6 +1,6 @@
 ---
 title: Nayeon - Discord bot
-subtitle: Discord bot untuk mengirim update tentang TWICE
+subtitle: Discord bot to post updates about TWICE
 timestamp: 2021/03/18
 tags:
   - "Javascript"
@@ -10,8 +10,8 @@ featured: true
 order: 5
 ---
 
-Pada project ini, saya membuat discord bot yang berguna untuk mengirimkan update berita dan postingan tentang idol group TWICE.
+In this project, I created a discord bot that is useful for sending news updates and posts about the idol group TWICE.
 
-Untuk mengundang bot ini, silahkan klik [undang](https://discord.com/api/oauth2/authorize?client_id=939369011773321336&permissions=139855326334&scope=bot%20applications.commands)
+To invite this bot, please click [invite](https://discord.com/api/oauth2/authorize?client_id=939369011773321336&permissions=139855326334&scope=bot%20applications.commands)
 
-Kunjungi [website bot](https://bot.oncetwice.one/) untuk mengetahui perintah yang ada pada bot ini.
+Visit [Nayeon bot website](https://bot.oncetwice.one/) to find out what commands this bot has.

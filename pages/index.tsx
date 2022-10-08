@@ -8,14 +8,17 @@ import { ProjectItemCard } from "~/components/Posts";
 import HeroSection from "@section/heroSection";
 import TechSection from "@section/techSection";
 import FeaturedBlogs from "@section/featuredBlogs";
+import useTranslation from "~/lib/useTranslation";
 
 const Home: NextPage = ({ featProject, featBlog }: any) => {
+  const { locale } = useTranslation();
+
   return (
     <>
       <Layout>
         <HeroSection />
         <TechSection />
-        <Section title="Projek Unggulan" id="featured-projects" className="mb-7">
+        <Section title={locale["featured.project"]} id="featured-projects" className="mb-7">
           <div className="relative grid gap-6 pb-6 md:grid-cols-2">
             {featProject.map((post: PostProps) => {
               return <ProjectItemCard key={post.permalink} {...post} />;

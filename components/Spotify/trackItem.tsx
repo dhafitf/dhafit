@@ -31,7 +31,7 @@ export default function TrackItem({ index, track, isSkeleton }: TrackItemProps) 
     }
     return (
       <>
-        <div className="ml-3 flex w-full min-w-0 flex-1">
+        <div className="ml-3 flex w-full min-w-0 flex-1 animate-pulse">
           <div className="h-12 w-12 bg-zinc-700"></div>
           <div className="ml-3 flex min-w-0 flex-1 flex-col justify-center gap-1">
             <div className="h-5 w-full bg-zinc-700"></div>

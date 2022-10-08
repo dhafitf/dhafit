@@ -1,7 +1,7 @@
 ---
-title: Using the Spotify API with Next.js
-subtitle: In this post, I will share a tutorial on getting the top tracks and currently playing on Spotify using the Next.js API.
-timestamp: Saturday, July 30 2022
+title: Menggunakan API Spotify dengan Next.js
+subtitle: Pada postingan kali ini, saya akan membagikan tutorial mendapatkan Top tracks dan lagu yang sedang diputar di Spotify, menggunakan Next.js API.
+timestamp: Sabtu, 30 Juli 2022
 thumb:
 tags:
   - "Spotify"
@@ -11,25 +11,25 @@ featured: true
 order: 1
 ---
 
-In this post, I will share a tutorial on getting the top tracks and currently playing on [Spotify](https://www.spotify.com/), using the [Next.js](https://nextjs.org/) API. For example, you can see the [dashboard](/dashboard) page.
+Pada postingan kali ini, saya akan membagikan tutorial mendapatkan Top tracks dan lagu yang sedang diputar di [Spotify](https://www.spotify.com/), menggunakan [Next.js](https://nextjs.org/) API. Sebagai contoh, kamu bisa melihat halaman [dashboard](/dashboard).
 
-## Creating a Spotify App
+## Membuat Spotify App
 
-We need to do this to get the credentials that will be used to authenticate the API.
+Kita perlu melakukan ini untuk mendapatkan kredensial yang akan digunakan untuk mengautentikasikan API.
 
-- Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) and log in to your account.
-- Click "**Create an App**".
-- Fill in the name and description then click "**Create**".
-- Click "**Show Client Secret**".
-- Save Client ID and Secret to `.env` file.
-- Click "**Edit Settings**".
-- Add `http://localhost:3000` to redirect URIs.
+- Pergi ke [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) dan masuk ke akun kamu.
+- Klik "**Create an App**".
+- Isi nama dan deskripsinya lalu klik "**Create**".
+- Klik "**Show Client Secret**".
+- Simpan Client ID dan Secret ke file `.env`.
+- Klik "**Edit Settings**".
+- Tambahkan `http://localhost:3000` pada redirect URIs.
 
-## Authentication
+## Autentikasi
 
-We need to get the authorization `code` by doing a _request_ via a URL filled with the required parameters.
+Kita perlu mendapatkan `code` otorisasi dengan cara melakukan _request_ melalui URL yang diisi dengan parameter yang diperlukan.
 
-Please copy the URL below. Change `client_id` and `scope` as you like. Since in this tutorial we only want to read the top track and the currently playing, we only need _scope_ **user-top-read** and **user-read-currently-playing**, you can read more about scope [here](https://developer.spotify.com/documentation/general/guides/authorization/scopes/).
+Silahkan salin URL dibawah. Ganti `client_id` dan `scope` yang kamu inginkan. Karena pada tutorial ini kita hanya ingin membaca top track dan lagu yang sedang dimainkan, maka hanya perlu _scope_ **user-top-read** dan **user-read-currently-playing**, kamu dapat membaca tentang scope [di sini](https://developer.spotify.com/documentation/general/guides/authorization/scopes/)
 
 ```
 https://accounts.spotify.com/id/authorize?
@@ -37,25 +37,25 @@ client_id=9b11ebc6d65840eebb0db51c15b211eb&response_type=code&
 redirect_uri=http://localhost:3000/&scope=user-top-read%20user-read-currently-playing
 ```
 
-After authorization, you will be redirected to your `redirect_uri` earlier. In the URL, there is a `code` query parameter. Save that value.
+Setelah otorisasi, kamu akan diarahkan kembali ke `redirect_uri` kamu tadi. Di URL, ada parameter kueri `code`. Simpan nilai tersebut.
 
 ```
 http://localhost:3000/?code=AQCaXamT6nbRDghdG...dyRPlQ
 ```
 
-Next, we need a `refresh_token`. You have to generate a Base 64 encoded string containing the client ID and secret from earlier. You can use [this tool](https://www.base64encode.org/) to encode it. The format should be `client_id:client_secret`.
+Selanjutnya, kita memperlukan `refresh_token`. Kamu harus men-generate Base 64 encoded string yang berisi client ID dan secret dari sebelumnya. Kamu bisa menggunakan [alat ini](https://www.base64encode.org/) untuk men-encodenya. Formatnya harus `client_id:client_secret`.
 
 ```bash
 curl -H "Authorization: Basic <base64 encoded client_id:client_secret>" -d grant_type=authorization_code -d code=<code> -d redirect_uri=http://localhost:3000/ https://accounts.spotify.com/api/token
 ```
 
-Change the command above according to your data. If so, it should be like this. _(some of my data will be disguised)_
+Ubah perintah di atas sesuai dengan data milikmu. Jika sudah harusnya akan seperti ini. _(beberapa data milik saya akan saya samarkan)_
 
 ```bash
 curl -H "Authorization: Basic OWIxMWViYzZkN...UyZDYwZGI=" -d grant_type=authorization_code -d code=AQCaXamT6nbRDghdG...dyRPlQ -d redirect_uri=http://localhost:3000/ https://accounts.spotify.com/api/token
 ```
 
-After doing POST request, you will receive a JSON as below.
+Setelah melakukan POST request di atas, kamu akan menerima sebuah JSON seperti di bawah.
 
 ```json
 {
@@ -67,9 +67,9 @@ After doing POST request, you will receive a JSON as below.
 }
 ```
 
-## Using the Spotify API
+## Menggunakan API Spotify
 
-We have managed to get all the necessary data. Next, create a `.env.local` file and fill it with the values you got earlier.
+Kita telah berhasil mendapatkan semua data yang diperlukan. Selanjutnya, buatlah file `.env.local` dan isi dengan nilai yang kalian dapatkan tadi.
 
 ```env
 SPOTIFY_CLIENT_ID=
@@ -77,7 +77,7 @@ SPOTIFY_CLIENT_SECRET=
 SPOTIFY_REFRESH_TOKEN=
 ```
 
-We have to request `access_token` using the client ID, client secret, and refresh_token we got earlier.
+Kita harus meminta `access_token` menggunakan client ID, client secret dan refresh_token yang tadi kita dapatkan.
 
 ```js
 // lib/spotify.js
@@ -108,7 +108,7 @@ const getAccessToken = async () => {
 };
 ```
 
-We will use this `access_token` to request top tracks. I assume you entered the `user-top-read` scope in the scope section earlier.
+Kita akan menggunakan `access_token` ini untuk melakukan request top tracks. Saya anggap tadi kamu memasukkan scope `user-top-read` pada bagian scope tadi.
 
 ```js
 // lib/spotify.js
@@ -132,11 +132,11 @@ export const getTopTracks = async () => {
 };
 ```
 
-In the above code, there is a query `time_range`, because I want to get the top track for the past 4 weeks, so I added `short_term`, you can read about `time_range` [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-users-top-artists-and-tracks).
+Pada kode di atas, terdapat query `time_range`, karena saya ingin mendapatkan top track selama 4 minggu ke belakang, maka saya menambahkan `short_term`, kamu dapat membaca tentang `time_range` [di sini](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-users-top-artists-and-tracks).
 
-## Creating API endpoints
+## Membuat endpoint API
 
-First you have to create a new file in `pages/api/spotify/top-tracks.js`. Then import the `getTopTracks` function that we created earlier.
+Pertama, kamu harus membuat file baru pada `pages/api/spotify/top-tracks.js`. Lalu import fungsi `getTopTracks` yang kita buat tadi.
 
 ```js
 // pages/api/spotify/top-tracks.js
@@ -160,7 +160,7 @@ export default async (_, res) => {
 };
 ```
 
-This will give you the top 10 songs that you play most frequently. You can change the code above as you wish. If you have done all the things above, you will get data like below.
+Ini akan memberikan 10 teratas lagu yang sering kamu putar. Kamu dapat mengubah kode di atas sesuai keinginan. Jika sudah melakukan semua hal di atas, kalian akan mendapatkan data seperti di bawah ini.
 
 ```json
 {
@@ -194,6 +194,6 @@ This will give you the top 10 songs that you play most frequently. You can chang
 }
 ```
 
-## Example
+## Contoh
 
-You can see an example of its implementation in [dashboard](/dashboard). For the code, see [here](https://github.com/dhafitf/dhafit/blob/master/lib/spotify.ts). In the repository, there is also a code to display the currently playing song.
+Kamu dapat melihat contoh penerapannya di [dashboard](/dashboard). Untuk kodenya, dapat dilihat [di sini](https://github.com/dhafitf/dhafit/blob/master/lib/spotify.ts). Pada repositori tersebut juga terdapat kode untuk menampilkan lagu yang sedang dimainkan.

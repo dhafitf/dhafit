@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loading from "../components/Layout/loading";
+import { LocaleContextProvider } from "~/contexts/i18nContext";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -39,10 +40,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [router.events]);
 
   return (
-    <>
+    <LocaleContextProvider>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
       <Component {...pageProps} />
-    </>
+    </LocaleContextProvider>
   );
 };
 
