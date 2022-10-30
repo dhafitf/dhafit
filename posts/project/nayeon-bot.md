@@ -5,6 +5,9 @@ timestamp: 2021/03/18
 tags:
   - "Javascript"
   - "MongoDB"
+  - "Typescript"
+  - "React"
+  - "Nextjs"
 thumb: /assets/project/Screenshot_83.png
 featured: true
 order: 5
