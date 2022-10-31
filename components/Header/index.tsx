@@ -26,8 +26,10 @@ export default function Header() {
             {navLinks.map((link) => {
               return (
                 <li key={link.path}>
-                  <Link href={link.path}>
-                    <a className={router.pathname === `${link.path}` ? "font-semibold text-white" : "text-gray hover:text-white"}>{link.label}</a>
+                  <Link
+                    href={link.path}
+                    className={router.pathname === `${link.path}` ? "font-semibold text-white" : "text-gray hover:text-white"}>
+                    {link.label}
                   </Link>
                 </li>
               );

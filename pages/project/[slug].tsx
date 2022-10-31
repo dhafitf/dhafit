@@ -3,7 +3,7 @@ import { getProjectBySlug, getAllProjects } from "~/lib/getPosts";
 import { GetStaticProps, GetStaticPaths } from "next";
 import markdownToHtml from "~/lib/markdownToHtml";
 import getTimestamp from "~/lib/getTimestamp";
-import PostThumb from "@components/Other/postThumb";
+import { PostThumb } from "@components/Posts";
 import { PostProps } from "~/types/posts";
 import useTranslation from "~/lib/useTranslation";
 import { NotTranslatedProject } from "@components/Other/notTranslatedWarning";
@@ -17,7 +17,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
   return (
     <Layout title={title} image={ogImageUrl} description={subtitle} type="article" largeImageCard={Boolean(thumb)}>
       <article className="pb-10">
-        <div className="relative overflow-hidden pt-[56.25%]">
+        <div className="relative overflow-hidden">
           <PostThumb src={thumb} alt={title} />
         </div>
         <div className="pt-4 font-mono text-sm tracking-widest">{getDate}</div>

@@ -9,10 +9,8 @@ const MoreButton = ({ name, href, className }: LoadMoreProps) => {
 
   return (
     <div className={clsx("font-medium ", className)}>
-      <Link href={href}>
-        <a className="inline-flex items-center gap-2 text-gray transition-colors hover:text-cyan">
-          {locale["viewAllButton"]} {name} <FaLongArrowAltRight className="text-lg" />
-        </a>
+      <Link href={href} className="inline-flex items-center gap-2 text-gray transition-colors hover:text-cyan">
+        {locale["viewAllButton"]} {name} <FaLongArrowAltRight className="text-lg" />
       </Link>
     </div>
   );
