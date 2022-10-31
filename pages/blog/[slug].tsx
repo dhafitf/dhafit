@@ -1,7 +1,8 @@
 import { Layout } from "@components/Layout";
 import { getAllBlogs, getBlogBySlug } from "~/lib/getPosts";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { PostThumb, BlogFooter, NotTranslatedWarning } from "@components/Other";
+import { BlogFooter, NotTranslatedWarning } from "@components/Other";
+import { PostThumb } from "@components/Posts";
 import { PostProps } from "~/types/posts";
 import markdownToHtml from "~/lib/markdownToHtml";
 import { useEffect } from "react";
@@ -35,7 +36,7 @@ export default function BlogPostPage({ tags, title, subtitle, timestamp, thumb, 
     <Layout title={title} image={ogImageUrl} description={subtitle} type="article" largeImageCard={Boolean(thumb)}>
       <article className="pb-10">
         {thumb && (
-          <div className="relative overflow-hidden pt-[56.25%]">
+          <div className="relative overflow-hidden">
             <PostThumb src={thumb} alt={title} />
           </div>
         )}

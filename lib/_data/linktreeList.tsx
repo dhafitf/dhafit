@@ -6,7 +6,7 @@ export const linktreeList = [
   {
     href: "https://trakteer.id/dhafid",
     text: "Trakteer",
-    icon: <Image src="/assets/icon/lines-trakteer-icon.png" alt="Trakteer logo" width="100%" height="100%" />,
+    icon: <Image src="/assets/icon/lines-trakteer-icon.png" alt="Trakteer logo" width={16} height={16} />,
   },
   { href: "https://www.instagram.com/dhafitf", text: "Instagram", icon: <FaInstagram /> },
   { href: "https://www.nogisub.com/", text: "Fansub", icon: <FaBloggerB /> },
