@@ -4,7 +4,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loading from "../components/Layout/loading";
 import { LocaleContextProvider } from "~/contexts/i18nContext";
+import { Montserrat } from "@next/font/google";
 
+const montserratVariable = Montserrat();
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
 
@@ -42,7 +44,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <LocaleContextProvider>
       <Loading isRouteChanging={state.isRouteChanging} key={state.loadingKey} />
-      <Component {...pageProps} />
+      <main className={montserratVariable.className}>
+        <Component {...pageProps} />
+      </main>
     </LocaleContextProvider>
   );
 };

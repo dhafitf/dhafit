@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^13.0.0",
     "@tanem/react-nprogress": "^3.0.79",
     "dotenv": "^10.0.0",
     "googleapis": "^105.0.0",
@@ -20,10 +21,10 @@
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.4",
     "markdown-it-shiki-twoslash": "^2.1.0",
-    "next": "^12.1.0",
+    "next": "^13.0.0",
     "query-string": "^7.1.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.2.0",
     "swr": "^1.2.2"
   },
@@ -35,7 +36,7 @@
     "@types/react": "17.0.19",
     "autoprefixer": "^10.4.4",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0",
+    "eslint-config-next": "^13.0.0",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",
