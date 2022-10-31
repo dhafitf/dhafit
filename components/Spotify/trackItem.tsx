@@ -15,16 +15,14 @@ export default function TrackItem({ index, track, isSkeleton }: TrackItemProps) 
       const { album, albumImageUrl, artist, title, songUrl } = track;
       return (
         <>
-          <Link href={songUrl}>
-            <a className="ml-3 flex w-full min-w-0 flex-1 text-white hover:text-cyan">
-              <div className="h-12 w-12">
-                <Image src={albumImageUrl} alt={album} width={48} height={48} />
-              </div>
-              <div className="ml-3 flex min-w-0 flex-1 flex-col justify-center">
-                <div className="truncate font-medium">{title}</div>
-                <div className="truncate text-sm text-gray">{artist}</div>
-              </div>
-            </a>
+          <Link href={songUrl} className="ml-3 flex w-full min-w-0 flex-1 text-white hover:text-cyan">
+            <div className="relative">
+              <Image src={albumImageUrl} alt={album} width={48} height={48} draggable={false} />
+            </div>
+            <div className="ml-3 flex min-w-0 flex-1 flex-col justify-center">
+              <div className="truncate font-medium">{title}</div>
+              <div className="truncate text-sm text-gray">{artist}</div>
+            </div>
           </Link>
         </>
       );

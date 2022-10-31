@@ -8,12 +8,14 @@ import useTranslation from "~/lib/useTranslation";
 
 function FeaturedBlogItem({ title, subtitle, permalink, timestamp }: PostProps) {
   return (
-    <Link href="/blog/[slug]" as={`/blog/${permalink}`}>
-      <a className="cursor-pointer rounded-md border border-[#979797] px-3 py-4 text-[#fafafa] transition-all hover:bg-light-gray">
-        <span className="text-sm text-gray">{timestamp}</span>
-        <h3 className="truncate-3 py-2 font-semibold">{title}</h3>
-        <p className="truncate-3 text-sm text-[#D0D0D0]">{subtitle}</p>
-      </a>
+    <Link
+      href="/blog/[slug]"
+      as={`/blog/${permalink}`}
+      className="cursor-pointer rounded-md border border-[#979797] px-3 py-4 text-[#fafafa] transition-all hover:bg-light-gray"
+    >
+      <span className="text-sm text-gray">{timestamp}</span>
+      <h3 className="truncate-3 py-2 font-semibold">{title}</h3>
+      <p className="truncate-3 text-sm text-[#D0D0D0]">{subtitle}</p>
     </Link>
   );
 }
@@ -25,7 +27,6 @@ type Props = {
 
 export default function FeaturedBlogs({ blogs, withLoadmore }: Props) {
   const { locale } = useTranslation();
-
   const currentPosts = filteredLocalePosts(blogs, locale);
 
   return (
