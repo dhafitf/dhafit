@@ -12,7 +12,7 @@ export default function Footer() {
         {socmedList.map((socmed: Props) => {
           return (
             <li key={socmed.href}>
-              <a href={socmed.href} className="text-lg text-white hover:text-cyan">
+              <a href={socmed.href} target="_blank" rel="noopener noreferrer" className="text-lg text-white hover:text-cyan">
                 {socmed.icon}
               </a>
             </li>
