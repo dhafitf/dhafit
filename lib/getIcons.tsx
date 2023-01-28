@@ -50,6 +50,8 @@ import {
   SiMarkdown,
   SiExpress,
   SiGoogletranslate,
+  SiVuedotjs,
+  SiBootstrap,
 } from "react-icons/si";
 
 const ICON_TYPES = new Map(
@@ -74,6 +76,8 @@ const ICON_TYPES = new Map(
     indonesia: <IndonesianFlag />,
     jepang: <JapaneseFlag />,
     inggris: <EnglishFlag />,
+    vuejs: <SiVuedotjs />,
+    bootstrap: <SiBootstrap />,
   })
 );
 
