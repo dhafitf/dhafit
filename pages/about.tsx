@@ -9,7 +9,7 @@ const About: NextPage = () => {
   const languageSkills = locale["about.languageSkills"] || [];
 
   return (
-    <Layout title="Tentang - Dhafit Farenza">
+    <Layout title={`${locale.about} - Dhafit Farenza`}>
       <div className="pb-10">
         <h1 className="pb-4 text-4xl font-bold">{locale.about}</h1>
         <div className="desc">
@@ -20,7 +20,10 @@ const About: NextPage = () => {
           <ul className="grid grid-cols-[repeat(auto-fill,_minmax(98px,_1fr))] gap-3">
             {languageSkills.map((item: string, index: number) => {
               return (
-                <li key={index} className="flex h-8 w-24 items-center justify-center rounded-md bg-lavender text-xs tracking-widest">
+                <li
+                  key={index}
+                  className="flex h-8 w-24 items-center justify-center rounded-md bg-lavender text-xs tracking-widest"
+                >
                   {item}
                 </li>
               );
