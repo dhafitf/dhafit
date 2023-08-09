@@ -10,6 +10,7 @@ export const techSkills = [
   "Figma",
   "Tailwind CSS",
   "MongoDB",
+  "Prisma",
   "Express",
   "Vue.js",
   "Bootstrap",

@@ -52,6 +52,7 @@ import {
   SiGoogletranslate,
   SiVuedotjs,
   SiBootstrap,
+  SiPrisma,
 } from "react-icons/si";
 
 const ICON_TYPES = new Map(
@@ -78,6 +79,7 @@ const ICON_TYPES = new Map(
     inggris: <EnglishFlag />,
     vuejs: <SiVuedotjs />,
     bootstrap: <SiBootstrap />,
+    prisma: <SiPrisma />,
   })
 );
 
