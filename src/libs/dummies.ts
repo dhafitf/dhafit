@@ -21,7 +21,7 @@ export const blogs: BlogCardProps[] = [
     href: "/blogs/1",
   },
   {
-    title: "Using the Spotify API with Next.js",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisl turpis, rutrum non massa vel, sodales facilisis ligula.",
     href: "/blogs/1",
