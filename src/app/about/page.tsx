@@ -5,7 +5,7 @@ import TechsList from "@/molecules/TechsList"
 
 const AboutPage = () => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-7">
       <div className="relative">
         <h1 className="text-white font-bold text-3xl">About me</h1>
         <p className="pt-3">

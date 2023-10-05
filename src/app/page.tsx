@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex flex-col gap-12 mb-4">
       <HeroSection />
       <div className="relative">
-        <h3 className="text-2xl font-bold tracking-wider pb-6 text-white">Featured Projects</h3>
+        <h3 className="text-2xl font-bold tracking-wider pb-5 text-white">Featured Projects</h3>
         <ProjectsList projects={projects} />
         <CustomLink
           href="/projects"
@@ -19,7 +19,7 @@ export default function Home() {
         </CustomLink>
       </div>
       <div className="relative">
-        <h3 className="text-2xl font-bold tracking-wider pb-6 text-white">Blogs</h3>
+        <h3 className="text-2xl font-bold tracking-wider pb-5 text-white">Blogs</h3>
         <BlogsList blogs={blogs} />
         <CustomLink
           href="/blogs"

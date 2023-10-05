@@ -4,7 +4,7 @@ import BlogsListSection from "@/organisms/BlogsListSection"
 
 const BlogsPage = () => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-7">
       <div className="relative">
         <h1 className="text-white font-bold text-3xl">Blogs</h1>
         <p className="pt-3">
