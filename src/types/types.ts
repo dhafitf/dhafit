@@ -1,6 +1,6 @@
 interface ProjectCardProps {
   title: string
-  tag: string
+  tags: string[]
   image: string
   href: string
 }
