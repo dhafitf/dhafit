@@ -10,7 +10,7 @@ const SocialsList = () => {
         <CustomLink
           key={item.path}
           href={item.path}
-          className="py-3 border-b-2 border-[#333435] hover:border-white hover:text-white flex items-center justify-between"
+          className="py-3 border-b-2 border-[#333435] hover:border-white hover:text-white flex items-center justify-between text-sm"
         >
           <span className="tracking-wider font-medium">{item.label}</span>
           <span>{item.nick}</span>
