@@ -3,11 +3,13 @@ import { useMDXComponent } from "next-contentlayer/hooks"
 import CustomLink from "@/atoms/CustomLink"
 import FigureImage from "@/molecules/FigureImage"
 import Callout from "@/molecules/Callout"
+import DetailsList from "@/organisms/DetailsList"
 
 const components = {
   a: CustomLink,
-  Callout: Callout,
-  FigureImage: FigureImage,
+  Callout,
+  DetailsList,
+  FigureImage,
 }
 
 export function MdxArticle({ code }: { code: string }) {
