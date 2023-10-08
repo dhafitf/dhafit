@@ -23,7 +23,7 @@ export const navItems = [
   { label: "About", path: "/about" },
   { label: "Blogs", path: "/blogs" },
   { label: "Projects", path: "/projects" },
-  { label: "Dashboards", path: "/dashboards" },
+  { label: "Misc", path: "/misc" },
 ]
 
 export const socialItems = [
