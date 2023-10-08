@@ -42,6 +42,7 @@ export const Blog = defineDocumentType(() => ({
     },
     featured: {
       type: "boolean",
+      default: false,
     },
   },
   computedFields,
