@@ -16,7 +16,7 @@ const FigureImage = ({ images }: Props) => {
   return (
     <div className={cn(!isSingleImage && "grid sm:grid-cols-2 gap-4")}>
       {images.map((image, index) => (
-        <figure key={index} className="relative">
+        <figure key={index} className="relative rounded-lg overflow-hidden">
           <img src={image.src} alt={image.alt} className="object-contain" />
         </figure>
       ))}
