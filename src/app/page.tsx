@@ -1,10 +1,13 @@
-import { projects, blogs } from "~/libs/dummies"
+import { allBlogs } from "contentlayer/generated"
+import { projects } from "~/libs/dummies"
 import CustomLink from "@/atoms/CustomLink"
 import ProjectsList from "@/molecules/ProjectsList"
 import BlogsList from "@/molecules/BlogsList"
 import HeroSection from "@/organisms/HeroSection"
 
 export default function Home() {
+  const featuredBlogs = allBlogs.filter((blog) => blog.featured)
+
   return (
     <div className="flex flex-col gap-12 mb-4">
       <HeroSection />
@@ -20,7 +23,7 @@ export default function Home() {
       </div>
       <div className="relative">
         <h3 className="text-2xl font-bold tracking-wider pb-5 text-white">Blogs</h3>
-        <BlogsList blogs={blogs} />
+        <BlogsList blogs={featuredBlogs} />
         <CustomLink
           href="/blogs"
           className="px-4 py-2 flex items-center justify-center w-full mt-4 border-2 border-baseBg rounded-lg cursor-pointer text-sm hover:text-white hover:bg-baseBg"

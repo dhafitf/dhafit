@@ -3,19 +3,18 @@
 import { useState, useEffect } from "react"
 
 import cn from "~/libs/cn"
-import { blogs as blogsList } from "~/libs/dummies"
 import BlogsList from "@/molecules/BlogsList"
 
-const BlogsListSection = () => {
+const BlogsListSection = ({ blogs }: { blogs: BlogProps[] }) => {
   const [search, setSearch] = useState("")
-  const [blogs, setBlogs] = useState(blogsList)
+  const [blogsList, setBlogsList] = useState(blogs)
 
   useEffect(() => {
-    const filteredBlogs = blogsList.filter((blog) => {
+    const filteredBlogs = blogs.filter((blog) => {
       return blog.title.toLowerCase().includes(search.toLowerCase())
     })
-    setBlogs(filteredBlogs)
-  }, [search])
+    setBlogsList(filteredBlogs)
+  }, [blogs, search])
 
   return (
     <div className="flex flex-col gap-5">
@@ -29,7 +28,7 @@ const BlogsListSection = () => {
           "rounded-lg p-3 text-white w-full text-sm"
         )}
       />
-      <BlogsList blogs={blogs} />
+      <BlogsList blogs={blogsList} />
     </div>
   )
 }
