@@ -7,6 +7,11 @@ interface ProjectCardProps {
 
 interface BlogCardProps {
   title: string
-  description: string
-  href: string
+  summary: string
+  slug: string
+}
+
+interface BlogProps extends BlogCardProps {
+  publishedAt: string
+  tags?: string[]
 }
