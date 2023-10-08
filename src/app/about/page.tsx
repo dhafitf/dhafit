@@ -16,8 +16,25 @@ const AboutPage = () => {
         </p>
       </div>
       <div className="flex flex-col gap-3">
-        <h3 className="text-xl font-semibold text-white">Tech stacks I use</h3>
+        <h3 className="text-xl font-semibold text-white">Tech stack</h3>
         <TechsList />
+      </div>
+      <div className="flex flex-col gap-3">
+        <h3 className="text-xl font-semibold text-white">Language</h3>
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-1">
+            <span className="font-medium">Bahasa Indonesia:</span>
+            <span className="text-sm text-gray-400">Native</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="font-medium">English:</span>
+            <span className="text-sm text-gray-400">Conversational</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="font-medium">Japanese:</span>
+            <span className="text-sm text-gray-400">Conversational</span>
+          </div>
+        </div>
       </div>
       <div className="flex flex-col gap-3">
         <h3 className="text-xl font-semibold text-white">Find me on</h3>
