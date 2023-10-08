@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cn(
           montserrat.className,
-          "bg-[#1c1e1f] text-gray-400 w-full max-w-3xl mx-auto px-5 mt-3 mb-6"
+          "bg-[#1c1e1f] text-gray-300 w-full max-w-3xl mx-auto px-5 mt-3 mb-6"
         )}
       >
         <Navbar />
