@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 
-const BlogCard = ({ title, slug, summary }: BlogCardProps) => {
+const BlogCard = ({ title, slug, summary }: BasicContentProps) => {
   return (
     <Link
       href={slug}

@@ -2,13 +2,13 @@ import Image from "next/image"
 import React from "react"
 import { notFound } from "next/navigation"
 
-import { allBlogs } from "contentlayer/generated"
+import { Blog, allBlogs } from "contentlayer/generated"
 import getPostFromSlug from "~/libs/getPostFromSlug"
 import { MdxArticle } from "@/organisms/MdxArticle"
 import BlogFooter from "@/molecules/BlogFooter"
 
 const BlogArticle = async ({ params }: { params: { slug: string } }) => {
-  const blog = await getPostFromSlug(allBlogs, params.slug)
+  const blog = (await getPostFromSlug(allBlogs, params.slug)) as Blog
   if (!blog) notFound()
 
   const GITHUB_REPO_URL = `https://github.com/dhafitf/dhafit/blob/master/contents/blogs/${blog.slugAsParams}.mdx`

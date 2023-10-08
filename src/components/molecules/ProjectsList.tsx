@@ -7,7 +7,7 @@ const ProjectsList = ({ projects }: { projects: ProjectCardProps[] }) => {
       {projects.length > 0 ? (
         <div className="grid sm:grid-cols-2 gap-4">
           {projects.map((project) => (
-            <ProjectCard key={project.href} {...project} />
+            <ProjectCard key={project.slug} {...project} />
           ))}
         </div>
       ) : (
