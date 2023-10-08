@@ -17,6 +17,10 @@
   border-radius: 10px;
 }
 
+.prose {
+  @apply max-w-3xl;
+}
+
 .prose a {
   @apply transition-all decoration-gray-600 underline-offset-2 decoration-[0.1em];
 }
