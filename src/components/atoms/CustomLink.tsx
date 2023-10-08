@@ -1,21 +1,22 @@
-import React from "react"
+import React, { AnchorHTMLAttributes } from "react"
 import Link from "next/link"
 
 import cn from "~/libs/cn"
 
-interface Props {
-  className?: string
-  href: string
-  children: React.ReactNode
-}
+const CustomLink = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  const { className, href, children } = props
 
-const CustomLink = ({ className, href, children }: Props) => {
-  const isOutside = href.startsWith("http")
+  if (href?.startsWith("#")) {
+    return <a {...props} />
+  }
+
+  const isOutside = href?.startsWith("http")
   const LinkComponent = isOutside ? "a" : Link
 
   return (
     <LinkComponent
-      href={href}
+      {...props}
+      href={`${href}`}
       className={cn("cursor-pointer hover:text-cyan", className)}
       target={isOutside ? "_blank" : undefined}
       rel={isOutside ? "noopener noreferrer nofollow" : undefined}
