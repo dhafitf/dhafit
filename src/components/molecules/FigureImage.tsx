@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
 
+import cn from "~/libs/cn"
+
 interface Props {
   images: {
     src: string
@@ -9,8 +11,10 @@ interface Props {
 }
 
 const FigureImage = ({ images }: Props) => {
+  const isSingleImage = images.length === 1
+
   return (
-    <div className="grid sm:grid-cols-2 gap-4">
+    <div className={cn(!isSingleImage && "grid sm:grid-cols-2 gap-4")}>
       {images.map((image, index) => (
         <figure key={index} className="relative">
           <img src={image.src} alt={image.alt} className="object-contain" />
