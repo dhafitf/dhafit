@@ -1,5 +1,6 @@
 import React, { Suspense } from "react"
 
+import { allProjects } from "contentlayer/generated"
 import ProjectsListSection from "@/organisms/ProjectsListSection"
 
 const ProjectsPage = () => {
@@ -13,7 +14,7 @@ const ProjectsPage = () => {
         </p>
       </div>
       <Suspense fallback={<span>Loading projects...</span>}>
-        <ProjectsListSection />
+        <ProjectsListSection projects={allProjects} />
       </Suspense>
     </div>
   )
