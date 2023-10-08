@@ -2,6 +2,7 @@ import { allBlogs, allProjects } from "contentlayer/generated"
 import CustomLink from "@/atoms/CustomLink"
 import ProjectsList from "@/molecules/ProjectsList"
 import BlogsList from "@/molecules/BlogsList"
+import CallToAction from "@/molecules/CallToAction"
 import HeroSection from "@/organisms/HeroSection"
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
           View other blogs
         </CustomLink>
       </div>
+      <CallToAction />
     </div>
   )
 }
