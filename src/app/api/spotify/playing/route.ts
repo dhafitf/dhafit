@@ -4,7 +4,7 @@ import { getNowPlaying } from "~/libs/spotify"
 export async function GET(request: Request) {
   try {
     const response = await getNowPlaying()
-    if (response.status === 204) return NextResponse.json({ isPlaying: false }, { status: 204 })
+    if (response.status === 204) return NextResponse.json({ isPlaying: false })
     const json: CurrentlyPlayingResponse = await response.json()
 
     const track: CurrentlyPlayingItem = {
