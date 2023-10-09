@@ -1,11 +1,15 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files"
+import {
+  defineDocumentType,
+  makeSource,
+  FieldDefs,
+  ComputedFields,
+} from "contentlayer/source-files"
 import remarkGfm from "remark-gfm"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 
-/** @type {import('contentlayer/source-files').ComputedFields} */
-const computedFields = {
+const computedFields: ComputedFields = {
   slug: {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath,
@@ -16,7 +20,7 @@ const computedFields = {
   },
 }
 
-const basicContentFields = {
+const basicContentFields: FieldDefs = {
   title: {
     type: "string",
     required: true,
@@ -82,20 +86,20 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       [
-        rehypePrettyCode,
+        rehypePrettyCode as any,
         {
           theme: "github-dark",
-          onVisitLine(node) {
+          onVisitLine(node: { children: string | any[] }) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }]
             }
           },
-          onVisitHighlightedLine(node) {
+          onVisitHighlightedLine(node: { properties: { className: string[] } }) {
             node.properties.className.push("line--highlighted")
           },
-          onVisitHighlightedWord(node) {
+          onVisitHighlightedWord(node: { properties: { className: string[] } }) {
             node.properties.className = ["word--highlighted"]
           },
         },
