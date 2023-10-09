@@ -2,6 +2,9 @@ const { withContentlayer } = require("next-contentlayer")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["i.scdn.co"],
+  },
   redirects: async () => {
     return [
       {
