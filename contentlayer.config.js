@@ -66,6 +66,10 @@ export const Project = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    publishOrder: {
+      type: "number",
+      required: true,
+    },
   },
   computedFields,
 }))
