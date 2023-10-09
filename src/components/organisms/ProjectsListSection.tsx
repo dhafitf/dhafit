@@ -20,9 +20,10 @@ const ProjectsListSection = ({ projects }: { projects: ProjectCardProps[] }) => 
   }
 
   useEffect(() => {
+    if (selectedTags.length === 0) return setProjectsList(projects)
+
     const filteredProjects = projectsList.filter((project) => {
-      project.tags = project.tags?.map((tag) => tag.toLowerCase())
-      return selectedTags.every((tag) => project.tags?.includes(tag.toLowerCase()))
+      return selectedTags.every((tag) => project.tags?.includes(tag))
     })
 
     setProjectsList(filteredProjects)
