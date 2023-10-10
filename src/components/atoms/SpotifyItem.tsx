@@ -2,7 +2,7 @@ import React from "react"
 
 import CustomLink from "@/atoms/CustomLink"
 
-type Props = Omit<NowPlayingResponse, "isPlaying" | "album" | "albumImageUrl">
+type Props = Omit<CurrentlyPlayingItem, "isPlaying" | "album" | "albumImageUrl">
 
 const SpotifyItem = ({ title, songUrl, artists }: Props) => {
   return (
