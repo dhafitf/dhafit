@@ -6,7 +6,7 @@ import Callout from "@/molecules/Callout"
 import DetailsList from "@/organisms/DetailsList"
 
 const components = {
-  a: CustomLink,
+  a: CustomLink as any,
   Callout,
   DetailsList,
   FigureImage,
