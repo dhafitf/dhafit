@@ -1,7 +1,13 @@
 import React, { Suspense } from "react"
+import type { Metadata } from "next"
 
 import { allProjects } from "contentlayer/generated"
 import ProjectsListSection from "@/organisms/ProjectsListSection"
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "A list of Dhafit's projects.",
+}
 
 const ProjectsPage = () => {
   return (

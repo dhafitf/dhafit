@@ -1,11 +1,49 @@
 import Image from "next/image"
 import React from "react"
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 
 import { Blog, allBlogs } from "contentlayer/generated"
 import getPostFromSlug from "~/libs/getPostFromSlug"
 import { MdxArticle } from "@/organisms/MdxArticle"
 import BlogFooter from "@/molecules/BlogFooter"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata | undefined> {
+  const blog = (await getPostFromSlug(allBlogs, params.slug)) as Blog
+  if (!blog) return
+
+  const { title, summary: description, publishedAt: publishedTime, thumbnail, slug } = blog
+  const ogImage = thumbnail
+    ? `https://dhafit.vercel.app${thumbnail}`
+    : `https://dhafit.vercel.app/og?title=${title}`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `https://dhafit.vercel.app/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  }
+}
 
 const BlogArticle = async ({ params }: { params: { slug: string } }) => {
   const blog = (await getPostFromSlug(allBlogs, params.slug)) as Blog
