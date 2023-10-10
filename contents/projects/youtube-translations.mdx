@@ -1,0 +1,48 @@
+---
+title: Youtube Translations
+summary: This is a list of all the videos that I'ved been translated, all of this is done voluntarily.
+featured: true
+thumbnail: /images/list-1.jpg
+publishOrder: 1
+category: Translations
+---
+
+<DetailsList
+  items={[
+    {
+      label: "Type",
+      value: "Voluntary",
+    },
+    {
+      label: "Link",
+      value: `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/to/youtube-translations`,
+    },
+    {
+      label: "Languages",
+      value: ["Bahasa Indonesia", "English", "Japanese"],
+    },
+  ]}
+/>
+
+### Overview
+
+You can see a list of my translations in the image below, or directly visit [Dhafit Farenza's Translyrics](https://www.youtube.com/playlist?list=PL4EITLGzp8_NYyi37SmIqDQPZPA70Ta6M).
+
+<div className="aspect-video mb-4">
+  <iframe
+    className="w-full h-full"
+    src="https://www.youtube.com/embed/videoseries?si=g7Q4XQvHm_axlROp&amp;list=PL4EITLGzp8_NYyi37SmIqDQPZPA70Ta6M"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
+
+<div className="flex flex-col gap-4">
+
+    <FigureImage images={[{ src: "/images/list-1.jpg", alt: "list 1" }]} />
+    <FigureImage images={[{ src: "/images/list-2.jpg", alt: "list 2" }]} />
+    <FigureImage images={[{ src: "/images/list-3.jpg", alt: "list 3" }]} />
+
+</div>
