@@ -1,45 +1,34 @@
-# dhafit portfolio page
-
-Source code for [dhafit.vercel.app](https://dhafit.vercel.app/)
-
- <img src="https://img.shields.io/github/last-commit/dhafitf/dhafit.xyz?color=blue">
- <img src="https://img.shields.io/github/repo-size/dhafitf/dhafit.xyz">
- <img src="https://img.shields.io/github/v/release/dhafitf/dhafit.xyz">
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-To get started running the project locally, please follow the steps below.
-
-First, clone this repository.
-
-```bash
-git clone https://github.com/dhafitf/dhafit.git
-```
-
-Then, go into the project root directory.
-
-```bash
-cd dhafit
-```
-
-Finally, run the development server.
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Usage
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-If you want to use [Google Analytics](https://analytics.google.com/), rename `.env.example` to `.env`, and fill all field.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-```bash
-NEXT_PUBLIC_GA_TRACKING_ID=
-```
+## Learn More
 
-## License
+To learn more about Next.js, take a look at the following resources:
 
-You can use this code except file inside of `posts`. If u want to use this code, create your own `.md` file.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-The source code to the website is available under the [MIT License](https://github.com/dhafitf/dhafit.xyz/blob/master/LICENSE).
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
