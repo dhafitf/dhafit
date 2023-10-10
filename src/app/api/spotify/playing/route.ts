@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { getNowPlaying } from "~/libs/spotify"
 
+export const revalidate = 30
 export async function GET(request: Request) {
   try {
     const response = await getNowPlaying()
