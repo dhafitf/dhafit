@@ -1,29 +1,46 @@
-import React, { AnchorHTMLAttributes } from "react"
+import React, { forwardRef } from "react"
 import Link from "next/link"
 
 import cn from "~/libs/cn"
 
-const CustomLink = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  const { className, href, children } = props
+type CustomLinkProps = React.PropsWithChildren<
+  {
+    className?: string
+    href: string
+    ref?: React.Ref<HTMLAnchorElement>
+  } & React.AnchorHTMLAttributes<HTMLAnchorElement>
+>
 
-  if (href?.startsWith("#")) {
-    return <a {...props} />
+const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>((props, ref) => {
+  const { className, href, children, ...rest } = props
+  const className_ = cn("cursor-pointer hover:text-cyan", className)
+
+  if (href.startsWith("#")) {
+    return <a {...rest}>{children}</a>
   }
 
-  const isOutside = href?.startsWith("http")
-  const LinkComponent = isOutside ? "a" : Link
+  if (href.startsWith("http")) {
+    return (
+      <a
+        {...rest}
+        href={href}
+        ref={ref}
+        className={className_}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        {children}
+      </a>
+    )
+  }
 
   return (
-    <LinkComponent
-      {...props}
-      href={`${href}`}
-      className={cn("cursor-pointer hover:text-cyan", className)}
-      target={isOutside ? "_blank" : undefined}
-      rel={isOutside ? "noopener noreferrer nofollow" : undefined}
-    >
+    <Link {...rest} href={href} ref={ref} className={className_}>
       {children}
-    </LinkComponent>
+    </Link>
   )
-}
+})
+
+CustomLink.displayName = "CustomLink"
 
 export default CustomLink
