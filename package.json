@@ -16,7 +16,7 @@
     "contentlayer": "^0.3.4",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
-    "next": "13.4.19",
+    "next": "13.5.0",
     "next-contentlayer": "^0.3.4",
     "postcss": "8.4.31",
     "query-string": "^8.1.0",
