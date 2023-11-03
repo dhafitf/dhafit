@@ -13,7 +13,7 @@ const SpotifyNowPlaying = () => {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <div className="overflow-hidden rounded-full">
+      <div className="overflow-hidden rounded-full min-w-[20px] min-h-[20px]">
         <SiSpotify
           className={cn("h-5 w-5", data?.isPlaying ? "text-[#1DB954]" : "text-gray-400")}
         />

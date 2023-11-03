@@ -4,7 +4,7 @@ import CustomLink from "@/atoms/CustomLink"
 
 const CallToAction = () => {
   return (
-    <div className="p-6 border border-white/10 rounded-lg text-sm flex items-center justify-between mb-6">
+    <div className="p-6 border border-white/10 rounded-lg text-sm flex max-sm:flex-col gap-4 sm:items-center justify-between mb-6">
       <div className="flex flex-col gap-1">
         <h4 className="text-lg font-semibold">Got a project in mind?</h4>
         <span className="text-gray-400">Reach out and let&lsquo;s make it happen!</span>

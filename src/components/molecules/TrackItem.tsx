@@ -25,7 +25,13 @@ const TrackItem = ({ index, album, albumImageUrl, artists, title, duration, song
       <div className="flex tabular-nums text-gray-400 text-sm">
         {index.toString().padStart(2, "0")}
       </div>
-      <Image src={albumImageUrl} alt={album} width={48} height={48} />
+      <Image
+        src={albumImageUrl}
+        alt={album}
+        width={48}
+        height={48}
+        className="min-w-[48px] min-h-[48px]"
+      />
       <div className="flex flex-col overflow-hidden">
         <CustomLink ref={trackRef} href={songUrl} className="font-semibold truncate text-gray-300">
           {title}

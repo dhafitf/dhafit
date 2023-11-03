@@ -6,7 +6,7 @@ type Props = Omit<CurrentlyPlayingItem, "isPlaying" | "album" | "albumImageUrl">
 
 const SpotifyItem = ({ title, songUrl, artists }: Props) => {
   return (
-    <div className="inline-flex items-center gap-1">
+    <div className="inline-flex items-center gap-1 overflow-hidden">
       <span>Playing</span>
       <CustomLink href={songUrl} className="truncate font-semibold">
         {title}
