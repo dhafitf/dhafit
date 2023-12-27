@@ -22,6 +22,7 @@ const HeroSection = () => {
       <div className="flex xs:items-center font-semibold max-xs:flex-col max-xs:gap-4">
         <CustomLink
           href="mailto:dhafidfz@gmail.com"
+          title="Send me an email"
           className="bg-baseBg hover:bg-hoverBg px-4 py-2 rounded-lg text-sm hover:text-white w-fit"
         >
           Get in touch
@@ -33,6 +34,7 @@ const HeroSection = () => {
               <CustomLink
                 key={item.path}
                 href={item.path}
+                title={item.label}
                 className="bg-baseBg hover:bg-hoverBg p-2 rounded-full hover:text-white"
               >
                 <Icon />

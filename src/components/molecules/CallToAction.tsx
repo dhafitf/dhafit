@@ -12,6 +12,7 @@ const CallToAction = () => {
       <div className="flex items-center font-semibold">
         <CustomLink
           href="mailto:dhafidfz@gmail.com"
+          title="Send me an email"
           className="bg-baseBg hover:bg-hoverBg border border-white/10 px-4 py-2 rounded-lg hover:text-white"
         >
           Get in touch
