@@ -19,14 +19,14 @@ const HeroSection = () => {
           <SpotifyNowPlaying />
         </Suspense>
       </div>
-      <div className="flex items-center font-semibold">
+      <div className="flex xs:items-center font-semibold max-xs:flex-col max-xs:gap-4">
         <CustomLink
           href="mailto:dhafidfz@gmail.com"
-          className="bg-baseBg hover:bg-hoverBg px-4 py-2 rounded-lg text-sm hover:text-white"
+          className="bg-baseBg hover:bg-hoverBg px-4 py-2 rounded-lg text-sm hover:text-white w-fit"
         >
           Get in touch
         </CustomLink>
-        <div className="flex items-center gap-3 ml-4">
+        <div className="flex items-center gap-3 xs:ml-4">
           {socialItems.map((item) => {
             const Icon = item.icon
             return (

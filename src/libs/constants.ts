@@ -16,6 +16,7 @@ import {
   SiPrisma,
   SiMarkdown,
   SiExpress,
+  SiUpwork,
 } from "react-icons/si"
 
 export const navItems = [
@@ -50,6 +51,12 @@ export const socialItems = [
     path: "https://youtube.com/@dhafitf",
     nick: "dhafitf",
     icon: AiOutlineYoutube,
+  },
+  {
+    label: "Upwork",
+    path: "https://www.upwork.com/freelancers/~0189a202e31eaf135a",
+    nick: "Dhafit F",
+    icon: SiUpwork,
   },
 ]
 

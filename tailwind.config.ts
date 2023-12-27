@@ -15,6 +15,9 @@ const config: Config = {
         baseBg: "#27292A",
         hoverBg: "#3b3e3f",
       },
+      screens: {
+        xs: "400px",
+      },
     },
   },
   plugins: [typography],
