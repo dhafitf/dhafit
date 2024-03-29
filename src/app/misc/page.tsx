@@ -1,9 +1,7 @@
-import React, { Suspense } from "react"
+import React from "react"
 
 import SpotifyNowPlaying from "@/molecules/SpotifyNowPlaying"
-import SpotifyNowPlaying_ from "@/skeletons/SpotifyNowPlaying_"
 import SpotifyTopTracks from "@/organisms/SpotifyTopTracks"
-import SpotifyTopTracks_ from "@/skeletons/SpotifyTopTracks_"
 
 const Miscellaneous = () => {
   return (
@@ -17,14 +15,13 @@ const Miscellaneous = () => {
         <span className="text-sm text-gray-400 mb-6">
           List of my top tracks & current playing song.
         </span>
-        <Suspense fallback={<SpotifyNowPlaying_ />}>
-          <SpotifyNowPlaying />
-        </Suspense>
+        <SpotifyNowPlaying />
         <div className="flex flex-col gap-2 pt-6">
-          <h3 className="text-xl font-semibold tracking-wider text-white">Top Tracks</h3>
-          <Suspense fallback={<SpotifyTopTracks_ />}>
-            <SpotifyTopTracks />
-          </Suspense>
+          <h3 className="text-xl font-semibold tracking-wider text-white">
+            Top Tracks{" "}
+            <span className="text-sm text-gray-400 italic font-normal">(Last 4 Weeks)</span>
+          </h3>
+          <SpotifyTopTracks />
         </div>
       </div>
     </div>

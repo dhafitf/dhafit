@@ -1,8 +1,8 @@
-import React, { Suspense } from "react"
+import React from "react"
 import type { Metadata } from "next"
 
-import { allProjects } from "contentlayer/generated"
 import ProjectsListSection from "@/organisms/ProjectsListSection"
+import { getAllPosts } from "~/libs/contents"
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 }
 
 const ProjectsPage = () => {
+  const projects = getAllPosts("PROJECT")
+
   return (
     <div className="flex flex-col gap-7">
       <div className="relative">
@@ -19,9 +21,7 @@ const ProjectsPage = () => {
           there are translating and programming projects.
         </p>
       </div>
-      <Suspense fallback={<span>Loading projects...</span>}>
-        <ProjectsListSection projects={allProjects} />
-      </Suspense>
+      <ProjectsListSection projects={projects} />
     </div>
   )
 }

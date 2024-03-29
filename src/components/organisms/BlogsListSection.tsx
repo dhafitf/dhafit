@@ -5,13 +5,13 @@ import { useState, useEffect } from "react"
 import cn from "~/libs/cn"
 import BlogsList from "@/molecules/BlogsList"
 
-const BlogsListSection = ({ blogs }: { blogs: BlogProps[] }) => {
+const BlogsListSection = ({ blogs }: { blogs: PostData[] }) => {
   const [search, setSearch] = useState("")
   const [blogsList, setBlogsList] = useState(blogs)
 
   useEffect(() => {
     const filteredBlogs = blogs.filter((blog) => {
-      return blog.title.toLowerCase().includes(search.toLowerCase())
+      return blog.metadata.title.toLowerCase().includes(search.toLowerCase())
     })
     setBlogsList(filteredBlogs)
   }, [blogs, search])

@@ -1,10 +1,9 @@
-import React, { Suspense } from "react"
+import React from "react"
 
 import { socialItems } from "~/libs/constants"
 import CustomLink from "@/atoms/CustomLink"
 import Profile from "@/atoms/Profile"
 import SpotifyNowPlaying from "@/molecules/SpotifyNowPlaying"
-import SpotifyNowPlaying_ from "@/skeletons/SpotifyNowPlaying_"
 
 const HeroSection = () => {
   return (
@@ -15,9 +14,7 @@ const HeroSection = () => {
           I&apos;m a full-stack developer based in Indonesia, experience in utilizing JavaScript and
           TypeScript for a wide range of development projects.
         </p>
-        <Suspense fallback={<SpotifyNowPlaying_ />}>
-          <SpotifyNowPlaying />
-        </Suspense>
+        <SpotifyNowPlaying />
       </div>
       <div className="flex xs:items-center font-semibold max-xs:flex-col max-xs:gap-4">
         <CustomLink

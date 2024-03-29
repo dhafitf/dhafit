@@ -1,4 +1,4 @@
-import { allBlogs, allProjects } from "contentlayer/generated"
+import { getFeaturedPosts } from "~/libs/contents"
 import CustomLink from "@/atoms/CustomLink"
 import ProjectsList from "@/molecules/ProjectsList"
 import BlogsList from "@/molecules/BlogsList"
@@ -6,9 +6,8 @@ import CallToAction from "@/molecules/CallToAction"
 import HeroSection from "@/organisms/HeroSection"
 
 export default function Home() {
-  const featuredBlogs = allBlogs.filter((blog) => blog.featured)
-  const featuredProjects = allProjects.filter((project) => project.featured)
-
+  const featuredBlogs = getFeaturedPosts("BLOG")
+  const featuredProjects = getFeaturedPosts("PROJECT")
   return (
     <div className="flex flex-col gap-12 mb-4">
       <HeroSection />

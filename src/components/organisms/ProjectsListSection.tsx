@@ -6,10 +6,10 @@ import { IoMdClose } from "react-icons/io"
 import cn from "~/libs/cn"
 import ProjectsList from "@/molecules/ProjectsList"
 
-const ProjectsListSection = ({ projects }: { projects: ProjectCardProps[] }) => {
-  const tags = [...new Set(projects.flatMap((project) => project.tags))].filter(Boolean)
+const ProjectsListSection = ({ projects }: { projects: PostData[] }) => {
+  const tags = [...new Set(projects.flatMap((project) => project.metadata.tags))].filter(Boolean)
   const [selectedTags, setSelectedTags] = React.useState<string[]>([])
-  const [projectsList, setProjectsList] = React.useState<ProjectCardProps[]>(projects)
+  const [projectsList, setProjectsList] = React.useState<PostData[]>(projects)
 
   const handleSelectTag = (tag: string) => {
     const newSelectedTags = selectedTags.includes(tag)
@@ -23,7 +23,7 @@ const ProjectsListSection = ({ projects }: { projects: ProjectCardProps[] }) => 
     if (selectedTags.length === 0) return setProjectsList(projects)
 
     const filteredProjects = projectsList.filter((project) => {
-      return selectedTags.every((tag) => project.tags?.includes(tag))
+      return selectedTags.every((tag) => project.metadata.tags?.includes(tag))
     })
 
     setProjectsList(filteredProjects)

@@ -45,7 +45,7 @@
 }
 
 [data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 leading-normal text-sm text-black;
   counter-reset: line;
   box-decoration-break: clone;
 }
@@ -87,4 +87,24 @@
 .prose .callout > p,
 .prose figure {
   margin: 0 !important;
+}
+
+.prose pre [data-highlighted-line] {
+  @apply bg-slate-500 bg-opacity-10;
+}
+
+.prose pre [data-highlighted-chars] {
+  @apply bg-green-500 bg-opacity-50;
+}
+
+.prose pre [data-highlighted-chars][data-chars-id="alert"] {
+  @apply bg-red-500 bg-opacity-50;
+}
+
+.prose pre {
+  @apply px-0 py-4;
+}
+
+.prose pre code span[data-line] {
+  @apply px-4;
 }
