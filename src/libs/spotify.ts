@@ -34,7 +34,7 @@ export const getTopTracks = async () => {
   const url = qs.stringifyUrl({
     url: TOP_TRACKS_ENDPOINT,
     query: {
-      time_range: "short_term",
+      time_range: "short_term", // long_term (1 yr), medium_term (6 mo), short_term (4 wk)
       limit: 10,
     },
   })
