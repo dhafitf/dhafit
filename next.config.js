@@ -1,9 +1,13 @@
-const { withContentlayer } = require("next-contentlayer")
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["i.scdn.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+        pathname: "**",
+      },
+    ],
   },
   redirects: async () => {
     return [
@@ -16,4 +20,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withContentlayer(nextConfig)
+module.exports = nextConfig
