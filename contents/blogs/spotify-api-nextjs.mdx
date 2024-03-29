@@ -3,10 +3,7 @@ title: Using the Spotify API with Next.js
 summary: "In this post, I will share a tutorial on getting the top tracks and currently playing on Spotify using the Next.js API."
 publishedAt: "Saturday, July 30 2022"
 featured: true
-tags:
-  - Spotify
-  - Next.js
-  - Next API
+tags: ["Spotify", "Next.js", "Next API"]
 ---
 
 In this post, I will share a tutorial on getting the top tracks and currently playing on [Spotify](https://www.spotify.com/), using the [Next.js](https://nextjs.org/) API. For example, you can see the [misc](/misc) page.
@@ -29,7 +26,7 @@ We need to get the authorization `code` by doing a _request_ via a URL filled wi
 
 Please copy the URL below. Change `client_id` and `scope` as you like. Since in this tutorial we only want to read the top track and the currently playing, we only need _scope_ **user-top-read** and **user-read-currently-playing**, you can read more about scope [here](https://developer.spotify.com/documentation/general/guides/authorization/scopes/).
 
-```
+```txt
 https://accounts.spotify.com/id/authorize?
 client_id=9b11ebc6d65840eebb0db51c15b211eb&response_type=code&
 redirect_uri=http://localhost:3000/&scope=user-top-read%20user-read-currently-playing
@@ -37,7 +34,7 @@ redirect_uri=http://localhost:3000/&scope=user-top-read%20user-read-currently-pl
 
 After authorization, you will be redirected to your `redirect_uri` earlier. In the URL, there is a `code` query parameter. Save that value.
 
-```
+```txt
 http://localhost:3000/?code=AQCaXamT6nbRDghdG...dyRPlQ
 ```
 
