@@ -44,6 +44,14 @@ export async function generateMetadata({
   }
 }
 
+export async function generateStaticParams() {
+  const blogs = getAllPosts("BLOG")
+
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }))
+}
+
 const BlogArticle = async ({ params }: { params: { slug: string } }) => {
   const blog = getAllPosts("BLOG").find((post) => post.slug === params.slug)
   if (!blog) notFound()
