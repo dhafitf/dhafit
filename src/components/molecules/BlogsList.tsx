@@ -1,7 +1,8 @@
 import React from "react"
+
 import BlogCard from "@/atoms/BlogCard"
 
-const BlogsList = ({ blogs }: { blogs: BasicContentProps[] }) => {
+const BlogsList = ({ blogs }: { blogs: PostData[] }) => {
   return (
     <div className="flex flex-col gap-4">
       {blogs.length > 0 ? (

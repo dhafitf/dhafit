@@ -3,8 +3,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 
-import getPostFromSlug from "~/libs/getPostFromSlug"
-import { Project, allProjects } from "contentlayer/generated"
+import { getAllPosts } from "~/libs/contents"
 import { MdxArticle } from "@/organisms/MdxArticle"
 
 export async function generateMetadata({
@@ -12,12 +11,12 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }): Promise<Metadata | undefined> {
-  const project = (await getPostFromSlug(allProjects, params.slug)) as Project
+  const project = getAllPosts("PROJECT").find((post) => post.slug === params.slug)
   if (!project) return
 
-  const { title, summary: description, thumbnail, slug } = project
-  const ogImage = thumbnail
-    ? `https://dhafit.vercel.app${thumbnail}`
+  const { title, summary: description, image } = project.metadata
+  const ogImage = image
+    ? `https://dhafit.vercel.app${image}`
     : `https://dhafit.vercel.app/og?title=${title}`
 
   return {
@@ -27,7 +26,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      url: `https://dhafit.vercel.app/${slug}`,
+      url: `https://dhafit.vercel.app/${params.slug}`,
       images: [
         {
           url: ogImage,
@@ -44,27 +43,29 @@ export async function generateMetadata({
 }
 
 const ProjectArticle = async ({ params }: { params: { slug: string } }) => {
-  const project = (await getPostFromSlug(allProjects, params.slug)) as Project
+  const project = getAllPosts("PROJECT").find((post) => post.slug === params.slug)
   if (!project) notFound()
 
   return (
     <section className="relative">
       <div className="flex flex-col gap-3">
         <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">
-          {project.category}
+          {project.metadata.subtitle}
         </span>
-        <h1 className="text-3xl text-white font-bold tracking-wide">{project.title}</h1>
-        <p>{project.summary}</p>
+        <h1 className="text-3xl text-white font-bold tracking-wide">{project.metadata.title}</h1>
+        <p>{project.metadata.summary}</p>
       </div>
-      <div className="aspect-video relative overflow-hidden rounded-lg my-6">
-        <Image
-          src={project.thumbnail}
-          alt={`${project.title}'s thumbnail`}
-          fill
-          className="object-cover object-center"
-        />
-      </div>
-      <MdxArticle code={project.body.code} />
+      {project.metadata.image && (
+        <div className="aspect-video relative overflow-hidden rounded-lg my-6">
+          <Image
+            src={project.metadata.image}
+            alt={`${project.metadata.title}'s thumbnail`}
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+      )}
+      <MdxArticle source={project.content} />
     </section>
   )
 }

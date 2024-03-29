@@ -1,16 +1,15 @@
-interface BasicContentProps {
+type Metadata = {
   title: string
+  subtitle?: string
   summary: string
+  tags: string[]
+  image?: string
+  publishedAt?: string
+  featured: boolean
+}
+
+type PostData = {
+  metadata: Metadata
   slug: string
-}
-
-interface ProjectCardProps extends BasicContentProps {
-  category: string
-  tags?: string[]
-  thumbnail: string
-}
-
-interface BlogProps extends BasicContentProps {
-  publishedAt: string
-  tags?: string[]
+  content: string
 }

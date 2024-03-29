@@ -1,7 +1,7 @@
-import React, { Suspense } from "react"
+import React from "react"
 import type { Metadata } from "next"
 
-import { allBlogs } from "contentlayer/generated"
+import { getAllPosts } from "~/libs/contents"
 import BlogsListSection from "@/organisms/BlogsListSection"
 
 export const metadata: Metadata = {
@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 }
 
 const BlogsPage = () => {
+  const blogs = getAllPosts("BLOG")
+
   return (
     <div className="flex flex-col gap-7">
       <div className="relative">
@@ -20,9 +22,7 @@ const BlogsPage = () => {
           looking for.
         </p>
       </div>
-      <Suspense fallback={<span>Loading blogs...</span>}>
-        <BlogsListSection blogs={allBlogs} />
-      </Suspense>
+      <BlogsListSection blogs={blogs} />
     </div>
   )
 }

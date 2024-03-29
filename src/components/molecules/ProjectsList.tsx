@@ -1,7 +1,7 @@
 import React from "react"
 import ProjectCard from "@/atoms/ProjectCard"
 
-const ProjectsList = ({ projects }: { projects: ProjectCardProps[] }) => {
+const ProjectsList = ({ projects }: { projects: PostData[] }) => {
   return (
     <>
       {projects.length > 0 ? (
