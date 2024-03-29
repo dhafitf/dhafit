@@ -42,6 +42,14 @@ export async function generateMetadata({
   }
 }
 
+export async function generateStaticParams() {
+  const projects = getAllPosts("PROJECT")
+
+  return projects.map((project) => ({
+    slug: project.slug,
+  }))
+}
+
 const ProjectArticle = async ({ params }: { params: { slug: string } }) => {
   const project = getAllPosts("PROJECT").find((post) => post.slug === params.slug)
   if (!project) notFound()
