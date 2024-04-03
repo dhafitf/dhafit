@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 
 import cn from "~/libs/cn"
+import GoogleAnalytics from "~/GoogleAnalytics"
 import Navbar from "@/molecules/Navbar"
 
 const montserrat = Montserrat({ subsets: ["latin"] })
@@ -42,6 +43,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
+        <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
+      )}
       <body
         className={cn(
           montserrat.className,
