@@ -21,9 +21,9 @@ import {
 
 export const navItems = [
   { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
   { label: "Blogs", path: "/blogs" },
   { label: "Projects", path: "/projects" },
+  { label: "Translyrics", path: "/translyrics" },
   { label: "Misc", path: "/misc" },
 ]
 

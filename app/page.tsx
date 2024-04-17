@@ -9,7 +9,7 @@ export default function Home() {
   const featuredBlogs = getFeaturedPosts("BLOG")
   const featuredProjects = getFeaturedPosts("PROJECT")
   return (
-    <div className="flex flex-col gap-12 mb-4">
+    <div className="flex flex-col gap-12 mb-8">
       <HeroSection />
       <div className="relative">
         <h3 className="text-2xl font-bold tracking-wider pb-5 text-white">Featured Projects</h3>
@@ -21,6 +21,7 @@ export default function Home() {
           View other projects
         </CustomLink>
       </div>
+      <CallToAction />
       <div className="relative">
         <h3 className="text-2xl font-bold tracking-wider pb-5 text-white">Blogs</h3>
         <BlogsList blogs={featuredBlogs} />
@@ -31,7 +32,6 @@ export default function Home() {
           View other blogs
         </CustomLink>
       </div>
-      <CallToAction />
     </div>
   )
 }
