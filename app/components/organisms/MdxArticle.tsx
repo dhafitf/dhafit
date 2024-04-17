@@ -1,6 +1,7 @@
 import React from "react"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import rehypePrettyCode from "rehype-pretty-code"
+import remarkBreaks from "remark-breaks"
 
 import CustomLink from "@/atoms/CustomLink"
 import FigureImage from "@/molecules/FigureImage"
@@ -58,6 +59,7 @@ export async function MdxArticle(props: any) {
         options={{
           mdxOptions: {
             rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
+            remarkPlugins: [remarkBreaks],
           },
         }}
         {...props}
