@@ -3,13 +3,15 @@ import Link from "next/link"
 
 import cn from "~/libs/cn"
 
-type CustomLinkProps = React.PropsWithChildren<
-  {
-    className?: string
-    href: string
-    ref?: React.Ref<HTMLAnchorElement>
-  } & React.AnchorHTMLAttributes<HTMLAnchorElement>
->
+// type CustomLinkProps = React.PropsWithChildren<
+//   {
+//     href: string
+//   } & React.AnchorHTMLAttributes<HTMLAnchorElement>
+// >
+
+interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string
+}
 
 const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>((props, ref) => {
   const { className, href, children, ...rest } = props

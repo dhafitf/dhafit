@@ -1,22 +1,33 @@
-"use client"
+import ErrorBox from '@/common/error-box'
+import TrackItem from '@/molecules/TrackItem'
 
-import React from "react"
-import useSWR from "swr"
+const getTopTracks = async () => {
+  const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/spotify/top-tracks`
+  const res = await fetch(endpoint, {
+    next: { revalidate: 60 * 60 * 4 }, // Revalidate every 4 hours
+  })
 
-import fetcher from "~/libs/fetcher"
-import TrackItem from "@/molecules/TrackItem"
-import SpotifyTopTracks_ from "@/skeletons/SpotifyTopTracks_"
+  if (!res.ok) {
+    throw new Error('Failed to fetch top tracks')
+  }
 
-const SpotifyTopTracks = () => {
-  const { data } = useSWR<TrackItem[]>("/api/spotify/top-tracks", fetcher)
+  return res.json()
+}
+
+const SpotifyTopTracks = async () => {
+  let data: TrackItem[] = []
+  try {
+    data = await getTopTracks()
+  } catch (error) {
+    console.log('Error fetching top tracks:', error)
+    return <ErrorBox />
+  }
 
   return (
-    <div>
-      {data ? (
-        data?.map((track, index) => <TrackItem key={index} index={index + 1} {...track} />)
-      ) : (
-        <SpotifyTopTracks_ />
-      )}
+    <div className='relative'>
+      {data.map((track, index) => (
+        <TrackItem key={index} index={index + 1} {...track} />
+      ))}
     </div>
   )
 }

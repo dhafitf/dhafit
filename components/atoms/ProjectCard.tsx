@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 
-import CustomLink from "@/atoms/CustomLink"
+import CustomLink from "@/common/custom-link"
 
 const ProjectCard = ({ metadata, slug }: PostData) => {
   const { title, subtitle, image } = metadata

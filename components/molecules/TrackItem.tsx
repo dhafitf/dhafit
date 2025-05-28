@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import React, { useRef } from "react"
-import Image from "next/image"
+import Image from 'next/image'
+import React, { useRef } from 'react'
 
-import formatDuration from "~/libs/formatDuration"
-import CustomLink from "@/atoms/CustomLink"
+import CustomLink from '@/common/custom-link'
+import formatDuration from '~/libs/formatDuration'
 
 interface Props extends TrackItem {
   index: number
@@ -21,27 +21,26 @@ const TrackItem = ({ index, album, albumImageUrl, artists, title, duration, song
   }
 
   return (
-    <div className="flex items-center gap-3 hover:bg-base-800 p-2 rounded" onClick={handleClick}>
-      <div className="flex tabular-nums text-gray-400 text-sm">
-        {index.toString().padStart(2, "0")}
+    <div className='flex items-center gap-3 hover:bg-base-800 p-2 rounded' onClick={handleClick}>
+      <div className='flex tabular-nums text-gray-400 text-sm'>
+        {index.toString().padStart(2, '0')}
       </div>
       <Image
         src={albumImageUrl}
         alt={album}
         width={48}
         height={48}
-        className="min-w-[48px] min-h-[48px]"
+        className='min-w-[48px] min-h-[48px]'
       />
-      <div className="flex flex-col overflow-hidden">
-        <CustomLink ref={trackRef} href={songUrl} className="font-semibold truncate text-gray-300">
+      <div className='flex flex-col overflow-hidden'>
+        <CustomLink ref={trackRef} href={songUrl} className='font-semibold truncate text-gray-300'>
           {title}
         </CustomLink>
-        <div className="text-gray-400 truncate w-fit">
+        <div className='text-gray-400 truncate w-fit'>
           {artists.map((artist, index) => (
             <span
               key={index}
-              className="hover:underline text-sm w-fit after:content-[','] last:after:content-[] mr-1"
-            >
+              className="hover:underline text-sm w-fit after:content-[','] last:after:content-[''] mr-1">
               <CustomLink ref={artistRef} href={artist.url}>
                 {artist.name}
               </CustomLink>
@@ -49,7 +48,7 @@ const TrackItem = ({ index, album, albumImageUrl, artists, title, duration, song
           ))}
         </div>
       </div>
-      <span className="text-gray-400 ml-auto text-sm">{formatDuration(duration)}</span>
+      <span className='text-gray-400 ml-auto text-sm'>{formatDuration(duration)}</span>
     </div>
   )
 }

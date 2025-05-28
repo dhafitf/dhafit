@@ -1,41 +1,35 @@
-import React from "react"
-
-import { socialItems } from "~/libs/constants"
-import CustomLink from "@/atoms/CustomLink"
-import Profile from "@/atoms/Profile"
-import SpotifyNowPlaying from "@/molecules/SpotifyNowPlaying"
+import Profile from '@/atoms/Profile'
+import CustomLink from '@/common/custom-link'
+import SpotifyNowPlaying from '@/molecules/SpotifyNowPlaying'
+import { Button } from '@/ui/button'
+import { socialItems } from '~/libs/constants'
 
 const HeroSection = () => {
   return (
-    <div className="py-16 flex flex-col gap-8">
-      <Profile name="Dhafit Farenza" role="Full-stack Developer" />
-      <div className="flex flex-col gap-4">
-        <p className="sm:max-w-[75%]">
-          I&apos;m a full-stack developer based in Indonesia, experience in utilizing JavaScript and
-          TypeScript for a wide range of development projects.
+    <div className='py-16 flex flex-col gap-8'>
+      <Profile name='Dhafit Farenza' role='Full-stack Developer' />
+      <div className='flex flex-col gap-5'>
+        <p className='sm:max-w-[75%]'>
+          Full-stack developer from Indonesia, mostly working with JavaScript & TypeScript. Also
+          into open content, translations, and side projects.
         </p>
         <SpotifyNowPlaying />
       </div>
-      <div className="flex xs:items-center font-semibold max-xs:flex-col max-xs:gap-4">
-        <CustomLink
-          href="mailto:dhafidfz@gmail.com"
-          title="Send me an email"
-          className="bg-base-800 hover:bg-base-700 px-4 py-2 rounded-lg text-sm hover:text-white w-fit"
-        >
-          Get in touch
-        </CustomLink>
-        <div className="flex items-center gap-3 xs:ml-4">
+      <div className='flex xs:items-center font-semibold max-xs:flex-col max-xs:gap-4'>
+        <Button asChild className='hover:text-white w-fit'>
+          <CustomLink href='mailto:dhafidfz@gmail.com' title='Send me an email'>
+            Get in touch
+          </CustomLink>
+        </Button>
+        <div className='flex items-center gap-3 xs:ml-4'>
           {socialItems.map((item) => {
             const Icon = item.icon
             return (
-              <CustomLink
-                key={item.path}
-                href={item.path}
-                title={item.label}
-                className="bg-base-800 hover:bg-base-700 p-2 rounded-full hover:text-white"
-              >
-                <Icon />
-              </CustomLink>
+              <Button asChild key={item.path} size='icon' className='rounded-full hover:text-white'>
+                <CustomLink href={item.path} title={item.label}>
+                  <Icon />
+                </CustomLink>
+              </Button>
             )
           })}
         </div>

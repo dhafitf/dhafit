@@ -3,7 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import rehypePrettyCode from "rehype-pretty-code"
 import remarkBreaks from "remark-breaks"
 
-import CustomLink from "@/atoms/CustomLink"
+import CustomLink from "@/common/custom-link"
 import FigureImage from "@/molecules/FigureImage"
 import Callout from "@/molecules/Callout"
 import DetailsList from "@/organisms/DetailsList"

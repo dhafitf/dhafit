@@ -1,6 +1,6 @@
 import React from "react"
 
-import CustomLink from "@/atoms/CustomLink"
+import CustomLink from "@/common/custom-link"
 
 export const DetailsListValue = ({ value }: { value: string }) => {
   const isLink = value.includes("http")
