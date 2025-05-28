@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 
 import cn from "~/libs/cn"
-import GoogleAnalytics from "~/GoogleAnalytics"
+import GoogleAnalytics from "./GoogleAnalytics"
 import Navbar from "@/molecules/Navbar"
 
 const montserrat = Montserrat({ subsets: ["latin"] })

@@ -13,7 +13,7 @@ interface LyricsPageProps {
 }
 
 export async function generateMetadata(props: LyricsPageProps): Promise<Metadata | undefined> {
-  const params = await props.params;
+  const params = await props.params
   const titleParams = decodeURIComponent(params.title)
   const track = getTrackData(params.artist, titleParams)
   if (!track) return
@@ -54,7 +54,7 @@ export async function generateStaticParams() {
 }
 
 const LyricsPage = async (props: LyricsPageProps) => {
-  const params = await props.params;
+  const params = await props.params
   const title = decodeURIComponent(params.title)
   const track = getTrackData(params.artist, title)
   if (!track) return notFound()
