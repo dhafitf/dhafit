@@ -1,22 +1,22 @@
-import React from "react"
-import { MDXRemote } from "next-mdx-remote/rsc"
-import rehypePrettyCode from "rehype-pretty-code"
-import remarkBreaks from "remark-breaks"
+import { MDXRemote, type MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
+import React from 'react'
+import rehypePrettyCode from 'rehype-pretty-code'
+import remarkBreaks from 'remark-breaks'
 
-import CustomLink from "@/common/custom-link"
-import FigureImage from "@/molecules/FigureImage"
-import Callout from "@/molecules/Callout"
-import DetailsList from "@/organisms/DetailsList"
+import CustomLink from '@/common/custom-link'
+import Callout from '@/molecules/Callout'
+import FigureImage from '@/molecules/FigureImage'
+import DetailsList from '@/organisms/DetailsList'
 
 function slugify(str: string) {
   return str
     .toString()
     .toLowerCase()
     .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
 }
 
 function createHeading(level: number) {
@@ -27,10 +27,10 @@ function createHeading(level: number) {
       `h${level}`,
       { id: slug },
       [
-        React.createElement("a", {
+        React.createElement('a', {
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: "anchor",
+          className: 'anchor',
         }),
       ],
       children
@@ -52,16 +52,18 @@ const components = {
 }
 
 export async function MdxArticle(props: any) {
+  const options: MDXRemoteOptions = {
+    mdxOptions: {
+      rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
+      remarkPlugins: [remarkBreaks],
+    },
+  }
+
   return (
-    <article className="prose prose-invert">
+    <article className='prose prose-invert'>
       <MDXRemote
         components={{ ...components, ...(props.components || {}) }}
-        options={{
-          mdxOptions: {
-            rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
-            remarkPlugins: [remarkBreaks],
-          },
-        }}
+        options={options}
         {...props}
       />
     </article>
