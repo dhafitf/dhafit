@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server"
-import { getNowPlaying } from "~/libs/spotify"
+import { NextResponse } from 'next/server'
+import { getNowPlaying } from '~/libs/spotify'
 
-export const revalidate = 30
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: Request) {
   try {
     const response = await getNowPlaying()
@@ -23,6 +24,6 @@ export async function GET(request: Request) {
     return NextResponse.json(track)
   } catch (error) {
     console.log(error)
-    return NextResponse.json({ success: false, message: "Internal Server Error" }, { status: 500 })
+    return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 })
   }
 }

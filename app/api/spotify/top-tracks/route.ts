@@ -1,7 +1,9 @@
-import { NextResponse } from "next/server"
-import { getTopTracks } from "~/libs/spotify"
+import { NextResponse } from 'next/server'
+import { getTopTracks } from '~/libs/spotify'
 
-export const revalidate = 30
+// Revalidate the route every 4 hours
+export const revalidate = 4 * 60 * 60 // 4 hours in seconds
+
 export async function GET(request: Request) {
   try {
     const response = await getTopTracks()
@@ -23,6 +25,6 @@ export async function GET(request: Request) {
     return NextResponse.json(tracks)
   } catch (error) {
     console.log(error)
-    return NextResponse.json({ success: false, message: "Internal Server Error" }, { status: 500 })
+    return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 })
   }
 }
