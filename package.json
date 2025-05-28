@@ -10,13 +10,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
-    "@types/node": "20.6.1",
-    "@types/react": "19.1.6",
-    "@types/react-dom": "19.1.5",
+    "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "eslint": "8.49.0",
-    "eslint-config-next": "15.3.2",
     "next": "15.3.2",
     "next-mdx-remote": "^4.4.1",
     "postcss": "8.4.31",
@@ -28,21 +24,21 @@
     "remark-breaks": "^4.0.0",
     "shiki": "^1.2.1",
     "sugar-high": "^0.6.0",
-    "swr": "^2.2.4",
-    "tailwind-merge": "^3.3.0",
-    "typescript": "5.2.2"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "printWidth": 100
+    "swr": "^2.3.3",
+    "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
+    "@types/node": "20.6.1",
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.5",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "4.1.7",
-    "tw-animate-css": "^1.3.0"
+    "tw-animate-css": "^1.3.0",
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "typescript": "5.2.2"
   },
   "pnpm": {
     "overrides": {
