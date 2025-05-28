@@ -24,7 +24,7 @@ const TranslationsListModal = ({ translations }: TranslationsListModalProps) => 
       <button
         title="Change translation language"
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-base-bg hover:bg-hover-bg px-4 py-2 rounded-md text-sm tracking-wider hover:text-white w-full"
+        className="bg-base-800 hover:bg-base-700 px-4 py-2 rounded-md text-sm tracking-wider hover:text-white w-full"
       >
         Translations
       </button>
@@ -53,7 +53,7 @@ const TranslationsListModal = ({ translations }: TranslationsListModalProps) => 
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-base-bg p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-base-800 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex items-center justify-between">
                     <Dialog.Title as="h3" className="text-xl font-semibold leading-6 text-white">
                       Translations
@@ -61,7 +61,7 @@ const TranslationsListModal = ({ translations }: TranslationsListModalProps) => 
                     <button
                       type="button"
                       onClick={() => setIsOpen(false)}
-                      className="p-2 bg-hover-bg hover:bg-hover-bg/70 rounded-full"
+                      className="p-2 bg-base-700 hover:bg-base-700/70 rounded-full"
                     >
                       <IoMdClose />
                     </button>
@@ -70,8 +70,8 @@ const TranslationsListModal = ({ translations }: TranslationsListModalProps) => 
                     <Link
                       href={baseUri}
                       className={cn(
-                        "inline-flex w-full py-3 px-4 font-medium rounded-md border-2 border-hover-bg",
-                        !selectedLang ? "bg-hover-bg" : "hover:bg-hover-bg"
+                        "inline-flex w-full py-3 px-4 font-medium rounded-md border-2 border-base-700",
+                        !selectedLang ? "bg-base-700" : "hover:bg-base-700"
                       )}
                     >
                       Default
@@ -81,10 +81,10 @@ const TranslationsListModal = ({ translations }: TranslationsListModalProps) => 
                         href={baseUri + "/" + translation.language}
                         key={index}
                         className={cn(
-                          "inline-flex w-full py-3 px-4 font-medium rounded-md border-2 border-hover-bg",
+                          "inline-flex w-full py-3 px-4 font-medium rounded-md border-2 border-base-700",
                           selectedLang?.toLowerCase() === translation.language.toLowerCase()
-                            ? "bg-hover-bg"
-                            : "hover:bg-hover-bg"
+                            ? "bg-base-700"
+                            : "hover:bg-base-700"
                         )}
                       >
                         {translation.language}

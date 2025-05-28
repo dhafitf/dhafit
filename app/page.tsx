@@ -16,7 +16,7 @@ export default function Home() {
         <ProjectsList projects={featuredProjects} />
         <CustomLink
           href="/projects"
-          className="px-4 py-2 flex items-center justify-center w-full mt-4 border-2 border-base-bg rounded-lg cursor-pointer text-sm hover:text-white hover:bg-base-bg"
+          className="px-4 py-2 flex items-center justify-center w-full mt-4 border-2 border-base-800 rounded-lg cursor-pointer text-sm hover:text-white hover:bg-base-800"
         >
           View other projects
         </CustomLink>
@@ -27,7 +27,7 @@ export default function Home() {
         <BlogsList blogs={featuredBlogs} />
         <CustomLink
           href="/blogs"
-          className="px-4 py-2 flex items-center justify-center w-full mt-4 border-2 border-base-bg rounded-lg cursor-pointer text-sm hover:text-white hover:bg-base-bg"
+          className="px-4 py-2 flex items-center justify-center w-full mt-4 border-2 border-base-800 rounded-lg cursor-pointer text-sm hover:text-white hover:bg-base-800"
         >
           View other blogs
         </CustomLink>

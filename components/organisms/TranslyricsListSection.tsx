@@ -28,8 +28,8 @@ const TranslyricsListSection = ({ tracks }: { tracks: Track[] }) => {
         placeholder="Search by title or artist"
         onChange={(e) => setSearch(e.target.value)}
         className={cn(
-          "appearance-none outline-none border-none bg-base-bg hover:bg-hover-bg",
-          "focus-within:bg-hover-bg focus-within:ring-1 focus-within:ring-inset focus-within:ring-gray-400",
+          "appearance-none outline-none border-none bg-base-800 hover:bg-base-700",
+          "focus-within:bg-base-700 focus-within:ring-1 focus-within:ring-inset focus-within:ring-gray-400",
           "rounded-lg p-3 text-white w-full text-sm"
         )}
       />

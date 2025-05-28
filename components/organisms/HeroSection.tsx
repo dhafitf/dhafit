@@ -20,7 +20,7 @@ const HeroSection = () => {
         <CustomLink
           href="mailto:dhafidfz@gmail.com"
           title="Send me an email"
-          className="bg-base-bg hover:bg-hover-bg px-4 py-2 rounded-lg text-sm hover:text-white w-fit"
+          className="bg-base-800 hover:bg-base-700 px-4 py-2 rounded-lg text-sm hover:text-white w-fit"
         >
           Get in touch
         </CustomLink>
@@ -32,7 +32,7 @@ const HeroSection = () => {
                 key={item.path}
                 href={item.path}
                 title={item.label}
-                className="bg-base-bg hover:bg-hover-bg p-2 rounded-full hover:text-white"
+                className="bg-base-800 hover:bg-base-700 p-2 rounded-full hover:text-white"
               >
                 <Icon />
               </CustomLink>

@@ -42,7 +42,7 @@ const TranslationSection = ({
             className="object-cover object-center w-full h-full w"
           />
         ) : (
-          <div className="bg-base-bg w-full h-full"></div>
+          <div className="bg-base-800 w-full h-full"></div>
         )}
       </div>
       <div className="flex items-center justify-center flex-col">
@@ -98,7 +98,7 @@ const TranslationSection = ({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  className="bg-base-bg hover:bg-hover-bg px-4 py-3 rounded-lg text-sm hover:text-white w-fit gap-2 flex items-center"
+                  className="bg-base-800 hover:bg-base-700 px-4 py-3 rounded-lg text-sm hover:text-white w-fit gap-2 flex items-center"
                 >
                   {icons[link.name]}
                   {link.name}

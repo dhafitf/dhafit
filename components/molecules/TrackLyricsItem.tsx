@@ -11,7 +11,7 @@ const TrackLyricsItem = ({ artistName, track }: TrackLyricsItemProps) => {
   return (
     <Link
       href={`/translyrics/lyrics/${artistName}/${track.title}`}
-      className="flex items-center gap-3 hover:bg-base-bg px-4 py-3 rounded"
+      className="flex items-center gap-3 hover:bg-base-800 px-4 py-3 rounded"
     >
       {track.image ? (
         <Image
@@ -22,7 +22,7 @@ const TrackLyricsItem = ({ artistName, track }: TrackLyricsItemProps) => {
           className="min-w-[48px] min-h-[48px] rounded-md"
         />
       ) : (
-        <div className="bg-base-bg min-w-[48px] min-h-[48px] rounded-md"></div>
+        <div className="bg-base-800 min-w-[48px] min-h-[48px] rounded-md"></div>
       )}
       <div className="flex flex-col overflow-hidden">
         <div className="font-semibold truncate text-gray-300">{track.title}</div>

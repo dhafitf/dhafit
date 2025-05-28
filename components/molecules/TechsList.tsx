@@ -7,7 +7,7 @@ const TechsList = () => {
       {techItems.map((item, index) => {
         const Icon = item.icon
         return (
-          <div key={index} className="bg-base-bg rounded-lg flex items-center gap-1 py-1.5 px-2.5">
+          <div key={index} className="bg-base-800 rounded-lg flex items-center gap-1 py-1.5 px-2.5">
             <Icon className="text-xl" />
             <span className="text-sm">{item.label}</span>
           </div>
