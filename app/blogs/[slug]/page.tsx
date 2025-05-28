@@ -7,11 +7,12 @@ import { getAllPosts } from "~/libs/contents"
 import { MdxArticle } from "@/organisms/MdxArticle"
 import BlogFooter from "@/molecules/BlogFooter"
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>
+  }
+): Promise<Metadata | undefined> {
+  const params = await props.params;
   const blog = getAllPosts("BLOG").find((post) => post.slug === params.slug)
   if (!blog) return
 
@@ -52,7 +53,8 @@ export async function generateStaticParams() {
   }))
 }
 
-const BlogArticle = async ({ params }: { params: { slug: string } }) => {
+const BlogArticle = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const blog = getAllPosts("BLOG").find((post) => post.slug === params.slug)
   if (!blog) notFound()
 

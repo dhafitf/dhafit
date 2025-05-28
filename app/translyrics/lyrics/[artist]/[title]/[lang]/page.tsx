@@ -11,14 +11,15 @@ import {
 import TranslationSection from "@/organisms/TranslationSection"
 
 interface LyricsPageProps {
-  params: {
+  params: Promise<{
     artist: string
     title: string
     lang: string
-  }
+  }>
 }
 
-export async function generateMetadata({ params }: LyricsPageProps): Promise<Metadata | undefined> {
+export async function generateMetadata(props: LyricsPageProps): Promise<Metadata | undefined> {
+  const params = await props.params;
   const titleParams = decodeURIComponent(params.title)
   const track = getTrackData(params.artist, titleParams)
   const translation = track?.translations?.find(
@@ -66,7 +67,8 @@ export async function generateStaticParams() {
   )
 }
 
-const TranslationPage = ({ params }: LyricsPageProps) => {
+const TranslationPage = async (props: LyricsPageProps) => {
+  const params = await props.params;
   const title = decodeURIComponent(params.title)
   const track = getTrackData(params.artist, title)
   const translation = track?.translations?.find(

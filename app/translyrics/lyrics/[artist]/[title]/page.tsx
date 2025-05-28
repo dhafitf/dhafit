@@ -6,13 +6,14 @@ import { getCombinedContents, getTrackData, getTrackLyrics } from "~/libs/lyrics
 import TranslationSection from "@/organisms/TranslationSection"
 
 interface LyricsPageProps {
-  params: {
+  params: Promise<{
     artist: string
     title: string
-  }
+  }>
 }
 
-export async function generateMetadata({ params }: LyricsPageProps): Promise<Metadata | undefined> {
+export async function generateMetadata(props: LyricsPageProps): Promise<Metadata | undefined> {
+  const params = await props.params;
   const titleParams = decodeURIComponent(params.title)
   const track = getTrackData(params.artist, titleParams)
   if (!track) return
@@ -52,7 +53,8 @@ export async function generateStaticParams() {
   }))
 }
 
-const LyricsPage = ({ params }: LyricsPageProps) => {
+const LyricsPage = async (props: LyricsPageProps) => {
+  const params = await props.params;
   const title = decodeURIComponent(params.title)
   const track = getTrackData(params.artist, title)
   if (!track) return notFound()

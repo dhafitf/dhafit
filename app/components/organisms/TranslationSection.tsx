@@ -1,4 +1,4 @@
-import React from "react"
+import React, { type JSX } from "react";
 import Image from "next/image"
 import { SiSpotify, SiYoutube } from "react-icons/si"
 
