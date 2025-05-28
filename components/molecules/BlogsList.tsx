@@ -1,14 +1,12 @@
-import React from "react"
-
-import BlogCard from "@/atoms/BlogCard"
+import BlogCard from '@/common/blog-card'
 
 const BlogsList = ({ blogs }: { blogs: PostData[] }) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className='flex flex-col gap-4'>
       {blogs.length > 0 ? (
         blogs.map((blog) => <BlogCard key={blog.slug} {...blog} />)
       ) : (
-        <p className="text-sm text-center">No blogs found</p>
+        <p className='text-sm text-center'>No blogs found</p>
       )}
     </div>
   )

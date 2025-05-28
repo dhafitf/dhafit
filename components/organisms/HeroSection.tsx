@@ -1,5 +1,5 @@
-import Profile from '@/atoms/Profile'
 import CustomLink from '@/common/custom-link'
+import Profile from '@/common/profile'
 import SpotifyNowPlaying from '@/molecules/SpotifyNowPlaying'
 import { Button } from '@/ui/button'
 import { socialItems } from '~/libs/constants'
