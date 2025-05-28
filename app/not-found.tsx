@@ -12,7 +12,7 @@ const NotFoundPaga = () => {
       </div>
       <Link
         href="/"
-        className="hover:bg-hoverBg border border-white/10 px-4 py-2 rounded-lg hover:text-white"
+        className="hover:bg-hover-bg border border-white/10 px-4 py-2 rounded-lg hover:text-white"
       >
         Kembali ke beranda
       </Link>

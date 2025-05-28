@@ -1,6 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-cyan: #54b5ff;
+  --color-base-bg: #27292a;
+  --color-hover-bg: #3b3e3f;
+
+  --breakpoint-xs: 400px;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 ::-webkit-scrollbar {
   width: 3px;
@@ -65,11 +91,11 @@
 }
 
 [data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-slate-500 bg-opacity-10;
+  @apply bg-slate-500/10;
 }
 
 [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+  @apply rounded-md bg-slate-500/10 p-1;
 }
 
 [data-rehype-pretty-code-title] {
@@ -90,15 +116,15 @@
 }
 
 .prose pre [data-highlighted-line] {
-  @apply bg-slate-500 bg-opacity-10;
+  @apply bg-slate-500/10;
 }
 
 .prose pre [data-highlighted-chars] {
-  @apply bg-green-500 bg-opacity-50;
+  @apply bg-green-500/50;
 }
 
 .prose pre [data-highlighted-chars][data-chars-id="alert"] {
-  @apply bg-red-500 bg-opacity-50;
+  @apply bg-red-500/50;
 }
 
 .prose pre {

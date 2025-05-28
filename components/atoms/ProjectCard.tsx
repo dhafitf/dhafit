@@ -9,7 +9,7 @@ const ProjectCard = ({ metadata, slug }: PostData) => {
   return (
     <CustomLink
       href={`/projects/${slug}`}
-      className="bg-baseBg hover:bg-hoverBg rounded-lg overflow-hidden"
+      className="bg-base-bg hover:bg-hover-bg rounded-lg overflow-hidden"
     >
       {image && (
         <div className="aspect-video relative overflow-hidden" title={title}>

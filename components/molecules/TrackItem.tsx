@@ -21,7 +21,7 @@ const TrackItem = ({ index, album, albumImageUrl, artists, title, duration, song
   }
 
   return (
-    <div className="flex items-center gap-3 hover:bg-baseBg p-2 rounded" onClick={handleClick}>
+    <div className="flex items-center gap-3 hover:bg-base-bg p-2 rounded" onClick={handleClick}>
       <div className="flex tabular-nums text-gray-400 text-sm">
         {index.toString().padStart(2, "0")}
       </div>
