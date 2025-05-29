@@ -22,7 +22,6 @@ const Miscellaneous = () => {
             Top Tracks{' '}
             <span className='text-sm text-gray-400 italic font-normal'>(Last 4 Weeks)</span>
           </h3>
-          {/* <SpotifyTopTracks /> */}
           <Suspense fallback={<SpotifyTopTracks_ />}>
             <SpotifyTopTracks />
           </Suspense>

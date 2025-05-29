@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getTopTracks } from '~/libs/spotify'
 
 // Revalidate the route every 4 hours
-export const revalidate = 4 * 60 * 60 // 4 hours in seconds
+export const revalidate = 14400 // 4 hours in seconds
 
 export async function GET(request: Request) {
   try {

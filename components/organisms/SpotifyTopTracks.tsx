@@ -11,7 +11,7 @@ const getTopTracks = async () => {
     throw new Error('Failed to fetch top tracks')
   }
 
-  return res.json()
+  return await res.json()
 }
 
 const SpotifyTopTracks = async () => {

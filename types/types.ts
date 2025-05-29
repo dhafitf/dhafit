@@ -30,12 +30,11 @@ interface TrackMetadata {
   romanizedTitle?: string
   artists?: string[]
   image?: string
-  defaultLyricsFile?: string
   links?: LinkMetadata[]
   updatedAt?: string
 }
 
-interface TrackFrontMatter {
+interface TrackFrontMatter extends TrackMetadata {
   createdAt: string
   usedIn: {
     name: string

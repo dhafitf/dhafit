@@ -1,67 +1,49 @@
-import fs from "fs"
+import fs from 'fs'
+import path from 'path'
+import { parse } from 'yaml'
 
 function readArtistMetadata(path: string): ArtistMetadata {
   const metadataFile = `${path}/metadata.json`
   if (fs.existsSync(metadataFile)) {
-    const data = fs.readFileSync(metadataFile, "utf-8")
-    return JSON.parse(data)
-  }
-  return {}
-}
-
-function readTrackMetadata(path: string): TrackMetadata {
-  const metadataFile = `${path}/metadata.json`
-  if (fs.existsSync(metadataFile)) {
-    const data = fs.readFileSync(metadataFile, "utf-8")
+    const data = fs.readFileSync(metadataFile, 'utf-8')
     return JSON.parse(data)
   }
   return {}
 }
 
 function parseFrontmatter(fileContent: string) {
-  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  const frontmatterRegex = /^---\s*([\s\S]*?)\s*---/
   const match = frontmatterRegex.exec(fileContent)
-  const metadata: Partial<TrackFrontMatter> = {}
+  const metadata = match ? parse(match[1]) : {}
+  const content = fileContent.replace(frontmatterRegex, '').trim()
 
-  if (match) {
-    const frontMatterBlock = match[1]
-
-    try {
-      const parsedMetadata = JSON.parse(frontMatterBlock)
-      Object.assign(metadata, parsedMetadata)
-    } catch (error) {
-      console.error("Error parsing JSON frontmatter:", error)
-    }
-  }
-
-  const content = fileContent.replace(frontmatterRegex, "").trim()
   return { metadata, content }
 }
 
-export function getCombinedContents(files: string[]) {
-  const contents = files.map((file) => {
-    let fileContent = fs.readFileSync(file, "utf-8")
-    const { content } = parseFrontmatter(fileContent)
-    return content.split("\n").map((line) => line.trim())
-  })
-
-  const minLength = Math.min(...contents.map((c) => c.length))
-
-  const combinedContents = []
-  for (let i = 0; i < minLength; i++) {
-    const pair = [contents[0][i]]
-    if (contents.length > 1) {
-      pair.push(contents[1][i])
-    }
-    combinedContents.push(pair)
-  }
-
-  return combinedContents
+export function getTrackMetadata(filePath: string) {
+  const fileContent = fs.readFileSync(filePath, 'utf-8')
+  return parseFrontmatter(fileContent).metadata as TrackFrontMatter
 }
 
-export function getTranslationMetadata(filePath: string) {
-  const fileContent = fs.readFileSync(filePath, "utf-8")
-  return parseFrontmatter(fileContent).metadata as TrackFrontMatter
+export function getTranslationData(filePath: string) {
+  const fileContent = fs.readFileSync(filePath, 'utf-8')
+  const { metadata, content } = parseFrontmatter(fileContent)
+
+  const blocks = content
+    .trim()
+    .split(/\n\s*\n/) // Split blocks based on empty lines
+    .map(
+      (block) =>
+        block
+          .split('\n') // Split by line
+          .map((line) => line.trim()) // Remove leading and trailing spaces
+          .filter((line) => line.length > 0) // Ignore empty lines
+    )
+
+  return {
+    metadata: metadata as TrackFrontMatter,
+    content: blocks,
+  }
 }
 
 export function getAllLyrics(dir: string): Artist[] {
@@ -81,25 +63,12 @@ export function getAllLyrics(dir: string): Artist[] {
         const artistContents = fs.readdirSync(artistPath, { withFileTypes: true })
 
         artistContents.forEach((item) => {
-          if (item.isDirectory() && item.name !== "metadata.json") {
+          if (item.name !== 'metadata.json') {
             const trackTitle = item.name
             const trackPath = `${artistPath}/${trackTitle}`
 
-            const trackMetadata = readTrackMetadata(trackPath)
-            const trackFiles = fs.readdirSync(trackPath, { withFileTypes: true })
-
-            const translations: Translation[] = []
-            trackFiles.forEach((file) => {
-              if (file.name !== trackMetadata.defaultLyricsFile && file.name !== "metadata.json") {
-                const match = file.name.match(/^\[(.+)\](.+)\.mdx$/)
-
-                if (match) {
-                  const language = match[1]
-                  const trackTitle = match[2]
-                  translations.push({ title: trackTitle, language, lyricsFile: file.name })
-                }
-              }
-            })
+            const filePath = path.join(process.cwd(), trackPath)
+            const trackMetadata = getTrackMetadata(filePath)
 
             const track: Track = {
               title: trackMetadata.title || trackTitle,
@@ -107,9 +76,7 @@ export function getAllLyrics(dir: string): Artist[] {
               artists: trackMetadata.artists || [artistName],
               image: trackMetadata.image,
               links: trackMetadata.links,
-              defaultLyricsFile: trackMetadata.defaultLyricsFile,
               updatedAt: trackMetadata.updatedAt,
-              translations,
             }
 
             tracks.push(track)
@@ -127,7 +94,7 @@ export function getAllLyrics(dir: string): Artist[] {
 }
 
 export function getArtistData(artist: string) {
-  const artists = getAllLyrics("contents/lyrics")
+  const artists = getAllLyrics('contents/lyrics')
   return artists.find((a) => a.name?.toLowerCase() === artist?.toLowerCase())
 }
 
@@ -137,6 +104,6 @@ export function getTrackData(artist: string, track: string) {
 }
 
 export function getTrackLyrics() {
-  const artists = getAllLyrics("contents/lyrics")
+  const artists = getAllLyrics('contents/lyrics')
   return artists.map((artist) => artist.tracks).flat()
 }

@@ -4,29 +4,20 @@ import { SiSpotify, SiYoutube } from 'react-icons/si'
 
 import CustomLink from '@/common/custom-link'
 import Translation from '@/molecules/Translation'
-import TranslationsListModal from '@/molecules/TranslationsListModal'
+import { Button } from '@/ui/button'
 
 interface LyricsPageProps {
   track: Track
   lyrics: string[][]
   subtitle?: string
-  translations?: Translation[]
   metadata?: TrackFrontMatter
   lyricsFile: string
 }
 
-const TranslationSection = ({
-  track,
-  lyrics,
-  subtitle,
-  translations,
-  metadata,
-  lyricsFile,
-}: LyricsPageProps) => {
+const TranslationSection = ({ track, lyrics, subtitle, metadata, lyricsFile }: LyricsPageProps) => {
   const GITHUB_REPO_URL =
     'https://github.com/dhafitf/dhafit/blob/master/contents/lyrics/' +
     `${track.artists![0]}/` +
-    `${track.title}/` +
     lyricsFile
 
   return (
@@ -45,19 +36,14 @@ const TranslationSection = ({
           <div className='bg-base-800 w-full h-full'></div>
         )}
       </div>
-      <div className='flex items-center justify-center flex-col'>
+      <div className='flex items-center justify-center flex-col border-b-2 border-white/10 pb-8'>
         <div className='flex items-center text-sm pb-3'>
-          {track.artists?.map((artist, index) => (
-            <span
-              key={index}
-              className="w-fit after:content-[','] last:after:content-[] mr-1 text-gray-400">
-              {artist}
-            </span>
-          ))}
+          {track.artists && track.artists.length > 0 && (
+            <span className='text-gray-400'>{track.artists.join(', ')}</span>
+          )}
         </div>
         <h1 className='font-bold text-3xl text-white text-center pb-1'>{track.title}</h1>
         {subtitle && <p className='text-gray-400'>{subtitle}</p>}
-        <TranslationsListModal translations={translations} />
       </div>
       <div className='pt-8'>
         <Translation lyrics={lyrics} />
@@ -67,14 +53,14 @@ const TranslationSection = ({
             {metadata.contributors.map((contributor, index) => {
               if (contributor.url) {
                 return (
-                  <span key={index} className="after:content-[','] last:after:content-[] mr-1">
+                  <span key={index} className="after:content-[','] last:after:content-[''] mr-1">
                     <CustomLink href={contributor.url}>{contributor.name}</CustomLink>
                   </span>
                 )
               }
 
               return (
-                <span key={index} className="after:content-[','] last:after:content-[] mr-1">
+                <span key={index} className="after:content-[','] last:after:content-[''] mr-1">
                   {contributor.name}
                 </span>
               )
@@ -92,15 +78,12 @@ const TranslationSection = ({
               }
 
               return (
-                <a
-                  key={index}
-                  href={link.url}
-                  target='_blank'
-                  rel='noopener noreferrer nofollow'
-                  className='bg-base-800 hover:bg-base-700 px-4 py-3 rounded-lg text-sm hover:text-white w-fit gap-2 flex items-center'>
-                  {icons[link.name]}
-                  {link.name}
-                </a>
+                <Button asChild key={index} className='hover:text-white w-fit'>
+                  <CustomLink href={link.url}>
+                    {icons[link.name]}
+                    {link.name}
+                  </CustomLink>
+                </Button>
               )
             })}
           </div>
