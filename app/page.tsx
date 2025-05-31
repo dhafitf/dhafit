@@ -1,9 +1,9 @@
+import BlogsList from '@/blocks/blogs-list'
+import CallToAction from '@/blocks/call-to-action'
+import ProjectsList from '@/blocks/projects-list'
+import { Button } from '@/common/button'
 import CustomLink from '@/common/custom-link'
-import BlogsList from '@/molecules/BlogsList'
-import CallToAction from '@/molecules/CallToAction'
-import ProjectsList from '@/molecules/ProjectsList'
-import HeroSection from '@/organisms/HeroSection'
-import { Button } from '@/ui/button'
+import HeroSection from '@/sections/hero-section'
 import { getFeaturedPosts } from '~/libs/contents'
 
 export default function Home() {

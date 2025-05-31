@@ -1,5 +1,5 @@
 import ErrorBox from '@/common/error-box'
-import TrackItem from '@/molecules/TrackItem'
+import TrackItem from '@/common/track-item'
 
 const getTopTracks = async () => {
   const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/spotify/top-tracks`

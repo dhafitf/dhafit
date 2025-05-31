@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from 'react'
 
-import cn from "~/libs/cn"
-import BlogsList from "@/molecules/BlogsList"
+import BlogsList from '@/blocks/blogs-list'
+import cn from '~/libs/cn'
 
 const BlogsListSection = ({ blogs }: { blogs: PostData[] }) => {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState('')
   const [blogsList, setBlogsList] = useState(blogs)
 
   useEffect(() => {
@@ -17,15 +17,15 @@ const BlogsListSection = ({ blogs }: { blogs: PostData[] }) => {
   }, [blogs, search])
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className='flex flex-col gap-5'>
       <input
-        type="text"
-        placeholder="Search blogs..."
+        type='text'
+        placeholder='Search blogs...'
         onChange={(e) => setSearch(e.target.value)}
         className={cn(
-          "appearance-none outline-none border-none bg-base-800 hover:bg-base-700",
-          "focus-within:bg-base-700 focus-within:ring-1 focus-within:ring-inset focus-within:ring-gray-400",
-          "rounded-lg p-3 text-white w-full text-sm"
+          'appearance-none outline-none border-none bg-base-800 hover:bg-base-700',
+          'focus-within:bg-base-700 focus-within:ring-1 focus-within:ring-inset focus-within:ring-gray-400',
+          'rounded-lg p-3 text-white w-full text-sm'
         )}
       />
       <BlogsList blogs={blogsList} />

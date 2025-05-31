@@ -1,5 +1,5 @@
+import { Button } from '@/common/button'
 import CustomLink from '@/common/custom-link'
-import { Button } from '@/ui/button'
 
 const CallToAction = () => {
   return (

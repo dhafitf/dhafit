@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import TranslationSection from '@/organisms/TranslationSection'
+import TranslationSection from '@/sections/translation-section'
 import { getTrackData, getTrackLyrics, getTranslationData } from '~/libs/lyrics'
 
 interface LyricsPageProps {

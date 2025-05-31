@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from 'react'
 
-import cn from "~/libs/cn"
-import TrackLyricsItem from "@/molecules/TrackLyricsItem"
+import TrackLyricsItem from '@/common/track-lyrics-item'
+import cn from '~/libs/cn'
 
 const TranslyricsListSection = ({ tracks }: { tracks: Track[] }) => {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState('')
   const [tracksList, setTracksList] = useState(tracks)
 
   useEffect(() => {
@@ -22,18 +22,18 @@ const TranslyricsListSection = ({ tracks }: { tracks: Track[] }) => {
   }, [tracks, search])
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className='flex flex-col gap-3'>
       <input
-        type="text"
-        placeholder="Search by title or artist"
+        type='text'
+        placeholder='Search by title or artist'
         onChange={(e) => setSearch(e.target.value)}
         className={cn(
-          "appearance-none outline-none border-none bg-base-800 hover:bg-base-700",
-          "focus-within:bg-base-700 focus-within:ring-1 focus-within:ring-inset focus-within:ring-gray-400",
-          "rounded-lg p-3 text-white w-full text-sm"
+          'appearance-none outline-none border-none bg-base-800 hover:bg-base-700',
+          'focus-within:bg-base-700 focus-within:ring-1 focus-within:ring-inset focus-within:ring-gray-400',
+          'rounded-lg p-3 text-white w-full text-sm'
         )}
       />
-      <div className="mt-2">
+      <div className='mt-2'>
         {tracksList.map((track, index) => (
           <TrackLyricsItem artistName={track.artists![0]} track={track} key={index} />
         ))}

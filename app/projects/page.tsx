@@ -1,22 +1,21 @@
-import React from "react"
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
 
-import ProjectsListSection from "@/organisms/ProjectsListSection"
-import { getAllPosts } from "~/libs/contents"
+import ProjectsListSection from '@/sections/projects-list-section'
+import { getAllPosts } from '~/libs/contents'
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: 'Projects',
   description: "A list of Dhafit's projects.",
 }
 
 const ProjectsPage = () => {
-  const projects = getAllPosts("PROJECT")
+  const projects = getAllPosts('PROJECT')
 
   return (
-    <div className="flex flex-col gap-7">
-      <div className="relative">
-        <h1 className="text-white font-bold text-3xl">Projects</h1>
-        <p className="pt-3">
+    <div className='flex flex-col gap-7'>
+      <div className='relative'>
+        <h1 className='text-white font-bold text-3xl'>Projects</h1>
+        <p className='pt-3'>
           The following is a list of some of the projects I have worked on. Among these projects,
           there are translating and programming projects.
         </p>

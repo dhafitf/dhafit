@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 
-import SpotifyNowPlaying from '@/molecules/SpotifyNowPlaying'
-import SpotifyTopTracks from '@/organisms/SpotifyTopTracks'
+import SpotifyNowPlaying from '@/blocks/spotify-now-playing'
+import SpotifyTopTracks from '@/sections/spotify-top-tracks'
 import SpotifyTopTracks_ from '@/skeletons/SpotifyTopTracks_'
 
 const Miscellaneous = () => {

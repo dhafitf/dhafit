@@ -4,9 +4,9 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import remarkBreaks from 'remark-breaks'
 
 import CustomLink from '@/common/custom-link'
-import Callout from '@/molecules/Callout'
-import FigureImage from '@/molecules/FigureImage'
-import DetailsList from '@/organisms/DetailsList'
+import Callout from '@/mdx/callout'
+import DetailsList from '@/mdx/details-list'
+import FigureImage from '@/mdx/figure-image'
 
 function slugify(str: string) {
   return str

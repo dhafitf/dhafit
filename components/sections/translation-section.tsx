@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { type JSX } from 'react'
 import { SiSpotify, SiYoutube } from 'react-icons/si'
 
+import Translation from '@/blocks/translation'
+import { Button } from '@/common/button'
 import CustomLink from '@/common/custom-link'
-import Translation from '@/molecules/Translation'
-import { Button } from '@/ui/button'
 
 interface LyricsPageProps {
   track: Track

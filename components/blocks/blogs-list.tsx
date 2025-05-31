@@ -6,7 +6,7 @@ const BlogsList = ({ blogs }: { blogs: PostData[] }) => {
       {blogs.length > 0 ? (
         blogs.map((blog) => <BlogCard key={blog.slug} {...blog} />)
       ) : (
-        <p className='text-sm text-center'>No blogs found</p>
+        <p className='text-sm text-center py-4'>No blogs found</p>
       )}
     </div>
   )
