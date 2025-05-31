@@ -1,17 +1,15 @@
-import React from "react"
-import Image from "next/image"
-import { notFound } from "next/navigation"
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
-import { getAllPosts } from "~/libs/contents"
-import { MdxArticle } from "@/organisms/MdxArticle"
+import { MdxArticle } from '@/mdx/mdx-article'
+import { getAllPosts } from '~/libs/contents'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>
 }): Promise<Metadata | undefined> {
-  const project = getAllPosts("PROJECT").find((post) => post.slug === params.slug)
+  const params = await props.params
+  const project = getAllPosts('PROJECT').find((post) => post.slug === params.slug)
   if (!project) return
 
   const { title, summary: description, image } = project.metadata
@@ -25,7 +23,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      type: "article",
+      type: 'article',
       url: `https://dhafit.vercel.app/${params.slug}`,
       images: [
         {
@@ -34,7 +32,7 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
       images: [ogImage],
@@ -43,33 +41,34 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const projects = getAllPosts("PROJECT")
+  const projects = getAllPosts('PROJECT')
 
   return projects.map((project) => ({
     slug: project.slug,
   }))
 }
 
-const ProjectArticle = async ({ params }: { params: { slug: string } }) => {
-  const project = getAllPosts("PROJECT").find((post) => post.slug === params.slug)
+const ProjectArticle = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params
+  const project = getAllPosts('PROJECT').find((post) => post.slug === params.slug)
   if (!project) notFound()
 
   return (
-    <section className="relative">
-      <div className="flex flex-col gap-3">
-        <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">
+    <section className='relative'>
+      <div className='flex flex-col gap-3'>
+        <span className='text-sm font-medium text-gray-400 uppercase tracking-wider'>
           {project.metadata.subtitle}
         </span>
-        <h1 className="text-3xl text-white font-bold tracking-wide">{project.metadata.title}</h1>
+        <h1 className='text-3xl text-white font-bold tracking-wide'>{project.metadata.title}</h1>
         <p>{project.metadata.summary}</p>
       </div>
       {project.metadata.image && (
-        <div className="aspect-video relative overflow-hidden rounded-lg my-6">
+        <div className='aspect-video relative overflow-hidden rounded-lg my-6'>
           <Image
             src={project.metadata.image}
             alt={`${project.metadata.title}'s thumbnail`}
             fill
-            className="object-cover object-center"
+            className='object-cover object-center'
           />
         </div>
       )}

@@ -1,6 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-cyan: #54b5ff;
+
+  --color-base-50: oklch(96.14% 0.001 286.38);
+  --color-base-100: oklch(92.37% 0.003 228.79);
+  --color-base-200: oklch(84.58% 0.005 228.83);
+  --color-base-300: oklch(77.32% 0.007 233.67);
+  --color-base-400: oklch(69.16% 0.01 232.44);
+  --color-base-500: oklch(60.8% 0.011 229);
+  --color-base-600: oklch(51.96% 0.011 232.53);
+  --color-base-700: oklch(42.78% 0.008 233.82);
+  --color-base-800: oklch(33.07% 0.005 236.67);
+  --color-base-900: oklch(23.33% 0.004 228.96);
+  --color-base-950: oklch(17.19% 0.002 197);
+
+  --breakpoint-xs: 400px;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 ::-webkit-scrollbar {
   width: 3px;
@@ -65,11 +101,11 @@
 }
 
 [data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-slate-500 bg-opacity-10;
+  @apply bg-slate-500/10;
 }
 
 [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+  @apply rounded-md bg-slate-500/10 p-1;
 }
 
 [data-rehype-pretty-code-title] {
@@ -90,15 +126,15 @@
 }
 
 .prose pre [data-highlighted-line] {
-  @apply bg-slate-500 bg-opacity-10;
+  @apply bg-slate-500/10;
 }
 
 .prose pre [data-highlighted-chars] {
-  @apply bg-green-500 bg-opacity-50;
+  @apply bg-green-500/50;
 }
 
 .prose pre [data-highlighted-chars][data-chars-id="alert"] {
-  @apply bg-red-500 bg-opacity-50;
+  @apply bg-red-500/50;
 }
 
 .prose pre {
