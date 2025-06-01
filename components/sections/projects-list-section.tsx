@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { IoMdClose } from 'react-icons/io'
 
 import ProjectsList from '@/blocks/projects-list'
+import { Button } from '@/common/button'
 import cn from '~/libs/cn'
 
 const ProjectsListSection = ({ projects }: { projects: PostData[] }) => {
@@ -34,18 +35,16 @@ const ProjectsListSection = ({ projects }: { projects: PostData[] }) => {
       {tags.length > 0 && (
         <div className='flex flex-wrap items-center gap-3'>
           {tags.map((tag) => (
-            <div
+            <Button
               key={tag}
               onClick={() => handleSelectTag(tag as string)}
               className={cn(
-                'w-fit rounded-lg px-3 py-2 text-sm font-semibold cursor-pointer flex items-center gap-1',
-                selectedTags.includes(tag as string)
-                  ? 'bg-white/10 text-white'
-                  : 'bg-white/5 hover:bg-white/10'
+                'px-3 py-1.5 h-fit cursor-pointer',
+                selectedTags.includes(tag as string) ? 'bg-base-700' : ''
               )}>
               {selectedTags.includes(tag as string) && <IoMdClose />}
               <span>{tag}</span>
-            </div>
+            </Button>
           ))}
           <button
             disabled={selectedTags.length === 0}
