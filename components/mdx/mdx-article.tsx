@@ -7,6 +7,7 @@ import CustomLink from '@/common/custom-link'
 import Callout from '@/mdx/callout'
 import DetailsList from '@/mdx/details-list'
 import FigureImage from '@/mdx/figure-image'
+import cn from '~/libs/cn'
 
 function slugify(str: string) {
   return str
@@ -60,7 +61,7 @@ export async function MdxArticle(props: any) {
   }
 
   return (
-    <article className='prose prose-invert'>
+    <article className={cn('prose prose-invert', props?.className)}>
       <MDXRemote
         components={{ ...components, ...(props.components || {}) }}
         options={options}
