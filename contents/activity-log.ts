@@ -32,6 +32,15 @@ export const activityData: { date: string; content: ActivityContent }[] = [
         'I’ve decided to start documenting my activities and personal journey from June 2025 onward. These may include things I build, career progress, contributions, notes, or translations.',
     },
   },
+  {
+    date: '2025-06-05',
+    content: {
+      type: 'Writing',
+      title: 'Created Indonesian Wikipedia page for Sayaka Kakehashi',
+      description:
+        'Wrote and published a new [Wikipedia article in Indonesian for Sayaka Kakehashi](https://id.wikipedia.org/wiki/Sayaka_Kakehashi), a Japanese singer and former member of Nogizaka46. This page includes her biography, career highlights, and contributions to the group.',
+    },
+  },
 ]
 
 export const getActivityData = ({ type }: { type?: ActivityType }): Activity[] => {
