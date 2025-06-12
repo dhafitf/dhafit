@@ -36,9 +36,18 @@ export const activityData: { date: string; content: ActivityContent }[] = [
     date: '2025-06-05',
     content: {
       type: 'Writing',
-      title: 'Created Indonesian Wikipedia page for Sayaka Kakehashi',
+      title: 'Created Indonesian Wikipedia page about Sayaka Kakehashi',
       description:
-        'Wrote and published a new [Wikipedia article in Indonesian for Sayaka Kakehashi](https://id.wikipedia.org/wiki/Sayaka_Kakehashi), a Japanese singer and former member of Nogizaka46. This page includes her biography, career highlights, and contributions to the group.',
+        'Authored and published a new [Wikipedia article in Indonesian about Sayaka Kakehashi](https://id.wikipedia.org/wiki/Sayaka_Kakehashi), a Japanese singer and former member of Nogizaka46. The article covers her biography, career highlights, and contributions to the group.',
+    },
+  },
+  {
+    date: '2025-06-11',
+    content: {
+      type: 'Writing',
+      title: 'Created Indonesian Wikipedia page about Konatsu Kato',
+      description:
+        'Authored and published a new [Wikipedia article in Indonesian about Konatsu Kato](https://id.wikipedia.org/wiki/Konatsu_Kato), a Japanese actress, model, dancer, and multi-talented entertainer.',
     },
   },
 ]
