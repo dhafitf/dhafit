@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -81,7 +82,7 @@
 }
 
 [data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 leading-normal text-sm text-black;
+  @apply grid min-w-full wrap-break-word rounded-none border-0 bg-transparent p-0 leading-normal text-sm text-black;
   counter-reset: line;
   box-decoration-break: clone;
 }
