@@ -1,7 +1,7 @@
 import { Button } from '@/common/button'
 import CustomLink from '@/common/custom-link'
 
-const NotFoundPaga = () => {
+const NotFoundPage = () => {
   return (
     <div>
       <div>
@@ -19,4 +19,4 @@ const NotFoundPaga = () => {
   )
 }
 
-export default NotFoundPaga
+export default NotFoundPage

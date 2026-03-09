@@ -4,13 +4,13 @@ import { notFound } from 'next/navigation'
 
 import BlogFooter from '@/blocks/blog-footer'
 import { MdxArticle } from '@/mdx/mdx-article'
-import { getAllPosts } from '~/libs/contents'
+import { getPosts } from '~/libs/contents'
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata | undefined> {
   const params = await props.params
-  const blog = getAllPosts('BLOG').find((post) => post.slug === params.slug)
+  const blog = getPosts('BLOG').find((post) => post.slug === params.slug)
   if (!blog) return
 
   const { title, summary: description, publishedAt: publishedTime, image } = blog.metadata
@@ -43,7 +43,7 @@ export async function generateMetadata(props: {
 }
 
 export async function generateStaticParams() {
-  const blogs = getAllPosts('BLOG')
+  const blogs = getPosts('BLOG')
 
   return blogs.map((blog) => ({
     slug: blog.slug,
@@ -52,7 +52,7 @@ export async function generateStaticParams() {
 
 const BlogArticle = async (props: { params: Promise<{ slug: string }> }) => {
   const params = await props.params
-  const blog = getAllPosts('BLOG').find((post) => post.slug === params.slug)
+  const blog = getPosts('BLOG').find((post) => post.slug === params.slug)
   if (!blog) notFound()
 
   const GITHUB_REPO_URL = `https://github.com/dhafitf/dhafit/blob/master/contents/blogs/${blog.slug}.mdx`

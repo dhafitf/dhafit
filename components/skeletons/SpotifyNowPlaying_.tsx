@@ -1,5 +1,3 @@
-import React from "react"
-
 const SpotifyNowPlaying_ = () => {
   return (
     <div className="flex items-center gap-2 animate-pulse">

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import BlogsListSection from '@/sections/blogs-list-section'
-import { getAllPosts } from '~/libs/contents'
+import { getPosts } from '~/libs/contents'
 
 export const metadata: Metadata = {
   title: 'Blogs',
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 const BlogsPage = () => {
-  const blogs = getAllPosts('BLOG')
+  const blogs = getPosts('BLOG')
 
   return (
     <div className='flex flex-col gap-7'>

@@ -4,7 +4,7 @@ import { getTopTracks } from '~/libs/spotify'
 // Revalidate the route every 4 hours
 export const revalidate = 14400 // 4 hours in seconds
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const response = await getTopTracks()
     const { items } = await response.json()
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(tracks)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 })
   }
 }

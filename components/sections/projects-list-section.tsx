@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 
 import ProjectsList from '@/blocks/projects-list'
@@ -9,8 +9,8 @@ import cn from '~/libs/cn'
 
 const ProjectsListSection = ({ projects }: { projects: PostData[] }) => {
   const tags = [...new Set(projects.flatMap((project) => project.metadata.tags))].filter(Boolean)
-  const [selectedTags, setSelectedTags] = React.useState<string[]>([])
-  const [projectsList, setProjectsList] = React.useState<PostData[]>(projects)
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [projectsList, setProjectsList] = useState<PostData[]>(projects)
 
   const handleSelectTag = (tag: string) => {
     const newSelectedTags = selectedTags.includes(tag)
@@ -23,7 +23,7 @@ const ProjectsListSection = ({ projects }: { projects: PostData[] }) => {
   useEffect(() => {
     if (selectedTags.length === 0) return setProjectsList(projects)
 
-    const filteredProjects = projectsList.filter((project) => {
+    const filteredProjects = projects.filter((project) => {
       return selectedTags.every((tag) => project.metadata.tags?.includes(tag))
     })
 

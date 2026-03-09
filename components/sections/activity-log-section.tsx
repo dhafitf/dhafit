@@ -1,5 +1,3 @@
-// import { Suspense } from 'react'
-
 import ActivityList from '@/blocks/activity-list'
 import ActivityLogFilter from '@/blocks/activity-log-filter'
 import { ActivityType, getActivityData } from '~/contents/activity-log'

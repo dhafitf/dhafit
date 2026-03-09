@@ -1,5 +1,5 @@
 import { MDXRemote, type MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
-import React from 'react'
+import { createElement, type ComponentType, type ReactNode } from 'react'
 import rehypePrettyCode from 'rehype-pretty-code'
 import remarkBreaks from 'remark-breaks'
 
@@ -22,13 +22,13 @@ function slugify(str: string) {
 
 function createHeading(level: number) {
   // eslint-disable-next-line react/display-name
-  return ({ children }: { children: React.ReactNode }) => {
+  return ({ children }: { children: ReactNode }) => {
     let slug = slugify(children!.toString())
-    return React.createElement(
+    return createElement(
       `h${level}`,
       { id: slug },
       [
-        React.createElement('a', {
+        createElement('a', {
           href: `#${slug}`,
           key: `link-${slug}`,
           className: 'anchor',
@@ -52,7 +52,7 @@ const components = {
   FigureImage,
 }
 
-export async function MdxArticle(props: any) {
+export async function MdxArticle(props: { source: string; className?: string; components?: Record<string, ComponentType> }) {
   const options: MDXRemoteOptions = {
     mdxOptions: {
       rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],

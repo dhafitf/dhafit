@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cn(
           montserrat.className,
-          'bg-base-900 text-gray-300 w-full max-w-3xl mx-auto px-5 mt-3 mb-6'
+          'bg-base-900 text-gray-300 w-full max-w-3xl mx-auto px-5 mt-3 mb-12'
         )}>
         <Navbar />
         <main className='mt-12'>{children}</main>

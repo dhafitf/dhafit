@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { parse } from 'yaml'
 
-function readArtistMetadata(path: string): ArtistMetadata {
-  const metadataFile = `${path}/metadata.json`
+function readArtistMetadata(dir: string): ArtistMetadata {
+  const metadataFile = `${dir}/metadata.json`
   if (fs.existsSync(metadataFile)) {
     const data = fs.readFileSync(metadataFile, 'utf-8')
     return JSON.parse(data)

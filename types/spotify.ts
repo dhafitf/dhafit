@@ -26,14 +26,14 @@ interface AlbumResponse {
   name: string
 }
 
-interface ArtisResponse {
+interface ArtistResponse {
   name: string
   id: string
 }
 
 interface TrackResponseItem {
   album: AlbumResponse
-  artists: ArtisResponse[]
+  artists: ArtistResponse[]
   duration_ms: number
   id: string
   name: string

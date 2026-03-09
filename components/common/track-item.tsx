@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useRef } from 'react'
+import { useRef, type MouseEvent } from 'react'
 
 import CustomLink from '@/common/custom-link'
 import formatDuration from '~/libs/formatDuration'
@@ -12,9 +12,9 @@ interface Props extends TrackItem {
 
 const TrackItem = ({ index, album, albumImageUrl, artists, title, duration, songUrl }: Props) => {
   const trackRef = useRef<HTMLAnchorElement>(null)
-  const artistRef = useRef(null)
+  const artistRef = useRef<HTMLAnchorElement>(null)
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: MouseEvent) => {
     if (e.target !== artistRef.current) {
       trackRef.current?.click()
     }

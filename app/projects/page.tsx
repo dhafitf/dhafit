@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import ProjectsListSection from '@/sections/projects-list-section'
-import { getAllPosts } from '~/libs/contents'
+import { getPosts } from '~/libs/contents'
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 const ProjectsPage = () => {
-  const projects = getAllPosts('PROJECT')
+  const projects = getPosts('PROJECT')
 
   return (
     <div className='flex flex-col gap-7'>

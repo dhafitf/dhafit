@@ -1,20 +1,14 @@
-import React, { forwardRef } from "react"
+import type { AnchorHTMLAttributes, Ref } from "react"
 import Link from "next/link"
 
 import cn from "~/libs/cn"
 
-// type CustomLinkProps = React.PropsWithChildren<
-//   {
-//     href: string
-//   } & React.AnchorHTMLAttributes<HTMLAnchorElement>
-// >
-
-interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface CustomLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
+  ref?: Ref<HTMLAnchorElement>
 }
 
-const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>((props, ref) => {
-  const { className, href, children, ...rest } = props
+function CustomLink({ className, href, children, ref, ...rest }: CustomLinkProps) {
   const className_ = cn("cursor-pointer hover:text-cyan", className)
 
   if (href.startsWith("#")) {
@@ -41,8 +35,6 @@ const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>((props, ref) =
       {children}
     </Link>
   )
-})
-
-CustomLink.displayName = "CustomLink"
+}
 
 export default CustomLink

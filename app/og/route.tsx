@@ -6,10 +6,9 @@ export const runtime = "edge"
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl
   const postTitle = searchParams.get("title")
-  const font = fetch(
+  const fontData = await fetch(
     "https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-Y3tcoqK5.ttf"
   ).then((res) => res.arrayBuffer())
-  const fontData = await font
 
   return new ImageResponse(
     (

@@ -1,5 +1,3 @@
-import React from "react"
-
 import CustomLink from "@/common/custom-link"
 
 export const DetailsListValue = ({ value }: { value: string }) => {

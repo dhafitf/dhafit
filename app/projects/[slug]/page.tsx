@@ -3,13 +3,13 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 import { MdxArticle } from '@/mdx/mdx-article'
-import { getAllPosts } from '~/libs/contents'
+import { getPosts } from '~/libs/contents'
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata | undefined> {
   const params = await props.params
-  const project = getAllPosts('PROJECT').find((post) => post.slug === params.slug)
+  const project = getPosts('PROJECT').find((post) => post.slug === params.slug)
   if (!project) return
 
   const { title, summary: description, image } = project.metadata
@@ -41,7 +41,7 @@ export async function generateMetadata(props: {
 }
 
 export async function generateStaticParams() {
-  const projects = getAllPosts('PROJECT')
+  const projects = getPosts('PROJECT')
 
   return projects.map((project) => ({
     slug: project.slug,
@@ -50,7 +50,7 @@ export async function generateStaticParams() {
 
 const ProjectArticle = async (props: { params: Promise<{ slug: string }> }) => {
   const params = await props.params
-  const project = getAllPosts('PROJECT').find((post) => post.slug === params.slug)
+  const project = getPosts('PROJECT').find((post) => post.slug === params.slug)
   if (!project) notFound()
 
   return (
