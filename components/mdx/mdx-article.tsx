@@ -61,12 +61,12 @@ export async function MdxArticle(props: { source: string; className?: string; co
   }
 
   return (
-    <article className={cn('prose prose-invert', props?.className)}>
+    <div className={cn('prose prose-invert', props?.className)}>
       <MDXRemote
         components={{ ...components, ...(props.components || {}) }}
         options={options}
         {...props}
       />
-    </article>
+    </div>
   )
 }
