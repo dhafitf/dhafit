@@ -12,6 +12,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "motion": "^12.38.0",
     "next": "16.0.7",
     "next-mdx-remote-client": "^2.1.2",
     "postcss": "8.5.6",
