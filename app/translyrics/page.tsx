@@ -4,31 +4,36 @@ import TranslyricsListSection from '@/sections/translyrics-list-section'
 import { getTrackLyrics } from '~/libs/lyrics'
 
 export const metadata: Metadata = {
-  title: 'Translation Lyrics',
-  description: "A collection of translation lyrics I've written for various tracks.",
+  title: 'Translyrics',
+  description: "A collection of translated lyrics that I've written for various tracks.",
 }
 
-const TranslyricsPage = () => {
-  const tracks = getTrackLyrics()
-  const sortedTracks = tracks.sort(
-    (a, b) => new Date(b.updatedAt!).getTime() - new Date(a.updatedAt!).getTime()
+interface TranslyricsPageProps {
+  searchParams: Promise<{ artist?: string }>
+}
+
+export default async function TranslyricsPage(props: TranslyricsPageProps) {
+  const { artist } = await props.searchParams
+  const initialArtist = artist ? decodeURIComponent(artist) : undefined
+
+  const tracks = getTrackLyrics().sort(
+    (a, b) => new Date(b.updatedAt ?? 0).getTime() - new Date(a.updatedAt ?? 0).getTime(),
   )
 
   return (
-    <div className='flex flex-col gap-7'>
-      <div className='relative'>
-        <h1 className='text-white font-bold text-3xl'>
-          Translation Lyrics{' '}
-          <span className='text-sm text-gray-400 italic font-normal'>(Translyrics)</span>
+    <div className='mx-auto max-w-7xl px-6 md:px-12 py-12'>
+      <div className='mb-8 sm:mb-10'>
+        <div className='text-accent-400 mb-3 font-mono text-xs tracking-widest uppercase'>
+          TRANSLATION
+        </div>
+        <h1 className='text-foreground m-0 mb-4 text-5xl leading-none font-medium tracking-[-0.03em]'>
+          Translyrics.
         </h1>
-        <p className='pt-3'>
-          A collection of translation lyrics I&apos;ve written for various tracks. Feel free to
-          utilize the search feature below to find what you&apos;re looking for.
+        <p className='text-fg-3 max-w-[60ch] text-base leading-[1.6]'>
+          Random Japanese songs translated into Indonesian.
         </p>
       </div>
-      <TranslyricsListSection tracks={sortedTracks} />
+      <TranslyricsListSection tracks={tracks} initialArtist={initialArtist} />
     </div>
   )
 }
-
-export default TranslyricsPage

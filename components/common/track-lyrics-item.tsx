@@ -9,7 +9,7 @@ interface TrackLyricsItemProps {
 const TrackLyricsItem = ({ artistName, track }: TrackLyricsItemProps) => {
   return (
     <Link
-      href={`/translyrics/lyrics/${artistName}/${track.title}`}
+      href={`/translyrics/${artistName}/${track.title}`}
       className='flex items-center gap-3 hover:bg-base-800 px-4 py-3 rounded'>
       {track.image ? (
         <Image
@@ -17,10 +17,10 @@ const TrackLyricsItem = ({ artistName, track }: TrackLyricsItemProps) => {
           alt={`Image of ${track.title}`}
           width={48}
           height={48}
-          className='min-w-[48px] min-h-[48px] rounded-md'
+          className='min-w-12 min-h-12 size-12 rounded-md'
         />
       ) : (
-        <div className='bg-base-800 min-w-[48px] min-h-[48px] rounded-md'></div>
+        <div className='bg-base-800 min-w-12 min-h-12 size-12 rounded-md'></div>
       )}
       <div className='flex flex-col overflow-hidden'>
         <div className='font-semibold truncate text-gray-300'>{track.title}</div>

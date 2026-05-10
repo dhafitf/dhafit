@@ -1,14 +1,43 @@
 import AlbumCover from '@/common/album-cover'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { type JSX } from 'react'
 import { SiSpotify, SiYoutube } from 'react-icons/si'
 
-interface Props {
-  track: Track
-  lyrics: string[][]
-  subtitle?: string
-  metadata?: TrackFrontMatter
+import LyricsBlocks from '~/components/blocks/lyrics-blocks'
+import { getTrackData, getTrackLyrics, getTranslationData } from '~/libs/lyrics'
+
+interface LyricsPageProps {
+  params: Promise<{ artist: string; title: string }>
+}
+
+export async function generateMetadata(props: LyricsPageProps): Promise<Metadata | undefined> {
+  const params = await props.params
+  const artist = decodeURIComponent(params.artist)
+  const titleParam = decodeURIComponent(params.title)
+  const track = getTrackData(artist, titleParam)
+  if (!track) return
+
+  const ogImage = track.image ?? `https://dhafit.vercel.app/og?title=${titleParam}`
+  const romanized = track.romanizedTitle ? ` (${track.romanizedTitle})` : ''
+  const title = `${artist} - ${titleParam}${romanized} Lyrics`
+  const description = `Lyrics for "${titleParam}${romanized}" by ${artist}.`
+
+  return {
+    title,
+    description,
+    openGraph: { title, description, images: [{ url: ogImage }] },
+    twitter: { title, description, images: [ogImage] },
+  }
+}
+
+export function generateStaticParams() {
+  return getTrackLyrics().map((track) => ({
+    artist: track.artists![0],
+    title: track.title!,
+  }))
 }
 
 const LINK_ICONS: Record<string, JSX.Element> = {
@@ -16,14 +45,24 @@ const LINK_ICONS: Record<string, JSX.Element> = {
   Youtube: <SiYoutube className='size-4' />,
 }
 
-export default function TranslationSection({ track, lyrics, subtitle, metadata }: Props) {
+export default async function LyricsPage(props: LyricsPageProps) {
+  const params = await props.params
+  const artistParams = decodeURIComponent(params.artist)
+  const title = decodeURIComponent(params.title)
+  const track = getTrackData(artistParams, title)
+  if (!track) notFound()
+
+  const { metadata, content: lyrics } = getTranslationData(
+    `contents/lyrics/${artistParams}/${title}.mdx`,
+  )
   const artist = track.artists?.[0] ?? 'Unknown'
+  const subtitle = track.romanizedTitle
 
   return (
-    <article className='mx-auto max-w-3xl px-6 py-16'>
+    <article className='mx-auto max-w-4xl px-6 py-8 sm:py-12'>
       <Link
         href='/translyrics'
-        className='text-fg-3 hover:text-accent-400 mb-10 inline-block font-mono text-[11px] tracking-widest uppercase no-underline transition-colors'>
+        className='text-fg-3 hover:text-accent-400 mb-8 sm:mb-10 inline-block font-mono text-xs tracking-widest uppercase no-underline transition-colors'>
         ← All translyrics
       </Link>
 
@@ -42,11 +81,11 @@ export default function TranslationSection({ track, lyrics, subtitle, metadata }
           )}
         </div>
         {track.artists && track.artists.length > 0 && (
-          <div className='text-fg-4 mb-3 font-mono text-[11px] tracking-widest uppercase'>
+          <div className='text-fg-3 mb-3 font-mono text-xs tracking-widest uppercase'>
             {track.artists.join(' · ')}
           </div>
         )}
-        <h1 className='text-foreground m-0 text-[clamp(32px,4.5vw,56px)] leading-[1.1] font-medium tracking-[-0.03em]'>
+        <h1 className='text-foreground m-0 text-3xl leading-[1.1] font-medium tracking-[-0.03em]'>
           {track.title}
         </h1>
         {subtitle && <p className='text-fg-3 mt-2 text-base italic'>{subtitle}</p>}
@@ -59,7 +98,7 @@ export default function TranslationSection({ track, lyrics, subtitle, metadata }
                 href={link.url}
                 target='_blank'
                 rel='noreferrer'
-                className='border-border bg-surface text-fg-2 hover:border-accent-400 hover:text-accent-300 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[11px] tracking-[0.04em] no-underline transition-colors'>
+                className='border-border bg-surface text-fg-2 hover:border-accent-400 hover:text-accent-300 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-[0.04em] no-underline transition-colors'>
                 {LINK_ICONS[link.name]}
                 {link.name}
               </a>
@@ -74,9 +113,7 @@ export default function TranslationSection({ track, lyrics, subtitle, metadata }
 
       {metadata?.usedIn && metadata.usedIn.length > 0 && (
         <section className='border-border mt-12 border-t pt-10'>
-          <h2 className='text-accent-400 mb-5 font-mono text-[11px] tracking-widest uppercase'>
-            Used in
-          </h2>
+          <h2 className='mb-5 text-fg-2'>This lyrics used in</h2>
           <div className='space-y-4'>
             {metadata.usedIn.map((item, i) => (
               <div
@@ -97,7 +134,7 @@ export default function TranslationSection({ track, lyrics, subtitle, metadata }
 
       {metadata?.contributors && metadata.contributors.length > 0 && (
         <section className='border-border mt-12 border-t pt-6'>
-          <div className='text-fg-4 mb-1 font-mono text-[10px] tracking-[0.18em] uppercase'>
+          <div className='text-fg-4 mb-1 font-mono text-xs tracking-[0.18em] uppercase'>
             Contributors
           </div>
           <div className='text-fg-3 text-sm'>
@@ -121,30 +158,5 @@ export default function TranslationSection({ track, lyrics, subtitle, metadata }
         </section>
       )}
     </article>
-  )
-}
-
-function LyricsBlocks({ blocks }: { blocks: string[][] }) {
-  return (
-    <div className='space-y-7'>
-      {blocks.map((lines, blockIndex) => (
-        <div key={blockIndex} className='space-y-1'>
-          {lines.map((line, lineIndex) => {
-            const isOriginal = lineIndex % 2 === 0
-            return (
-              <p
-                key={`${blockIndex}-${lineIndex}`}
-                className={
-                  isOriginal
-                    ? 'text-foreground text-lg leading-snug font-medium'
-                    : 'text-fg-3 pb-1 text-sm leading-snug italic'
-                }>
-                {line}
-              </p>
-            )
-          })}
-        </div>
-      ))}
-    </div>
   )
 }
