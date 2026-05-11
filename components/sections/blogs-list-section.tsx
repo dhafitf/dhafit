@@ -66,7 +66,7 @@ export default function BlogsListSection({ posts }: Props) {
               type='button'
               onClick={() => setActiveTag(tag)}
               className={cn(
-                'font-mono text-[11px] tracking-widest uppercase rounded-full border px-3 py-1.5 transition-colors duration-200ms ease-out-soft',
+                'font-mono text-xs tracking-widest rounded-full border px-3 py-1.5 transition-colors duration-200ms ease-out-soft',
                 activeTag === tag
                   ? 'border-accent-400 bg-accent-400/10 text-accent-300'
                   : 'border-border text-fg-3 hover:border-border-strong hover:text-fg-2',
@@ -93,9 +93,9 @@ export default function BlogsListSection({ posts }: Props) {
         </div>
       ) : (
         <div className='border-border border-t border-dashed py-20 text-center'>
-          <div className='text-fg-3 font-mono text-[11px] tracking-[0.18em] uppercase'>
-            No posts match{' '}
-            <span className='text-accent-400'>{query ? `“${query}”` : activeTag}</span>.
+          <div className='text-fg-3 flex flex-col gap-1 font-mono text-xs tracking-[0.18em] uppercase truncate'>
+            <span>No posts match</span>
+            <span className='text-accent-400'>{query ? `“${query}”` : activeTag}</span>
           </div>
         </div>
       )}
