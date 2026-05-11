@@ -1,5 +1,5 @@
 import { MDXRemote, type MDXRemoteOptions } from 'next-mdx-remote-client/rsc'
-import { createElement, type ComponentType, type ReactNode } from 'react'
+import { createElement, CSSProperties, type ComponentType, type ReactNode } from 'react'
 import rehypePrettyCode from 'rehype-pretty-code'
 import remarkBreaks from 'remark-breaks'
 
@@ -34,7 +34,7 @@ function createHeading(level: number) {
           className: 'anchor',
         }),
       ],
-      children
+      children,
     )
   }
 }
@@ -52,7 +52,12 @@ const components = {
   FigureImage,
 }
 
-export async function MdxArticle(props: { source: string; className?: string; components?: Record<string, ComponentType> }) {
+export async function MdxArticle(props: {
+  source: string
+  className?: string
+  components?: Record<string, ComponentType>
+  style?: CSSProperties
+}) {
   const options: MDXRemoteOptions = {
     mdxOptions: {
       rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
@@ -61,7 +66,7 @@ export async function MdxArticle(props: { source: string; className?: string; co
   }
 
   return (
-    <div className={cn('prose prose-invert', props?.className)}>
+    <div className={cn('prose prose-invert', props?.className)} style={props?.style}>
       <MDXRemote
         components={{ ...components, ...(props.components || {}) }}
         options={options}

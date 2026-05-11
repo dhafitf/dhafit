@@ -13,15 +13,6 @@ export interface Activity {
   contents: ActivityContent[]
 }
 
-export const activityEmoji: {
-  [K in ActivityType]: string
-} = {
-  Translation: '🌏',
-  Code: '💻',
-  Writing: '📚',
-  Other: '🔷',
-}
-
 export const activityData: { date: string; content: ActivityContent }[] = [
   {
     date: '2025-06-01',
@@ -51,31 +42,3 @@ export const activityData: { date: string; content: ActivityContent }[] = [
     },
   },
 ]
-
-export const getActivityData = ({ type }: { type?: ActivityType }): Activity[] => {
-  const data = type ? activityData.filter((item) => item.content.type === type) : activityData
-
-  const groupedMap = new Map<string, ActivityContent[]>()
-
-  for (const { date, content } of data) {
-    if (!groupedMap.has(date)) {
-      groupedMap.set(date, [])
-    }
-    groupedMap.get(date)!.push(content)
-  }
-
-  const groupedArray: Activity[] = []
-
-  for (const [date, contents] of groupedMap.entries()) {
-    groupedArray.push({ date, contents })
-  }
-
-  groupedArray.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-  return groupedArray
-}
-
-export const getNewestActivity = (length?: 5) => {
-  const data = getActivityData({})
-  return data.slice(0, length)
-}
