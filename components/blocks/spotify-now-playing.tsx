@@ -1,28 +1,55 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { SiSpotify } from 'react-icons/si'
 import useSWR from 'swr'
-
-import SpotifyItem from '@/common/spotify-item'
 import cn from '~/libs/cn'
-import fetcher from '~/libs/fetcher'
 
-const SpotifyNowPlaying = () => {
+import fetcher from '~/libs/fetcher'
+import { fadeUp } from '~/libs/motion'
+
+const SpotifyNowPlaying = ({ className }: { className?: string }) => {
   const { data } = useSWR<CurrentlyPlayingItem>('/api/spotify/playing', fetcher)
+  const playing = data?.isPlaying
 
   return (
-    <div className='flex items-center gap-2 text-sm'>
-      <div className='overflow-hidden rounded-full min-w-[20px] min-h-[20px]'>
-        <SiSpotify
-          className={cn('h-5 w-5', data?.isPlaying ? 'text-[#1DB954]' : 'text-gray-400')}
-        />
-      </div>
-      {data?.isPlaying ? (
-        <SpotifyItem {...data} />
+    <motion.div
+      {...fadeUp}
+      transition={{ ...fadeUp.transition, delay: 0.22 }}
+      className={cn(
+        'text-fg-4 flex items-center gap-2 font-mono text-xs tracking-[0.06em] uppercase',
+        className,
+      )}>
+      <SiSpotify className={`size-3.5 min-w-3.5 ${playing ? 'text-[#1DB954]' : 'text-fg-4'}`} />
+      {playing && data ? (
+        <span className='inline-flex items-center gap-1.5 tracking-[0.02em] normal-case truncate'>
+          <span className='text-fg-3'>Playing</span>
+          <a
+            href={data.songUrl}
+            target='_blank'
+            rel='noreferrer'
+            className='ax-underline text-accent-400 no-underline'>
+            {data.title}
+          </a>
+          <span className='text-fg-3'>—</span>
+          <span className='text-fg-3 truncate'>
+            {data.artists.map((artist, index) => (
+              <span key={index} className="after:content-[','] last:after:content-[''] mr-1">
+                <a
+                  href={artist.url}
+                  target='_blank'
+                  rel='noreferrer'
+                  className='truncate no-underline hover:text-fg-2'>
+                  {artist.name}
+                </a>
+              </span>
+            ))}
+          </span>
+        </span>
       ) : (
-        <p className='text-gray-400'>Not playing music</p>
+        <span>Not playing music</span>
       )}
-    </div>
+    </motion.div>
   )
 }
 

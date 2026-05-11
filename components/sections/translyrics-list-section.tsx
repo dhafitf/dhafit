@@ -1,11 +1,9 @@
 'use client'
 
 import { motion } from 'motion/react'
-import Image from 'next/image'
-import Link from 'next/link'
 import { IoSearch } from 'react-icons/io5'
 
-import AlbumCover from '@/common/album-cover'
+import TrackCard from '@/common/track-card'
 import { useMemo, useState } from 'react'
 import cn from '~/libs/cn'
 import { reveal } from '~/libs/motion'
@@ -90,47 +88,14 @@ export default function TranslyricsListSection({
 
       {filtered.length > 0 ? (
         <div className='grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6'>
-          {filtered.map((t, i) => {
-            const artist = t.artists?.[0] ?? 'Unknown'
-            return (
-              <motion.div
-                key={`${artist}-${t.title}`}
-                {...reveal}
-                transition={{ ...reveal.transition, delay: Math.min(i, 8) * 0.04 }}>
-                <Link
-                  href={`/translyrics/${artist}/${t.title}`}
-                  className='group block no-underline'>
-                  <div className='border-border group-hover:border-accent-400 relative aspect-square overflow-hidden rounded-sm border transition-all duration-400 ease-out-soft group-hover:-translate-y-1 group-hover:shadow-[0_14px_30px_-12px_#000000aa,0_0_36px_-12px_color-mix(in_oklab,var(--color-accent-400)_28%,transparent)]'>
-                    {t.image ? (
-                      <Image
-                        src={t.image}
-                        alt={`${t.title} cover`}
-                        fill
-                        sizes='(min-width: 1280px) 12rem, (min-width: 768px) 18vw, 45vw'
-                        className='object-cover'
-                      />
-                    ) : (
-                      <AlbumCover index={i} title={t.title ?? ''} artist={artist} size={300} />
-                    )}
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100' />
-                  </div>
-                  <div className='mt-3 px-1'>
-                    <div className='text-foreground truncate text-sm leading-tight font-medium tracking-[-0.02em]'>
-                      {t.title}
-                    </div>
-                    {t.romanizedTitle && (
-                      <div className='text-fg-4 mt-0.5 truncate text-xs font-mono tracking-[0.04em]'>
-                        {t.romanizedTitle}
-                      </div>
-                    )}
-                    <div className='text-fg-3 mt-1 truncate text-xs italic'>
-                      {t.artists?.join(', ')}
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            )
-          })}
+          {filtered.map((t, i) => (
+            <motion.div
+              key={`${t.artists?.[0] ?? 'unknown'}-${t.title}`}
+              {...reveal}
+              transition={{ ...reveal.transition, delay: Math.min(i, 8) * 0.04 }}>
+              <TrackCard track={t} index={i} />
+            </motion.div>
+          ))}
         </div>
       ) : (
         <div className='border-border border-t border-dashed py-20 text-center'>
