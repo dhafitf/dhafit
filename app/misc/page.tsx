@@ -1,34 +1,46 @@
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import SpotifyNowPlaying from '@/blocks/spotify-now-playing'
-import SpotifyTopTracks from '@/sections/spotify-top-tracks'
-import SpotifyTopTracks_ from '@/skeletons/SpotifyTopTracks_'
+import TopTracksChart from '@/blocks/top-tracks-chart'
+import ChartSkeleton from '@/skeletons/chart-skeleton'
 
-const Miscellaneous = () => {
+export const metadata: Metadata = {
+  title: 'Miscellaneous',
+}
+
+export default function Misc() {
   return (
-    <div className='flex flex-col gap-7'>
-      <div className='relative'>
-        <h1 className='text-white font-bold text-3xl'>Miscellaneous</h1>
-        <p className='pt-3'>Just a bunch of random stuff. Feel free to check them out!</p>
+    <div className='mx-auto max-w-7xl px-6 sm:px-12 py-12'>
+      <div className='pb-8 sm:pb-10 w-full'>
+        <div className='text-accent-400 mb-3 font-mono text-xs tracking-widest uppercase'>misc</div>
+        <h1 className='text-foreground m-0 mb-4 text-5xl leading-none font-medium tracking-[-0.03em]'>
+          Miscellaneous
+        </h1>
+        <p className='text-fg-3 max-w-[60ch] text-base leading-[1.6]'>
+          Just a bunch of random stuff. Feel free to check them out!
+        </p>
       </div>
-      <div className='flex flex-col'>
-        <h2 className='text-2xl font-bold tracking-wider text-white pb-1'>Music</h2>
-        <span className='text-sm text-gray-400 mb-6'>
-          List of my top tracks & current playing song.
-        </span>
-        <SpotifyNowPlaying />
-        <div className='flex flex-col gap-2 pt-6'>
-          <h3 className='text-xl font-semibold tracking-wider text-white'>
-            Top Tracks{' '}
-            <span className='text-sm text-gray-400 italic font-normal'>(Last 4 Weeks)</span>
-          </h3>
-          <Suspense fallback={<SpotifyTopTracks_ />}>
-            <SpotifyTopTracks />
-          </Suspense>
+
+      <SpotifyNowPlaying />
+
+      <section className='relative mt-8'>
+        <div className='mb-4 flex items-baseline justify-between'>
+          <div>
+            <div className='mb-2 font-mono text-xs tracking-widest text-accent-400 uppercase'>
+              Chart
+            </div>
+            <h2 className='m-0 text-3xl leading-none font-medium tracking-[-0.02em] text-foreground'>
+              Top tracks{' '}
+              <span className='text-fg-4 text-base italic font-normal'>(last 4 weeks)</span>
+            </h2>
+          </div>
         </div>
-      </div>
+
+        <Suspense fallback={<ChartSkeleton />}>
+          <TopTracksChart />
+        </Suspense>
+      </section>
     </div>
   )
 }
-
-export default Miscellaneous

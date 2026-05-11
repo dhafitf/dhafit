@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useRef, type MouseEvent } from 'react'
 
-import CustomLink from '@/common/custom-link'
 import formatDuration from '~/libs/formatDuration'
 
 interface Props extends TrackItem {
@@ -15,41 +14,65 @@ const TrackItem = ({ index, album, albumImageUrl, artists, title, duration, song
   const artistRef = useRef<HTMLAnchorElement>(null)
 
   const handleClick = (e: MouseEvent) => {
-    if (e.target !== artistRef.current) {
-      trackRef.current?.click()
+    if (e.target === artistRef.current) return
+    if (e.metaKey || e.ctrlKey || e.shiftKey) {
+      window.open(songUrl, '_blank', 'noopener,noreferrer')
+      return
     }
+    trackRef.current?.click()
+  }
+
+  const handleAuxClick = (e: MouseEvent) => {
+    if (e.button !== 1) return
+    if (e.target === artistRef.current) return
+    e.preventDefault()
+    window.open(songUrl, '_blank', 'noopener,noreferrer')
   }
 
   return (
-    <div className='flex items-center gap-3 hover:bg-base-800 p-2 rounded' onClick={handleClick}>
-      <div className='flex tabular-nums text-gray-400 text-sm'>
-        {index.toString().padStart(2, '0')}
-      </div>
+    <li
+      onClick={handleClick}
+      onAuxClick={handleAuxClick}
+      onMouseDown={(e) => {
+        if (e.button === 1 && e.target !== artistRef.current) e.preventDefault()
+      }}
+      className='group grid grid-cols-[36px_48px_1fr_auto] items-center gap-4 border-b border-border px-3.5 py-3 transition-colors hover:bg-accent-400/6 cursor-pointer'>
+      <span className='font-mono text-xs tracking-[0.08em] text-fg-4 tabular-nums group-hover:text-accent-400'>
+        {String(index + 1).padStart(2, '0')}
+      </span>
       <Image
         src={albumImageUrl}
         alt={album}
         width={48}
         height={48}
-        className='min-w-[48px] min-h-[48px]'
+        className='rounded border border-border object-cover'
       />
-      <div className='flex flex-col overflow-hidden'>
-        <CustomLink ref={trackRef} href={songUrl} className='font-semibold truncate text-gray-300'>
+      <div className='min-w-0 flex-1'>
+        <a
+          ref={trackRef}
+          href={songUrl}
+          target='_blank'
+          rel='noreferrer'
+          className='block truncate text-base font-medium tracking-[-0.01em] text-foreground no-underline transition-colors group-hover:text-accent-400'>
           {title}
-        </CustomLink>
-        <div className='text-gray-400 truncate w-fit'>
-          {artists.map((artist, index) => (
-            <span
-              key={index}
-              className="hover:underline text-sm w-fit after:content-[','] last:after:content-[''] mr-1">
-              <CustomLink ref={artistRef} href={artist.url}>
+        </a>
+        <div className='mt-0.5 truncate text-sm text-fg-3'>
+          {artists.map((artist, i) => (
+            <span key={i} className="after:content-[','] last:after:content-[''] mr-1">
+              <a
+                ref={artistRef}
+                href={artist.url}
+                target='_blank'
+                rel='noreferrer'
+                className='no-underline hover:underline'>
                 {artist.name}
-              </CustomLink>
+              </a>
             </span>
           ))}
         </div>
       </div>
-      <span className='text-gray-400 ml-auto text-sm'>{formatDuration(duration)}</span>
-    </div>
+      <span className='font-mono text-xs text-fg-4 tabular-nums'>{formatDuration(duration)}</span>
+    </li>
   )
 }
 
