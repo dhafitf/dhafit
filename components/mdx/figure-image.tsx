@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react"
-
 import cn from "~/libs/cn"
 
 interface Props {

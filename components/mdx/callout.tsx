@@ -1,11 +1,11 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 
 const Callout = ({
   emoji,
   children,
 }: {
-  emoji: React.ReactNode | string
-  children: React.ReactNode
+  emoji: ReactNode | string
+  children: ReactNode
 }) => {
   return (
     <div className='px-4 py-3 border border-l-8 border-white/10 bg-base-800 rounded text-sm flex items-center mb-6'>

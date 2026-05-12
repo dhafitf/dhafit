@@ -4,7 +4,37 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-cyan: #54b5ff;
+  --color-accent-50: #eaf5ff;
+  --color-accent-100: #d5ebff;
+  --color-accent-200: #abd6ff;
+  --color-accent-300: #80c2ff;
+  --color-accent-400: #54b5ff;
+  --color-accent-500: #2e9ff2;
+  --color-accent-600: #1c84d4;
+  --color-accent-700: #1669aa;
+  --color-accent-800: #104e80;
+  --color-accent-900: #0a3357;
+
+  --color-background: #151a21;
+  --color-surface: #1c232c;
+  --color-surface-2: #232b36;
+
+  --color-foreground: #e9eef5;
+  --color-fg-2: #b4bdcb;
+  --color-fg-3: #8590a0;
+  --color-fg-4: #5e6876;
+
+  --color-border: #2a323d;
+  --color-border-strong: #3a4553;
+  --color-hover: #232b36;
+  --color-press: #2a323d;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
   --color-base-50: oklch(96.14% 0.001 286.38);
   --color-base-100: oklch(92.37% 0.003 228.79);
@@ -22,12 +52,8 @@
 }
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  Tailwind v4 changed the default border color to `currentcolor`. Pin it back
+  to gray-200 so existing utilities render the same as in v3.
 */
 @layer base {
   *,
@@ -40,22 +66,159 @@
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #3d3d3d;
-  border-radius: 10px;
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #616161;
-  border-radius: 10px;
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-strong);
 }
 
-.prose {
-  @apply max-w-3xl;
+/* Animated underline for inline links */
+.ax-underline {
+  background-image: linear-gradient(var(--color-accent-400), var(--color-accent-400));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+}
+
+/* Blinking caret used after the hero subtitle */
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  background: var(--color-accent-400);
+  vertical-align: -0.1em;
+  margin-left: 2px;
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+
+/* Monogram dot pulse */
+@keyframes monogram-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent-400) 50%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 8px color-mix(in oklab, var(--color-accent-400) 0%, transparent);
+  }
+}
+.monogram-dot {
+  animation: monogram-pulse 2.4s var(--ease-out-soft) infinite;
+}
+
+.cs-frame {
+  position: relative;
+  background: linear-gradient(180deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
+  border: 1px solid var(--color-border);
+  padding: 14px 14px 56px;
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--color-foreground) 4%, transparent) inset,
+    0 30px 60px -20px #00000088,
+    0 10px 20px -10px #00000066;
+  transition:
+    transform 500ms var(--ease-out-soft),
+    box-shadow 500ms var(--ease-out-soft),
+    border-color 320ms var(--ease-out-soft);
+}
+.cs-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 60% at 50% 0%,
+      color-mix(in oklab, var(--color-foreground) 4%, transparent),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      color-mix(in oklab, var(--color-foreground) 1.5%, transparent) 0 1px,
+      transparent 1px 3px
+    );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.cs-frame:hover {
+  transform: translateY(-6px) rotate(0deg) !important;
+  border-color: color-mix(in oklab, var(--color-accent-400) 50%, var(--color-border-strong));
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--color-foreground) 5%, transparent) inset,
+    0 50px 80px -20px #000000aa,
+    0 10px 20px -10px #00000077,
+    0 0 60px -10px color-mix(in oklab, var(--color-accent-400) 22%, transparent);
+}
+
+.cs-photo {
+  position: relative;
+  overflow: hidden;
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 600ms var(--ease-out-soft);
+}
+.cs-frame:hover .cs-photo {
+  filter: saturate(1) contrast(1);
+}
+.cs-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(160% 110% at 50% 50%, transparent 55%, #00000060 100%),
+    repeating-linear-gradient(
+      45deg,
+      color-mix(in oklab, var(--color-foreground) 2%, transparent) 0 1px,
+      transparent 1px 3px
+    );
+  pointer-events: none;
+}
+
+.cs-tape {
+  position: absolute;
+  width: 76px;
+  height: 18px;
+  background: color-mix(in oklab, var(--color-accent-400) 38%, var(--color-surface-2));
+  opacity: 0.6;
+  top: -8px;
+  transform: rotate(-4deg);
+  box-shadow: 0 2px 6px #00000060;
+}
+.cs-tape::before,
+.cs-tape::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 2px,
+    color-mix(in oklab, var(--color-background) 60%, transparent) 2px 4px
+  );
+}
+.cs-tape::before {
+  left: 0;
+}
+.cs-tape::after {
+  right: 0;
+}
+.cs-tape.cs-tape-r {
+  right: 22px;
+  transform: rotate(5deg);
+}
+.cs-tape.cs-tape-l {
+  left: 22px;
 }
 
 .prose a {
@@ -74,7 +237,7 @@
 
 .prose .anchor:after {
   @apply text-neutral-300 dark:text-neutral-700;
-  content: "#";
+  content: '#';
 }
 
 .prose *:hover > .anchor {
@@ -134,7 +297,7 @@
   @apply bg-green-500/50;
 }
 
-.prose pre [data-highlighted-chars][data-chars-id="alert"] {
+.prose pre [data-highlighted-chars][data-chars-id='alert'] {
   @apply bg-red-500/50;
 }
 

@@ -3,7 +3,7 @@ import { getNowPlaying } from '~/libs/spotify'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const response = await getNowPlaying()
     if (response.status === 204) return NextResponse.json({ isPlaying: false })
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(track)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 })
   }
 }

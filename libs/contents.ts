@@ -64,6 +64,3 @@ export function getFeaturedPosts(dir: keyof typeof POST_DIRS) {
   return posts.filter((post) => post.metadata.featured)
 }
 
-export function getAllPosts(dir: keyof typeof POST_DIRS) {
-  return getPosts(dir)
-}

@@ -1,12 +1,23 @@
 import type { Metadata } from 'next'
-import { Montserrat } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 import Navbar from '@/blocks/navbar'
+import Footer from '@/sections/footer-section'
 import cn from '~/libs/cn'
 import GoogleAnalytics from './GoogleAnalytics'
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dhafit.vercel.app'),
@@ -42,17 +53,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang='en' className={cn(inter.variable, jetbrainsMono.variable)}>
       {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
         <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
       )}
-      <body
-        className={cn(
-          montserrat.className,
-          'bg-base-900 text-gray-300 w-full max-w-3xl mx-auto px-5 mt-3 mb-6'
-        )}>
+      <body className='bg-background text-foreground font-body min-h-dvh antialiased flex flex-col'>
         <Navbar />
-        <main className='mt-12'>{children}</main>
+        <main className='flex-1'>{children}</main>
+        <Footer />
       </body>
     </html>
   )

@@ -1,9 +1,9 @@
 import { Button } from '@/common/button'
 import CustomLink from '@/common/custom-link'
 
-const NotFoundPaga = () => {
+const NotFoundPage = () => {
   return (
-    <div>
+    <div className='relative mx-auto max-w-4xl px-6 md:px-12 py-16 md:py-24'>
       <div>
         <h1 className='pb-4 text-4xl font-bold'>404 - Not Found.</h1>
         <p className='pb-10'>
@@ -19,4 +19,4 @@ const NotFoundPaga = () => {
   )
 }
 
-export default NotFoundPaga
+export default NotFoundPage
