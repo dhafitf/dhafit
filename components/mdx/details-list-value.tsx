@@ -3,7 +3,7 @@ import CustomLink from "@/common/custom-link"
 export const DetailsListValue = ({ value }: { value: string }) => {
   const isLink = value.includes("http")
   return (
-    <div className="text-end">
+    <div className="text-end truncate">
       {isLink ? (
         <CustomLink href={value} className="text-gray-400">
           {value}
