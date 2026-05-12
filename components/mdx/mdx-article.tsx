@@ -60,7 +60,12 @@ export async function MdxArticle(props: {
 }) {
   const options: MDXRemoteOptions = {
     mdxOptions: {
-      rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          { theme: 'github-dark', defaultLang: { block: 'plaintext', inline: 'plaintext' } },
+        ],
+      ],
       remarkPlugins: [remarkBreaks],
     },
   }
