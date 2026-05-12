@@ -17,7 +17,7 @@ export async function generateMetadata(props: {
   const { title, summary: description, publishedAt: publishedTime, image } = blog.metadata
   const ogImage = image
     ? `https://dhafit.vercel.app${image}`
-    : `https://dhafit.vercel.app/og?title=${title}`
+    : `https://dhafit.vercel.app/og?title=${title}&date=${publishedTime}`
 
   return {
     title,
