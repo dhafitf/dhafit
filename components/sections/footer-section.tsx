@@ -5,7 +5,8 @@ import { socialItems } from '~/libs/constants'
 import { reveal } from '~/libs/motion'
 
 export default function Footer() {
-  const email = 'hello@dhafit.dev'
+  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL
+
   return (
     <motion.footer
       {...reveal}
@@ -14,11 +15,13 @@ export default function Footer() {
         © Dhafit Farenza
       </div>
       <div className='flex flex-col items-end gap-4 sm:gap-2 max-xs:items-center'>
-        <a
-          href={`mailto:${email}`}
-          className='ax-underline text-foreground text-sm font-medium tracking-[-0.01em] no-underline'>
-          {email}
-        </a>
+        {email && (
+          <a
+            href={`mailto:${email}`}
+            className='ax-underline text-foreground text-sm font-medium tracking-[-0.01em] no-underline'>
+            {email}
+          </a>
+        )}
         <div className='flex flex-wrap items-center gap-4'>
           {socialItems.map((social) => {
             const Icon = social.icon
