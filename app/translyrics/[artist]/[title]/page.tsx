@@ -7,7 +7,7 @@ import { type JSX } from 'react'
 import { SiSpotify, SiYoutube } from 'react-icons/si'
 
 import LyricsBlocks from '~/components/blocks/lyrics-blocks'
-import { getTrackData, getTrackLyrics, getTranslationData } from '~/libs/lyrics'
+import { getTrackData, getTrackLyrics, getTrackWithLyrics } from '~/libs/lyrics'
 
 interface LyricsPageProps {
   params: Promise<{ artist: string; title: string }>
@@ -49,12 +49,10 @@ export default async function LyricsPage(props: LyricsPageProps) {
   const params = await props.params
   const artistParams = decodeURIComponent(params.artist)
   const title = decodeURIComponent(params.title)
-  const track = getTrackData(artistParams, title)
-  if (!track) notFound()
+  const result = getTrackWithLyrics(artistParams, title)
+  if (!result) notFound()
 
-  const { metadata, content: lyrics } = getTranslationData(
-    `contents/lyrics/${artistParams}/${title}.mdx`,
-  )
+  const { track, metadata, blocks: lyrics } = result
   const artist = track.artists?.[0] ?? 'Unknown'
   const subtitle = track.romanizedTitle
 

@@ -55,6 +55,7 @@ interface Translation {
 
 interface Track extends TrackMetadata {
   translations?: Translation[]
+  filePath?: string // absolute source path, set by the lyrics read model
 }
 
 interface Artist extends ArtistMetadata {

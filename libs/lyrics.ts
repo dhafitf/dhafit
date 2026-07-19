@@ -1,7 +1,10 @@
 import fs from 'fs'
 import path from 'path'
+import { cache } from 'react'
 
 import { readFrontmatter } from '~/libs/frontmatter'
+
+const LYRICS_DIR = 'contents/lyrics'
 
 function readArtistMetadata(dir: string): ArtistMetadata {
   const metadataFile = `${dir}/metadata.json`
@@ -38,7 +41,9 @@ export function getTranslationData(filePath: string) {
   }
 }
 
-export function getAllLyrics(dir: string): Artist[] {
+// Memoized per request: the whole tree is walked once even when several
+// accessors (metadata + component + static params) run within one render.
+export const getAllLyrics = cache((dir: string): Artist[] => {
   const folders = fs.readdirSync(dir, { withFileTypes: true })
 
   const artists: Artist[] = []
@@ -69,6 +74,7 @@ export function getAllLyrics(dir: string): Artist[] {
               image: trackMetadata.image,
               links: trackMetadata.links,
               updatedAt: trackMetadata.updatedAt,
+              filePath,
             }
 
             tracks.push(track)
@@ -83,10 +89,10 @@ export function getAllLyrics(dir: string): Artist[] {
   })
 
   return artists
-}
+})
 
 export function getArtistData(artist: string) {
-  const artists = getAllLyrics('contents/lyrics')
+  const artists = getAllLyrics(LYRICS_DIR)
   return artists.find((a) => a.name?.toLowerCase() === artist?.toLowerCase())
 }
 
@@ -96,6 +102,17 @@ export function getTrackData(artist: string, track: string) {
 }
 
 export function getTrackLyrics() {
-  const artists = getAllLyrics('contents/lyrics')
+  const artists = getAllLyrics(LYRICS_DIR)
   return artists.map((artist) => artist.tracks).flat()
+}
+
+// Single entry for the detail page: resolves the track through the read model
+// (which owns its source path) and reads its translation. No caller builds
+// filesystem paths.
+export function getTrackWithLyrics(artist: string, title: string) {
+  const track = getTrackData(artist, title)
+  if (!track?.filePath) return undefined
+
+  const { metadata, content: blocks } = getTranslationData(track.filePath)
+  return { track, metadata, blocks }
 }
