@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import TranslyricsListSection from '@/sections/translyrics-list-section'
+import TranslyricsFilteredList from '@/blocks/translyrics-filtered-list'
 import { getTrackLyrics } from '~/libs/lyrics'
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default async function TranslyricsPage(props: TranslyricsPageProps) {
           Random Japanese songs translated into Indonesian.
         </p>
       </div>
-      <TranslyricsListSection tracks={tracks} initialArtist={initialArtist} />
+      <TranslyricsFilteredList tracks={tracks} initialArtist={initialArtist} />
     </div>
   )
 }

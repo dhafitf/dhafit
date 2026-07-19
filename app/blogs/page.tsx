@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import BlogsListSection from '@/sections/blogs-list-section'
+import BlogsFilteredList from '@/blocks/blogs-filtered-list'
 import { getPosts } from '~/libs/contents'
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function BlogsPage() {
           Whatever's currently being figured out, written down for anyone watching.
         </p>
       </div>
-      <BlogsListSection posts={posts} />
+      <BlogsFilteredList posts={posts} />
     </div>
   )
 }

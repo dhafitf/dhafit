@@ -16,7 +16,7 @@ export const DetailsListValue = ({ value }: { value: string }) => {
 }
 
 export const DetailsListValues = ({ values }: { values: string[] }) => {
-  const isLink = values.includes("http")
+  const isLink = values.some((value) => value.includes("http"))
 
   if (isLink) {
     return (
@@ -25,7 +25,7 @@ export const DetailsListValues = ({ values }: { values: string[] }) => {
           <CustomLink
             key={index}
             href={value}
-            className="after:content-[','] last:after:content-[] mr-1 text-gray-400"
+            className="after:content-[','] last:after:content-[''] mr-1 text-gray-400"
           >
             {value}
           </CustomLink>

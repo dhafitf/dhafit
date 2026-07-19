@@ -1,40 +1,66 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState, type ReactNode } from 'react'
 import { IoSearch } from 'react-icons/io5'
 
-import PostCard from '@/common/post-card'
 import cn from '~/libs/cn'
 import { reveal } from '~/libs/motion'
-import { readingTime } from '~/libs/reading-time'
-
-type Props = { posts: PostData[] }
 
 const ALL = 'All'
 
-export default function BlogsListSection({ posts }: Props) {
-  const [query, setQuery] = useState('')
-  const [activeTag, setActiveTag] = useState<string>(ALL)
+type FilteredListProps<T> = {
+  items: T[]
+  /** Facet values an item belongs to — populate the chip row and drive filtering. */
+  getFacets: (item: T) => string[] | undefined
+  /** Free-text haystack for the search box. */
+  getSearchText: (item: T) => string
+  renderItem: (item: T, index: number) => ReactNode
+  getKey: (item: T, index: number) => string
+  gridClassName: string
+  searchPlaceholder: string
+  searchAriaLabel: string
+  /** Used in the empty state: "No {emptyNoun} match". */
+  emptyNoun: string
+  /** Pre-select a facet (case-insensitive); falls back to All when unmatched. */
+  initialFacet?: string
+}
 
-  const tags = useMemo(() => {
+export default function FilteredList<T>({
+  items,
+  getFacets,
+  getSearchText,
+  renderItem,
+  getKey,
+  gridClassName,
+  searchPlaceholder,
+  searchAriaLabel,
+  emptyNoun,
+  initialFacet,
+}: FilteredListProps<T>) {
+  const [query, setQuery] = useState('')
+
+  const facets = useMemo(() => {
     const set = new Set<string>()
-    posts.forEach((p) => p.metadata.tags?.forEach((t) => set.add(t)))
+    items.forEach((item) => getFacets(item)?.forEach((f) => f && set.add(f)))
     return [ALL, ...Array.from(set).sort()]
-  }, [posts])
+  }, [items, getFacets])
+
+  const [activeFacet, setActiveFacet] = useState<string>(() => {
+    if (!initialFacet) return ALL
+    const match = facets.find((f) => f.toLowerCase() === initialFacet.toLowerCase())
+    return match ?? ALL
+  })
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return posts.filter((p) => {
-      const matchesTag = activeTag === ALL || p.metadata.tags?.includes(activeTag)
-      if (!matchesTag) return false
+    return items.filter((item) => {
+      const matchesFacet = activeFacet === ALL || getFacets(item)?.includes(activeFacet)
+      if (!matchesFacet) return false
       if (!q) return true
-      const haystack = [p.metadata.title, p.metadata.summary, ...(p.metadata.tags ?? [])]
-        .join(' ')
-        .toLowerCase()
-      return haystack.includes(q)
+      return getSearchText(item).toLowerCase().includes(q)
     })
-  }, [posts, query, activeTag])
+  }, [items, query, activeFacet, getFacets, getSearchText])
 
   return (
     <div className='flex flex-col gap-8'>
@@ -45,8 +71,8 @@ export default function BlogsListSection({ posts }: Props) {
             type='search'
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder='Search posts…'
-            aria-label='Search posts'
+            placeholder={searchPlaceholder}
+            aria-label={searchAriaLabel}
             className='text-foreground placeholder:text-fg-4 w-full bg-transparent text-sm outline-none'
           />
           {query && (
@@ -60,42 +86,34 @@ export default function BlogsListSection({ posts }: Props) {
         </div>
 
         <div className='flex flex-wrap gap-2'>
-          {tags.map((tag) => (
+          {facets.map((facet) => (
             <button
-              key={tag}
+              key={facet}
               type='button'
-              onClick={() => setActiveTag(tag)}
+              onClick={() => setActiveFacet(facet)}
               className={cn(
                 'font-mono text-xs tracking-widest rounded-full border px-3 py-1.5 transition-colors duration-200ms ease-out-soft',
-                activeTag === tag
+                activeFacet === facet
                   ? 'border-accent-400 bg-accent-400/10 text-accent-300'
                   : 'border-border text-fg-3 hover:border-border-strong hover:text-fg-2',
               )}>
-              {tag}
+              {facet}
             </button>
           ))}
         </div>
       </motion.div>
 
       {filtered.length > 0 ? (
-        <div className='grid sm:grid-cols-2 gap-4'>
-          {filtered.map((p, i) => (
-            <PostCard
-              key={p.slug}
-              href={`/blogs/${p.slug}`}
-              title={p.metadata.title}
-              summary={p.metadata.summary}
-              date={p.metadata.publishedAt}
-              meta={readingTime(p.content)}
-              index={i}
-            />
+        <div className={gridClassName}>
+          {filtered.map((item, i) => (
+            <Fragment key={getKey(item, i)}>{renderItem(item, i)}</Fragment>
           ))}
         </div>
       ) : (
         <div className='border-border border-t border-dashed py-20 text-center'>
           <div className='text-fg-3 flex flex-col gap-1 font-mono text-xs tracking-[0.18em] uppercase truncate'>
-            <span>No posts match</span>
-            <span className='text-accent-400'>{query ? `“${query}”` : activeTag}</span>
+            <span>No {emptyNoun} match</span>
+            <span className='text-accent-400'>{query ? `“${query}”` : activeFacet}</span>
           </div>
         </div>
       )}
