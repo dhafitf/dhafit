@@ -17,18 +17,18 @@ const SpotifyNowPlaying = ({ className }: { className?: string }) => {
       {...fadeUp}
       transition={{ ...fadeUp.transition, delay: 0.22 }}
       className={cn(
-        'text-fg-4 flex items-center gap-2 font-mono text-xs tracking-[0.06em] uppercase',
+        'text-fg-4 flex items-center gap-2 font-mono text-xs tracking-wider uppercase',
         className,
       )}>
       <SiSpotify className={`size-3.5 min-w-3.5 ${playing ? 'text-[#1DB954]' : 'text-fg-4'}`} />
       {playing && data ? (
-        <span className='inline-flex items-center gap-1.5 tracking-[0.02em] normal-case truncate'>
+        <span className='inline-flex items-center gap-1.5 tracking-wide normal-case truncate'>
           <span className='text-fg-3'>Playing</span>
           <a
             href={data.songUrl}
             target='_blank'
             rel='noreferrer'
-            className='ax-underline text-accent-400 no-underline'>
+            className='text-accent-400 hover:underline'>
             {data.title}
           </a>
           <span className='text-fg-3'>—</span>

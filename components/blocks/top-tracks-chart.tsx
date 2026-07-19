@@ -1,5 +1,5 @@
 import ErrorBox from '@/common/error-box'
-import { getTopTracks } from '~/libs/get-top-tracks'
+import { getTopTracks } from '~/libs/spotify'
 import TrackItem from '../common/track-item'
 
 const TopTracksChart = async () => {

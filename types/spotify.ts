@@ -15,6 +15,9 @@ interface CurrentlyPlayingItem extends BaseTrack {
   isPlaying: boolean
 }
 
+// A track is only readable once we know something is playing.
+type NowPlaying = { isPlaying: false } | (BaseTrack & { isPlaying: true })
+
 interface TrackItem extends BaseTrack {
   duration: number
 }
