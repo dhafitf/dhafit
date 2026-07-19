@@ -4,39 +4,19 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { MdxArticle } from '@/mdx/mdx-article'
-import { getPosts } from '~/libs/contents'
+import { buildArticleMetadata } from '~/libs/article-metadata'
+import { getPost, getPosts } from '~/libs/contents'
 import { readingTime } from '~/libs/reading-time'
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata | undefined> {
-  const params = await props.params
-  const blog = getPosts('BLOG').find((post) => post.slug === params.slug)
+  const { slug } = await props.params
+  const blog = getPost('BLOG', slug)
   if (!blog) return
 
-  const { title, summary: description, publishedAt: publishedTime, image } = blog.metadata
-  const ogImage = image
-    ? `https://dhafit.vercel.app${image}`
-    : `https://dhafit.vercel.app/og?title=${title}&date=${publishedTime}`
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      publishedTime,
-      url: `https://dhafit.vercel.app/blogs/${blog.slug}`,
-      images: [{ url: ogImage }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
-  }
+  const { title, summary, publishedAt, image } = blog.metadata
+  return buildArticleMetadata({ kind: 'blog', title, summary, slug, image, publishedAt })
 }
 
 export function generateStaticParams() {
@@ -44,8 +24,8 @@ export function generateStaticParams() {
 }
 
 export default async function BlogArticle(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params
-  const blog = getPosts('BLOG').find((post) => post.slug === params.slug)
+  const { slug } = await props.params
+  const blog = getPost('BLOG', slug)
   if (!blog) notFound()
 
   const { metadata, content } = blog

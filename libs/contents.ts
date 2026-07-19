@@ -1,28 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-function parseFrontmatter(fileContent: string) {
-  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
-  const match = frontmatterRegex.exec(fileContent)
-  const frontMatterBlock = match![1]
-  const content = fileContent.replace(frontmatterRegex, '').trim()
-  const frontMatterLines = frontMatterBlock.trim().split('\n')
-  const metadata: Partial<Metadata> = {}
-
-  frontMatterLines.forEach((line) => {
-    const [key, ...valueArr] = line.split(': ')
-    let value = valueArr.join(': ').trim()
-
-    if (key === 'tags') metadata[key as keyof Metadata] = JSON.parse(value)
-    else if (key === 'featured') metadata['featured'] = value === 'true'
-    else {
-      value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
-      metadata[key as keyof Omit<Metadata, 'tags' | 'featured'>] = value
-    }
-  })
-
-  return { metadata: metadata as Metadata, content }
-}
+import { readFrontmatter } from '~/libs/frontmatter'
 
 function getMDXFiles(dir: string) {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
@@ -30,7 +9,7 @@ function getMDXFiles(dir: string) {
 
 function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, 'utf-8')
-  return parseFrontmatter(rawContent)
+  return readFrontmatter<Metadata>(rawContent)
 }
 
 function getMDXData(dir: string) {
@@ -51,6 +30,17 @@ const POST_DIRS = {
   BLOG: 'contents/blogs',
   PROJECT: 'contents/projects',
 } as const
+
+export function getPost(dir: keyof typeof POST_DIRS, slug: string): PostData | undefined {
+  // Guard against path traversal: a slug must be a bare file basename.
+  if (!slug || slug !== path.basename(slug)) return undefined
+
+  const filePath = path.join(process.cwd(), POST_DIRS[dir], `${slug}.mdx`)
+  if (!fs.existsSync(filePath)) return undefined
+
+  const { metadata, content } = readMDXFile(filePath)
+  return { metadata, slug, content }
+}
 
 export function getPosts(dir: keyof typeof POST_DIRS) {
   const mdxDatas = getMDXData(path.join(process.cwd(), POST_DIRS[dir]))

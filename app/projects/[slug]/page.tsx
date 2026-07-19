@@ -4,38 +4,19 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { MdxArticle } from '@/mdx/mdx-article'
-import { getPosts } from '~/libs/contents'
+import { buildArticleMetadata } from '~/libs/article-metadata'
+import { getPost, getPosts } from '~/libs/contents'
 import { getYear } from '~/libs/utils'
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata | undefined> {
-  const params = await props.params
-  const project = getPosts('PROJECT').find((post) => post.slug === params.slug)
+  const { slug } = await props.params
+  const project = getPost('PROJECT', slug)
   if (!project) return
 
-  const { title, summary: description, image } = project.metadata
-  const ogImage = image
-    ? `https://dhafit.vercel.app${image}`
-    : `https://dhafit.vercel.app/og?title=${title}`
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      url: `https://dhafit.vercel.app/projects/${params.slug}`,
-      images: [{ url: ogImage }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
-  }
+  const { title, summary, image } = project.metadata
+  return buildArticleMetadata({ kind: 'project', title, summary, slug, image })
 }
 
 export function generateStaticParams() {
@@ -43,8 +24,8 @@ export function generateStaticParams() {
 }
 
 export default async function ProjectArticle(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params
-  const project = getPosts('PROJECT').find((post) => post.slug === params.slug)
+  const { slug } = await props.params
+  const project = getPost('PROJECT', slug)
   if (!project) notFound()
 
   const { metadata, content } = project

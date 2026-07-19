@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { parse } from 'yaml'
+
+import { readFrontmatter } from '~/libs/frontmatter'
 
 function readArtistMetadata(dir: string): ArtistMetadata {
   const metadataFile = `${dir}/metadata.json`
@@ -11,23 +12,14 @@ function readArtistMetadata(dir: string): ArtistMetadata {
   return {}
 }
 
-function parseFrontmatter(fileContent: string) {
-  const frontmatterRegex = /^---\s*([\s\S]*?)\s*---/
-  const match = frontmatterRegex.exec(fileContent)
-  const metadata = match ? parse(match[1]) : {}
-  const content = fileContent.replace(frontmatterRegex, '').trim()
-
-  return { metadata, content }
-}
-
 export function getTrackMetadata(filePath: string) {
   const fileContent = fs.readFileSync(filePath, 'utf-8')
-  return parseFrontmatter(fileContent).metadata as TrackFrontMatter
+  return readFrontmatter<TrackFrontMatter>(fileContent).metadata
 }
 
 export function getTranslationData(filePath: string) {
   const fileContent = fs.readFileSync(filePath, 'utf-8')
-  const { metadata, content } = parseFrontmatter(fileContent)
+  const { metadata, content } = readFrontmatter<TrackFrontMatter>(fileContent)
 
   const blocks = content
     .trim()
