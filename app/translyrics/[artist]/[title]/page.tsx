@@ -1,7 +1,7 @@
 import AlbumCover from '@/common/album-cover'
+import BackLink from '@/common/back-link'
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { type JSX } from 'react'
 import { SiSpotify, SiYoutube } from 'react-icons/si'
@@ -58,11 +58,7 @@ export default async function LyricsPage(props: LyricsPageProps) {
 
   return (
     <article className='mx-auto max-w-4xl px-6 py-8 sm:py-12'>
-      <Link
-        href='/translyrics'
-        className='text-fg-3 hover:text-accent-400 mb-8 sm:mb-10 inline-block font-mono text-xs tracking-widest uppercase no-underline transition-colors'>
-        ← All translyrics
-      </Link>
+      <BackLink href='/translyrics' label='All translyrics' />
 
       <header className='mb-10 flex flex-col items-center text-center'>
         <div className='border-border relative mb-6 aspect-square w-44 overflow-hidden rounded-xl border shadow-[0_18px_40px_-18px_#000]'>

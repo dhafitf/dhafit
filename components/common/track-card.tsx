@@ -8,7 +8,7 @@ export default function TrackCard({ track, index }: { track: Track; index: numbe
 
   return (
     <Link
-      href={`/translyrics/${artist}/${track.title}`}
+      href={`/translyrics/${encodeURIComponent(artist)}/${encodeURIComponent(track.title ?? '')}`}
       className='group block no-underline'>
       <div className='border-border group-hover:border-accent-400 relative aspect-square overflow-hidden rounded-sm border transition-all duration-400 ease-out-soft group-hover:-translate-y-1 group-hover:shadow-[0_14px_30px_-12px_#000000aa,0_0_36px_-12px_color-mix(in_oklab,var(--color-accent-400)_28%,transparent)]'>
         {track.image ? (

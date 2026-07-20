@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import BackLink from '@/common/back-link'
 import { MdxArticle } from '@/mdx/mdx-article'
 import { buildArticleMetadata } from '~/libs/article-metadata'
 import { getPost, getPosts } from '~/libs/contents'
@@ -32,11 +32,7 @@ export default async function BlogArticle(props: { params: Promise<{ slug: strin
 
   return (
     <article className='mx-auto max-w-4xl px-6 py-8 sm:py-12'>
-      <Link
-        href='/blogs'
-        className='text-fg-3 hover:text-accent-400 mb-8 sm:mb-10 inline-block font-mono text-xs tracking-widest uppercase no-underline transition-colors'>
-        ← All posts
-      </Link>
+      <BackLink href='/blogs' label='All posts' />
 
       <header className='mb-12'>
         <h1 className='text-foreground m-0 mb-5 text-[clamp(36px,5vw,64px)] leading-[1.1] font-medium tracking-[-0.03em]'>

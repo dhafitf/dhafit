@@ -13,13 +13,13 @@ type FilteredListProps<T> = {
   items: T[]
   /** Facet values an item belongs to — populate the chip row and drive filtering. */
   getFacets: (item: T) => string[] | undefined
-  /** Free-text haystack for the search box. */
-  getSearchText: (item: T) => string
+  /** Free-text haystack for the search box. Omit to render no search input. */
+  getSearchText?: (item: T) => string
   renderItem: (item: T, index: number) => ReactNode
   getKey: (item: T, index: number) => string
   gridClassName: string
-  searchPlaceholder: string
-  searchAriaLabel: string
+  searchPlaceholder?: string
+  searchAriaLabel?: string
   /** Used in the empty state: "No {emptyNoun} match". */
   emptyNoun: string
   /** Pre-select a facet (case-insensitive); falls back to All when unmatched. */
@@ -57,7 +57,7 @@ export default function FilteredList<T>({
     return items.filter((item) => {
       const matchesFacet = activeFacet === ALL || getFacets(item)?.includes(activeFacet)
       if (!matchesFacet) return false
-      if (!q) return true
+      if (!q || !getSearchText) return true
       return getSearchText(item).toLowerCase().includes(q)
     })
   }, [items, query, activeFacet, getFacets, getSearchText])
@@ -65,25 +65,27 @@ export default function FilteredList<T>({
   return (
     <div className='flex flex-col gap-8'>
       <motion.div {...reveal} className='flex flex-col gap-5'>
-        <div className='border-border bg-surface focus-within:border-accent-400 flex items-center gap-3 rounded-xl border px-4 py-3 transition-colors'>
-          <IoSearch className='text-fg-3 size-4 shrink-0' />
-          <input
-            type='search'
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={searchPlaceholder}
-            aria-label={searchAriaLabel}
-            className='text-foreground placeholder:text-fg-4 w-full bg-transparent text-sm outline-none'
-          />
-          {query && (
-            <button
-              type='button'
-              onClick={() => setQuery('')}
-              className='text-fg-3 hover:text-foreground font-mono text-[10px] tracking-[0.18em] uppercase'>
-              Clear
-            </button>
-          )}
-        </div>
+        {getSearchText && (
+          <div className='border-border bg-surface focus-within:border-accent-400 flex items-center gap-3 rounded-xl border px-4 py-3 transition-colors'>
+            <IoSearch className='text-fg-3 size-4 shrink-0' />
+            <input
+              type='search'
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={searchPlaceholder}
+              aria-label={searchAriaLabel}
+              className='text-foreground placeholder:text-fg-4 w-full bg-transparent text-sm outline-none'
+            />
+            {query && (
+              <button
+                type='button'
+                onClick={() => setQuery('')}
+                className='text-fg-3 hover:text-foreground font-mono text-[10px] tracking-[0.18em] uppercase'>
+                Clear
+              </button>
+            )}
+          </div>
+        )}
 
         <div className='flex flex-wrap gap-2'>
           {facets.map((facet) => (

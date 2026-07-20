@@ -12,7 +12,11 @@ function CustomLink({ className, href, children, ref, ...rest }: CustomLinkProps
   const className_ = cn('cursor-pointer hover:text-accent-400', className)
 
   if (href.startsWith('#')) {
-    return <a {...rest}>{children}</a>
+    return (
+      <a {...rest} href={href} ref={ref} className={className_}>
+        {children}
+      </a>
+    )
   }
 
   if (href.startsWith('http')) {

@@ -1,46 +1,32 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
 
 import SpotifyNowPlaying from '@/blocks/spotify-now-playing'
 import { socialItems } from '~/libs/constants'
-import { useMouseInside } from '~/libs/hooks/use-mouse-inside'
 import { fadeUp, REVEAL_EASE } from '~/libs/motion'
 
 export default function HeroSection() {
-  const rootRef = useRef<HTMLDivElement>(null)
-  const mouse = useMouseInside(rootRef)
-
-  const [size, setSize] = useState({ w: 800, h: 600 })
-  useEffect(() => {
-    if (!rootRef.current) return
-    const ro = new ResizeObserver(() => {
-      if (rootRef.current) {
-        setSize({ w: rootRef.current.clientWidth, h: rootRef.current.clientHeight })
-      }
-    })
-    ro.observe(rootRef.current)
-    return () => ro.disconnect()
-  }, [])
-
-  const mx = mouse.inside ? mouse.x / size.w - 0.5 : 0
-  const my = mouse.inside ? mouse.y / size.h - 0.5 : 0
-
   return (
-    <section
-      ref={rootRef}
-      className='relative mx-auto -mt-7 flex min-h-dvh max-w-7xl flex-col justify-center px-6 md:px-12'>
-      <motion.div
-        {...fadeUp}
-        className='text-fg-3 mb-9 flex items-center gap-4 font-mono text-xs tracking-[0.08em] uppercase'>
-        <span className='border-accent-400 text-accent-400 rounded-full border bg-[color-mix(in_oklab,var(--color-accent-400)_8%,transparent)] px-2.5 py-1 whitespace-nowrap'>
-          Available
+    <section className='relative mx-auto -mt-7 flex min-h-dvh max-w-7xl flex-col justify-center px-6 md:px-12'>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: REVEAL_EASE, delay: 0.05 }}
+        className='text-foreground relative m-0 text-[clamp(64px,9vw,140px)] leading-[0.94] font-medium tracking-[-0.04em]'>
+        <span className='relative inline-block'>
+          <span
+            aria-hidden
+            className='text-accent-400 absolute top-0 -left-0.5 opacity-60 mix-blend-screen'>
+            Dhafit Farenza
+          </span>
+          <span className='relative'>Dhafit Farenza</span>
         </span>
-        <span>Indonesia · UTC+7</span>
-      </motion.div>
-
-      <GlitchHero mx={mx} my={my} />
+        <span className='font-body text-fg-3 mt-5 block text-[0.4em] leading-[1.4] font-normal tracking-[-0.008em]'>
+          ↳ <span className='text-accent-400'>TypeScript</span> engineer / translator on the side
+          <span className='caret' />
+        </span>
+      </motion.h1>
 
       <motion.p
         {...fadeUp}
@@ -81,29 +67,5 @@ export default function HeroSection() {
 
       <SpotifyNowPlaying className='mt-5' />
     </section>
-  )
-}
-
-function GlitchHero({ mx, my }: { mx: number; my: number }) {
-  return (
-    <motion.h1
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: REVEAL_EASE, delay: 0.05 }}
-      className='text-foreground relative m-0 text-[clamp(64px,9vw,140px)] leading-[0.94] font-medium tracking-[-0.04em] transition-transform duration-400 ease-out-soft'
-      style={{ transform: `translate(${mx * -12}px, ${my * -6}px)` }}>
-      <span className='relative inline-block'>
-        <span
-          aria-hidden
-          className='text-accent-400 absolute top-0 -left-0.5 opacity-60 mix-blend-screen'>
-          Dhafit Farenza
-        </span>
-        <span className='relative'>Dhafit Farenza</span>
-      </span>
-      <span className='text-fg-3 mt-5 block text-[0.4em] leading-[1.4] font-normal tracking-[-0.008em]'>
-        ↳ <span className='text-accent-400'>TypeScript</span> engineer / translator on the side
-        <span className='caret' />
-      </span>
-    </motion.h1>
   )
 }
