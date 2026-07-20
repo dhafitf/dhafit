@@ -29,10 +29,11 @@
   --color-hover: #232b36;
   --color-press: #2a323d;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-space-grotesk), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-noto-mono), ui-monospace, 'Noto Sans Mono', monospace;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -78,15 +79,6 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-strong);
-}
-
-/* Animated underline for inline links */
-.ax-underline {
-  background-image: linear-gradient(var(--color-accent-400), var(--color-accent-400));
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  padding-bottom: 2px;
 }
 
 /* Blinking caret used after the hero subtitle */
@@ -153,12 +145,13 @@
 }
 .cs-frame:hover {
   transform: translateY(-6px) rotate(0deg) !important;
-  border-color: color-mix(in oklab, var(--color-accent-400) 50%, var(--color-border-strong));
+  border-color: var(--color-border-strong);
+  /* Elevation via surface lightness, not a coloured halo. */
+  background: var(--color-surface-2);
   box-shadow:
-    0 1px 0 color-mix(in oklab, var(--color-foreground) 5%, transparent) inset,
-    0 50px 80px -20px #000000aa,
-    0 10px 20px -10px #00000077,
-    0 0 60px -10px color-mix(in oklab, var(--color-accent-400) 22%, transparent);
+    0 1px 0 color-mix(in oklab, var(--color-foreground) 6%, transparent) inset,
+    0 50px 80px -20px color-mix(in oklab, #000 82%, var(--color-background)),
+    0 10px 20px -10px color-mix(in oklab, #000 66%, var(--color-background));
 }
 
 .cs-photo {
