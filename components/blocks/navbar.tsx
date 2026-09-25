@@ -1,6 +1,5 @@
 'use client'
 
-import AnimatedMonogram from '@/common/animated-monogram'
 import { AnimatePresence, motion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -30,8 +29,8 @@ export default function Navbar() {
         <Link
           href='/'
           onClick={() => setOpen(false)}
-          className='flex items-baseline gap-1 no-underline'>
-          <AnimatedMonogram />
+          className='flex items-baseline gap-1 font-bold no-underline text-foreground text-lg tracking-[-0.03em]'>
+          df
         </Link>
 
         <div className='hidden items-center justify-end gap-7 md:flex'>
