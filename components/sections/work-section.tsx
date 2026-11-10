@@ -1,4 +1,3 @@
-import NextFramePlaceholder from '@/common/next-frame-placeholder'
 import PolaroidCard from '@/common/polaroid-card'
 import SectionHeader from '@/common/section-header'
 
@@ -16,7 +15,6 @@ export default function WorkSection({ projects }: { projects: PostData[] }) {
         {projects.map((p, i) => (
           <PolaroidCard key={p.slug} post={p} index={i} />
         ))}
-        <NextFramePlaceholder delay={projects.length * 0.05} />
       </div>
     </section>
   )
